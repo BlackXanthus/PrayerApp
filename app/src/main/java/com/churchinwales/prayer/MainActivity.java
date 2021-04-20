@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -87,9 +89,13 @@ public class MainActivity extends AppCompatActivity {
         String myData = "";
 
         try {
-            InputStream fis = app_Context.getAssets().open("MorningPrayer/Responsorial/Responsorial1.txt");
 
-            //FileInputStream fis = new FileInputStream(file);
+
+            //InputStream fis = app_Context.getDataDir().open("Prayer/MorningPrayer/Confessional/EN_BasicConfessional.txt");
+
+            File file = new File(app_Context.getDataDir()+"/Prayer/Confessional/EN_BasicConfessional.txt");
+
+            FileInputStream fis = new FileInputStream(file);
             DataInputStream in = new DataInputStream(fis);
             BufferedReader br = new BufferedReader(new InputStreamReader(in));
 
