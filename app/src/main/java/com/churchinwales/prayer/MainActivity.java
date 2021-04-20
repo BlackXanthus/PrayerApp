@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.SpannableStringBuilder;
+import android.util.Log;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -26,76 +27,69 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Context app_Context = getApplicationContext();
+        //Loading Dialogue Start Here
+        ResourceLoader.unzipFromAssets(app_Context,"Prayer.zip","");
+
         tv_Prayer = (TextView)findViewById(R.id.txt_MainView);
         tv_Title = (TextView)findViewById(R.id.txt_title);
 
         //This needs to be a translatable string. TODO
-        tv_Title.append("Morning Prayer");
+        tv_Title.setText("Morning Prayer");
         this.setUpPrayer();
+        //Loading Dialogue End here
     }
 
 
     protected void setUpPrayer()
     {
-        SpannableStringBuilder myDocument = new SpannableStringBuilder("Morning Prayer");
+        SpannableStringBuilder myDocument = new SpannableStringBuilder("Morning Prayer<br>");
 
-        SpannableStringBuilder opening = new SpannableStringBuilder("Opening Responsorial");
+        SpannableStringBuilder opening = new SpannableStringBuilder("Opening Responsorial<br>");
 
         myDocument.append(opening);
 
-        myDocument.append(responsorials());
+        myDocument.append(confessional());
 
         tv_Prayer.setText(myDocument, TextView.BufferType.NORMAL);
 
 
-
-
     }
 
-    protected SpannableStringBuilder responsorials()
+    protected SpannableStringBuilder confessional()
     {
-        String myString = "";
-        myString = myString + "O Lord, open our lips,<br><br>";
-        myString = myString +"<em>And our mouth shall proclaim your praise.</em><br><br>";
 
-        myString = myString +"    Glory to the Father, and to the Son,";
-        myString = myString +"    and to the Holy Spirit;";
-        myString = myString +"as it was in the beginning, is now,";
-        myString = myString +"    and shall be for ever. Amen.";
-
-        myString = myString +"    Silent prayer/reflection on the coming day.";
-
-        myString = myString +"Early in the morning";
-        myString = myString +"my prayer comes before you.";
-        myString = myString +"    Lord, have mercy.";
-        myString = myString +"    Lord, have mercy.";
-
-        myString = myString +"    You speak in my heart and say";
-        myString = myString +"‘Seek my face’;";
-        myString = myString +"your face, Lord, will I seek.";
-        myString = myString +"Christ, have mercy.";
-        myString = myString +"    Christ, have mercy.";
-
-        myString = myString +"    Let the words of my mouth and the meditation of my heart";
-        myString = myString +" be acceptable in your sight, O Lord,";
-        myString = myString +"    my strength and my redeemer.";
-        myString = myString +"Lord, have mercy.";
-        myString = myString +"Lord, have mercy.";
-
+        String notFoundError = "<em><strong>Confessional Failed to Load</em></strong><br><br>";
 
         Context app_Context = getApplicationContext();
 
+        SpannableStringBuilder myData = readFile(app_Context,"Prayer/Confessional/En_BasicConfessional.txt");
 
+        String confessional = "";
+
+        if(myData.length() <= 0) {
+            myData = new SpannableStringBuilder(Html.fromHtml(notFoundError));
+        }
+
+        return myData;
+
+    }
+
+    protected SpannableStringBuilder readFile(Context app_Context, String relativePath)
+    {
         String myData = "";
 
         try {
 
-
             //InputStream fis = app_Context.getDataDir().open("Prayer/MorningPrayer/Confessional/EN_BasicConfessional.txt");
 
-            File file = new File(app_Context.getDataDir()+"/Prayer/Confessional/EN_BasicConfessional.txt");
+            String fileName = app_Context.getFilesDir().getPath()+"/Prayer/Confessional/En_BasicConfessional.txt";
+
+            File file = new File(fileName);
+            //InputStream fis = app_Context.getDataDir().open("Prayer/MorningPrayer/Confessional/EN_BasicConfessional.txt");
 
             FileInputStream fis = new FileInputStream(file);
+            //FileInputStream fis = openFileInput(fileName);
             DataInputStream in = new DataInputStream(fis);
             BufferedReader br = new BufferedReader(new InputStreamReader(in));
 
@@ -103,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
             while((strLine = br.readLine())!= null) {
                 myData = myData + strLine;
             }
-
+//
             br.close();
             in.close();
             fis.close();
@@ -111,19 +105,8 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        String responsorial= "";
+        SpannableStringBuilder myReturn = new SpannableStringBuilder(Html.fromHtml(myData));
 
-        if(myData == "") {
-            responsorial = myString;
-        }
-        else {
-            responsorial = myData;
-        }
-
-
-        SpannableStringBuilder myResponsorial = new SpannableStringBuilder(Html.fromHtml(responsorial));
-
-        return myResponsorial;
-
+        return myReturn;
     }
 }
