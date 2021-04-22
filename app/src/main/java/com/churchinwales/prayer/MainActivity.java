@@ -6,8 +6,13 @@ import android.content.Context;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.SpannableStringBuilder;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.widget.TextView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -22,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
     TextView tv_Prayer;
     TextView tv_Title;
+    //Note: this should use Androids built-in language stuffs
+    String language="EN";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         ResourceLoader.unzipFromAssets(app_Context,"Prayer.zip","");
 
         tv_Prayer = (TextView)findViewById(R.id.txt_MainView);
+        tv_Prayer.setMovementMethod(new ScrollingMovementMethod());
         tv_Title = (TextView)findViewById(R.id.txt_title);
 
         //This needs to be a translatable string. TODO
@@ -43,17 +51,51 @@ public class MainActivity extends AppCompatActivity {
 
     protected void setUpPrayer()
     {
-        SpannableStringBuilder myDocument = new SpannableStringBuilder("Morning Prayer<br>");
+        Context app_Context = getApplicationContext();
 
-        SpannableStringBuilder opening = new SpannableStringBuilder("Opening Responsorial<br>");
+        SpannableStringBuilder myDocument = new SpannableStringBuilder("");
 
-        myDocument.append(opening);
 
+        String myData = readFile(app_Context, "/Prayer/Layout/MorningPrayer.json");
+
+
+
+        StringBuilder data = new StringBuilder();
+        try {
+            JSONObject jsonRootObject = new JSONObject(myData);
+            JSONObject jsonObject = jsonRootObject.optJSONObject("MorningPrayer");
+
+
+            JSONObject data_JSOB = jsonObject.getJSONObject("Name");
+            String name = data_JSOB.getString(language);
+
+            myDocument.append(name);
+
+            data_JSOB = jsonObject.getJSONObject("Introduction");
+
+            myDocument.append(getSection(app_Context,data_JSOB));
+
+
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+        }
+        
         myDocument.append(confessional());
 
         tv_Prayer.setText(myDocument, TextView.BufferType.NORMAL);
 
 
+    }
+
+    protected SpannableStringBuilder getSection(Context app_Context, JSONObject data_JSOB) throws JSONException
+    {
+        String location = "/Prayer/"+data_JSOB.getString("Location")+"/"+language+"_"+data_JSOB.getString("File")+".txt";
+        Log.v("TAG","Looking for:"+location);
+        String Introduction= readFile(app_Context,location);
+        SpannableStringBuilder intro = new SpannableStringBuilder(Html.fromHtml(Introduction));
+
+        return intro;
     }
 
     protected SpannableStringBuilder confessional()
@@ -63,19 +105,24 @@ public class MainActivity extends AppCompatActivity {
 
         Context app_Context = getApplicationContext();
 
-        SpannableStringBuilder myData = readFile(app_Context,"Prayer/Confessional/En_BasicConfessional.txt");
+        String myData = readFile(app_Context,"/Prayer/Confessional/En_BasicConfessional.txt");
+
+        SpannableStringBuilder myReturn;
 
         String confessional = "";
 
         if(myData.length() <= 0) {
-            myData = new SpannableStringBuilder(Html.fromHtml(notFoundError));
+            myReturn = new SpannableStringBuilder(Html.fromHtml(notFoundError));
+        }
+        else {
+            myReturn = new SpannableStringBuilder(Html.fromHtml(myData));
         }
 
-        return myData;
+        return myReturn;
 
     }
 
-    protected SpannableStringBuilder readFile(Context app_Context, String relativePath)
+    protected String readFile(Context app_Context, String relativePath)
     {
         String myData = "";
 
@@ -83,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
 
             //InputStream fis = app_Context.getDataDir().open("Prayer/MorningPrayer/Confessional/EN_BasicConfessional.txt");
 
-            String fileName = app_Context.getFilesDir().getPath()+"/Prayer/Confessional/En_BasicConfessional.txt";
+            String fileName = app_Context.getFilesDir().getPath()+relativePath;
 
             File file = new File(fileName);
             //InputStream fis = app_Context.getDataDir().open("Prayer/MorningPrayer/Confessional/EN_BasicConfessional.txt");
@@ -105,8 +152,7 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        SpannableStringBuilder myReturn = new SpannableStringBuilder(Html.fromHtml(myData));
 
-        return myReturn;
+        return myData;
     }
 }
