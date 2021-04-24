@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     TextView tv_Title;
     //Note: this should use Androids built-in language stuffs
     String language="EN";
+    JSONArray lectionaryJSON;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,6 +101,21 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if(((String)key).startsWith("Section")){
                     JSONObject data_JSOB = jsonObject.getJSONObject((String) key);
+
+                    /*
+                    * If the Files section is an array, then pick a random one
+                    * This will eventually also check for preferences
+                     */
+                    Object isArray = data_JSOB.get("File");
+                    if(isArray instanceof JSONArray) {
+                        Log.v("TAG", "File is an array");
+                        JSONArray myFiles = new JSONArray(data_JSOB.getString("File"));
+                        int min = 0;
+                        int max = myFiles.length();
+                        int random = (int) Math.floor(Math.random()*(max-min+1)+min);
+                        data_JSOB.put("File",myFiles.get(random));
+
+                    }
                     SpannableStringBuilder section= getSection(app_Context, data_JSOB);
                     myDocument.append(section);
                 }
@@ -131,22 +147,25 @@ public class MainActivity extends AppCompatActivity {
         String myData = "";
 
         try {
-            InputStream fis = app_context.getAssets().open("dol-year-1.json");
+            if(lectionaryJSON == null) {
+                InputStream fis = app_context.getAssets().open("dol-year-1.json");
 
-            DataInputStream in = new DataInputStream(fis);
-            BufferedReader br = new BufferedReader(new InputStreamReader(in));
+                DataInputStream in = new DataInputStream(fis);
+                BufferedReader br = new BufferedReader(new InputStreamReader(in));
 
-            String strLine;
-            while ((strLine = br.readLine()) != null) {
-                myData = myData + strLine;
+                String strLine;
+                while ((strLine = br.readLine()) != null) {
+                    myData = myData + strLine;
+                }
+
+                br.close();
+                in.close();
+                fis.close();
+
+                lectionaryJSON = new JSONArray(myData);
             }
 
-            br.close();
-            in.close();
-            fis.close();
-
-            JSONArray jsonRootArray = new JSONArray(myData);
-
+            //https://www.biblegateway.com/passage/?search=Deut+9%3A23+-10%3A5&version=NRSV
             //work out the week of the year, starting from the first Sunday of Advent!
             Calendar cal = Calendar.getInstance();
 
@@ -159,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
             Log.v("TAG", "Day Of Year:" + dayOfYear);
 
 
-            JSONObject myReadings = (JSONObject) jsonRootArray.get(dayOfYear);
+            JSONObject myReadings = (JSONObject) lectionaryJSON.get(dayOfYear);
 
             //reading = myReadings.getString("year");
             reading = reading + "<BR>";
