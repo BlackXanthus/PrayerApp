@@ -97,11 +97,18 @@ public class ResourceLoader {
                         dirChecker(destination, ze.getName());
                     } else {
                         File f = new File(destination, ze.getName());
+                        if(f.exists()) {
+                            f.delete();
+                            Log.v("TAG", "Deleting "+f.getName());
+                        }
                         if (!f.exists()) {
                             boolean success = f.createNewFile();
                             if (!success) {
                                 Log.w(TAG, "Failed to create file " + f.getName());
                                 continue;
+                            }
+                            else {
+                                Log.v("TAG","Created "+f.getName());
                             }
                             FileOutputStream fout = new FileOutputStream(f);
                             int count;
