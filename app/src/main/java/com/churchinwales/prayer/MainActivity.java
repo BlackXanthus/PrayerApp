@@ -3,11 +3,17 @@ package com.churchinwales.prayer;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.SpannableStringBuilder;
 import android.text.method.ScrollingMovementMethod;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -23,14 +29,17 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Calendar;
 import java.util.Iterator;
+import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity {
 
     TextView tv_Prayer;
     TextView tv_Title;
+    Button btn_Language;
     //Note: this should use Androids built-in language stuffs
     String language="EN";
+    JSONArray lectionaryJSON;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +52,14 @@ public class MainActivity extends AppCompatActivity {
         tv_Prayer = (TextView)findViewById(R.id.txt_MainView);
         tv_Prayer.setMovementMethod(new ScrollingMovementMethod());
         tv_Title = (TextView)findViewById(R.id.txt_title);
+        btn_Language = (Button)findViewById(R.id.btn_Language);
+
+        btn_Language.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                MainActivity.this.onClickBtnLanguage();
+            }
+        });
 
         //This needs to be a translatable string. TODO
         tv_Title.setText("Morning Prayer");
@@ -95,11 +112,27 @@ public class MainActivity extends AppCompatActivity {
                 if(((String)key).equals("Name")){
                     JSONObject data_JSOB = jsonObject.getJSONObject((String) key);
                     String name = data_JSOB.getString(language);
-                    name=name+"<br><br>";
-                    myDocument.append(Html.fromHtml(name));
+                    tv_Title.setText(name);
+                    //name=name+"<br><br>";
+                    //myDocument.append(Html.fromHtml(name));
                 }
                 if(((String)key).startsWith("Section")){
                     JSONObject data_JSOB = jsonObject.getJSONObject((String) key);
+
+                    /*
+                    * If the Files section is an array, then pick a random one
+                    * This will eventually also check for preferences
+                     */
+                    Object isArray = data_JSOB.get("File");
+                    if(isArray instanceof JSONArray) {
+                        Log.v("TAG", "File is an array");
+                        JSONArray myFiles = new JSONArray(data_JSOB.getString("File"));
+                        int min = 0;
+                        int max = myFiles.length()-1;
+                        int random = (int) Math.floor(Math.random()*(max-min+1)+min);
+                        data_JSOB.put("File",myFiles.get(random));
+
+                    }
                     SpannableStringBuilder section= getSection(app_Context, data_JSOB);
                     myDocument.append(section);
                 }
@@ -131,22 +164,25 @@ public class MainActivity extends AppCompatActivity {
         String myData = "";
 
         try {
-            InputStream fis = app_context.getAssets().open("dol-year-1.json");
+            if(lectionaryJSON == null) {
+                InputStream fis = app_context.getAssets().open("dol-year-1.json");
 
-            DataInputStream in = new DataInputStream(fis);
-            BufferedReader br = new BufferedReader(new InputStreamReader(in));
+                DataInputStream in = new DataInputStream(fis);
+                BufferedReader br = new BufferedReader(new InputStreamReader(in));
 
-            String strLine;
-            while ((strLine = br.readLine()) != null) {
-                myData = myData + strLine;
+                String strLine;
+                while ((strLine = br.readLine()) != null) {
+                    myData = myData + strLine;
+                }
+
+                br.close();
+                in.close();
+                fis.close();
+
+                lectionaryJSON = new JSONArray(myData);
             }
 
-            br.close();
-            in.close();
-            fis.close();
-
-            JSONArray jsonRootArray = new JSONArray(myData);
-
+            //https://www.biblegateway.com/passage/?search=Deut+9%3A23+-10%3A5&version=NRSV
             //work out the week of the year, starting from the first Sunday of Advent!
             Calendar cal = Calendar.getInstance();
 
@@ -159,26 +195,26 @@ public class MainActivity extends AppCompatActivity {
             Log.v("TAG", "Day Of Year:" + dayOfYear);
 
 
-            JSONObject myReadings = (JSONObject) jsonRootArray.get(dayOfYear);
+            JSONObject myReadings = (JSONObject) lectionaryJSON.get(dayOfYear);
 
             //reading = myReadings.getString("year");
             reading = reading + "<BR>";
 
             if (type.equalsIgnoreCase("OT")) {
                 //should be a string resource!
-                reading = reading + "Old Testament Reading:<br>";
+                reading = reading + getString(R.string.OTReading)+":<br>";
                 reading = reading + ((JSONObject) myReadings.getJSONObject("lessons")).getString("first");
             }
 
             if (type.equalsIgnoreCase("NT")) {
                 //should be a string resource!
-                reading = reading +"New Testament Reading:<br>";
+                reading = reading +getString(R.string.NewTestamentReading)+":<br>";
                 reading = reading + ((JSONObject) myReadings.getJSONObject("lessons")).getString("second");
             }
 
             if (type.equalsIgnoreCase("GP")) {
                 //should be a string resource!
-                reading = reading +"Gospel Reading:<br>";
+                reading = reading +getString(R.string.GospelReading)+":<br>";
                 reading = reading + ((JSONObject) myReadings.getJSONObject("lessons")).getString("gospel");
             }
 
@@ -209,7 +245,7 @@ public class MainActivity extends AppCompatActivity {
         }   catch (IOException e) {
              e.printStackTrace();
             //should be a proper string resource!
-            data = "Error:"+data_JSOB.getString("Name")+" Not found!<br><br>";
+            data = getString(R.string.Error)+" :"+data_JSOB.getString("Name")+" "+getString(R.string.FileNotFound)+"!<br><br>";
         }
 
         SpannableStringBuilder intro = new SpannableStringBuilder(Html.fromHtml(data));
@@ -245,5 +281,38 @@ public class MainActivity extends AppCompatActivity {
 
 
         return myData;
+    }
+
+    protected void setAppLocale(String localeCode)
+    {
+            Resources resources = getResources();
+            DisplayMetrics dm = resources.getDisplayMetrics();
+            Configuration config = resources.getConfiguration();
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1){
+                config.setLocale(new Locale(localeCode.toLowerCase()));
+            } else {
+                config.locale = new Locale(localeCode.toLowerCase());
+            }
+            resources.updateConfiguration(config,dm);
+
+    }
+
+
+    public void onClickBtnLanguage() {
+
+        if(language.equals("EN")){
+            language = "CY";
+            this.setAppLocale("cy");
+            this.setUpPrayer();
+
+        }
+        else {
+            language="EN";
+            this.setAppLocale("EN");
+            this.setUpPrayer();
+        }
+
+        //This is necessary as the app doesn't update 'top level' resources!
+        btn_Language.setText(getString(R.string.btn_Language));
     }
 }
