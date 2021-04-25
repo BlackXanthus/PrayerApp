@@ -2,7 +2,6 @@
 <resources>
     <string name="app_name">Gweddi</string>
     <string name="app_MorningPrayer">Boreol Gweddi</string>
-    <string name="app_version">ALPHA 0.0001</string>
     <string name="btn_Language">English</string>
     <string name="Error">Gwall</string>
     <string name="FileNotFound">ddim ar gael</string>
