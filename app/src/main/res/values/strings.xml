@@ -2,4 +2,10 @@
     <string name="app_name">Prayer</string>
     <string name="app_MorningPrayer">Morning Prayer</string>
     <string name="app_version">ALPHA 0.001</string>
+    <string name="btn_Language">Cymraeg</string>
+    <string name="Error">Error</string>
+    <string name="FileNotFound">File Not Found</string>
+    <string name="OTReading">Old Testament Reading</string>
+    <string name="NewTestamentReading">New Testament Reading</string>
+    <string name="GospelReading">Gospel Reading</string>
 </resources>
