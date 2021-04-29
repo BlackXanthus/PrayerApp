@@ -278,10 +278,10 @@ public class fragment_Prayer extends Fragment {
             JSONObject myReadings = (JSONObject) lectionaryJSON.get(dayOfYear);
 
             //reading = myReadings.getString("year");
-            reading.append("<BR>");
+            reading.append(Html.fromHtml("<BR>"));
             if (type.equalsIgnoreCase("OT")) {
                 //should be a string resource!
-                reading.append(getString(R.string.OTReading)+":<br>");
+                reading.append(Html.fromHtml(getString(R.string.OTReading)+":<br>"));
                 String newReading = ((JSONObject) myReadings.getJSONObject("lessons")).getString("first");
                 SpannableString string = new SpannableString(newReading);
                 string.setSpan(new URLSpan("https://www.biblegateway.com/passage/?search="+newReading+"&version=NRSV"), 0, newReading.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -292,17 +292,17 @@ public class fragment_Prayer extends Fragment {
 
             if (type.equalsIgnoreCase("NT")) {
                 //should be a string resource!
-                reading.append(getString(R.string.NewTestamentReading)+":<br>");
+                reading.append(Html.fromHtml(getString(R.string.NewTestamentReading)+":<br>"));
                 reading.append(((JSONObject) myReadings.getJSONObject("lessons")).getString("second"));
             }
 
             if (type.equalsIgnoreCase("GP")) {
                 //should be a string resource!
-                reading.append(getString(R.string.GospelReading) + ":<br>");
-                reading.append((JSONObject) myReadings.getJSONObject("lessons")).getString("gospel"));
+                reading.append(Html.fromHtml(getString(R.string.GospelReading) + ":<br>"));
+                reading.append(((JSONObject) myReadings.getJSONObject("lessons")).getString("gospel"));
             }
 
-            reading.append("<BR><BR>");
+            reading.append(Html.fromHtml("<BR><BR>"));
 
 
         }
@@ -313,8 +313,8 @@ public class fragment_Prayer extends Fragment {
             e.printStackTrace();
         }
 
-        return new SpannableStringBuilder(Html.fromHtml(reading));
-
+        //return new SpannableStringBuilder(Html.fromHtml(reading));
+        return reading;
     }
 
     protected SpannableStringBuilder getSection(Context app_Context, JSONObject data_JSOB) throws JSONException
