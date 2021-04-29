@@ -10,8 +10,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
 import android.text.Html;
+import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
+import android.text.Spanned;
 import android.text.method.ScrollingMovementMethod;
+import android.text.style.URLSpan;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -50,6 +53,7 @@ public class fragment_Prayer extends Fragment {
     //Note: this should use Androids built-in language stuffs
     String language="EN";
     JSONArray lectionaryJSON;
+    String myData="";
 
     private ProgressBar spinner;
     // TODO: Rename parameter arguments, choose names that match
@@ -92,6 +96,7 @@ public class fragment_Prayer extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 **/
+        myData ="";
     }
 
    // @Override
@@ -136,36 +141,35 @@ public class fragment_Prayer extends Fragment {
 
         SpannableStringBuilder myDocument = new SpannableStringBuilder("");
 
-        String myData = "";
 
         try {
-            myData = readFile(app_Context, "/Prayer/Layout/MorningPrayer.json");
+                if(myData == "") {
 
-            String path = app_Context.getFilesDir().getPath()+"/Prayer/Layout/";
-            Log.d("Files", "Path: " + path);
-            File directory = new File(path);
-            File[] files = directory.listFiles(new FilenameFilter() {
-                public boolean accept(File dir, String name) {
-                    return name.toLowerCase().endsWith(".json");
+                    myData = readFile(app_Context, "/Prayer/Layout/MorningPrayer.json");
+
+                    String path = app_Context.getFilesDir().getPath() + "/Prayer/Layout/";
+                    Log.d("Files", "Path: " + path);
+                    File directory = new File(path);
+                    File[] files = directory.listFiles(new FilenameFilter() {
+                        public boolean accept(File dir, String name) {
+                            return name.toLowerCase().endsWith(".json");
+                        }
+                    });
+                    Log.d("Files", "Size: " + files.length);
+                    for (int i = 0; i < files.length; i++) {
+                        Log.d("Files", "FileName:" + files[i].getName());
+                    }
+                    int min = 0;
+                    int max = files.length - 1;
+                    int random = (int) Math.floor(Math.random() * (max - min + 1) + min);
+
+                    myData = readFile(app_Context, "/Prayer/Layout/" + files[random].getName());
                 }
-            });
-            Log.d("Files", "Size: "+ files.length);
-            for (int i = 0; i < files.length; i++)
-            {
-                Log.d("Files", "FileName:" + files[i].getName());
-            }
-            int min = 0;
-            int max = files.length -1;
-            int random = (int) Math.floor(Math.random()*(max-min+1)+min);
 
-            myData = readFile(app_Context, "/Prayer/Layout/"+files[random].getName());
-
+        } catch (IOException e) {
+                e.printStackTrace();
+                myDocument.append("FATAL: can't find layout file<br>");
         }
-        catch (IOException e) {
-            e.printStackTrace();
-            myDocument.append("FATAL: can't find layout file<br>");
-        }
-
 
         StringBuilder data = new StringBuilder();
         try {
@@ -234,7 +238,7 @@ public class fragment_Prayer extends Fragment {
 
     private SpannableStringBuilder getBibleReading(Context app_context, String type) {
 
-        String reading = "";
+        SpannableStringBuilder reading = new SpannableStringBuilder();
         String myData = "";
 
         try {
@@ -246,6 +250,8 @@ public class fragment_Prayer extends Fragment {
 
                 String strLine;
                 while ((strLine = br.readLine()) != null) {
+
+
                     myData = myData + strLine;
                 }
 
@@ -272,26 +278,32 @@ public class fragment_Prayer extends Fragment {
             JSONObject myReadings = (JSONObject) lectionaryJSON.get(dayOfYear);
 
             //reading = myReadings.getString("year");
-            reading = reading + "<BR>";
+            reading.append("<BR>");
             if (type.equalsIgnoreCase("OT")) {
                 //should be a string resource!
-                reading = reading + getString(R.string.OTReading)+":<br>";
-                reading = reading + ((JSONObject) myReadings.getJSONObject("lessons")).getString("first");
+                reading.append(getString(R.string.OTReading)+":<br>");
+                String newReading = ((JSONObject) myReadings.getJSONObject("lessons")).getString("first");
+                SpannableString string = new SpannableString(newReading);
+                string.setSpan(new URLSpan("https://www.biblegateway.com/passage/?search="+newReading+"&version=NRSV"), 0, newReading.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+                reading.append(string);
+
             }
 
             if (type.equalsIgnoreCase("NT")) {
                 //should be a string resource!
-                reading = reading +getString(R.string.NewTestamentReading)+":<br>";
-                reading = reading + ((JSONObject) myReadings.getJSONObject("lessons")).getString("second");
+                reading.append(getString(R.string.NewTestamentReading)+":<br>");
+                reading.append(((JSONObject) myReadings.getJSONObject("lessons")).getString("second"));
             }
 
             if (type.equalsIgnoreCase("GP")) {
                 //should be a string resource!
-                reading = reading + getString(R.string.GospelReading) + ":<br>";
-                reading = reading + ((JSONObject) myReadings.getJSONObject("lessons")).getString("gospel");
+                reading.append(getString(R.string.GospelReading) + ":<br>");
+                reading.append((JSONObject) myReadings.getJSONObject("lessons")).getString("gospel"));
             }
 
-            reading=reading+"<BR><BR>";
+            reading.append("<BR><BR>");
+
 
         }
         catch(IOException e) {
