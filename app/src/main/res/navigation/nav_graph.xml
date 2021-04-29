@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/fragment_Prayer">
+    <fragment
+        android:id="@+id/fragment_Prayer"
+        android:name="com.churchinwales.prayer.fragment_Prayer"
+        android:label="fragment_prayer"
+        tools:layout="@layout/fragment_prayer" />
+</navigation>
+
