@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -28,6 +29,7 @@ import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -48,6 +50,8 @@ public class fragment_Prayer extends Fragment {
     //Note: this should use Androids built-in language stuffs
     String language="EN";
     JSONArray lectionaryJSON;
+
+    private ProgressBar spinner;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -110,9 +114,15 @@ public class fragment_Prayer extends Fragment {
             }
         });
 
+        spinner = (ProgressBar) rootView.findViewById(R.id.ProgressBar2);
         //This needs to be a translatable string. TODO
         tv_Title.setText("Morning Prayer");
+
+        spinner.setVisibility(View.VISIBLE);
+
         this.setUpPrayer();
+
+        spinner.setVisibility(View.GONE);
 
         return rootView;
 
@@ -130,10 +140,30 @@ public class fragment_Prayer extends Fragment {
 
         try {
             myData = readFile(app_Context, "/Prayer/Layout/MorningPrayer.json");
+
+            String path = app_Context.getFilesDir().getPath()+"/Prayer/Layout/";
+            Log.d("Files", "Path: " + path);
+            File directory = new File(path);
+            File[] files = directory.listFiles(new FilenameFilter() {
+                public boolean accept(File dir, String name) {
+                    return name.toLowerCase().endsWith(".json");
+                }
+            });
+            Log.d("Files", "Size: "+ files.length);
+            for (int i = 0; i < files.length; i++)
+            {
+                Log.d("Files", "FileName:" + files[i].getName());
+            }
+            int min = 0;
+            int max = files.length -1;
+            int random = (int) Math.floor(Math.random()*(max-min+1)+min);
+
+            myData = readFile(app_Context, "/Prayer/Layout/"+files[random].getName());
+
         }
         catch (IOException e) {
             e.printStackTrace();
-            myDocument.append("FATAL: can't find layout file");
+            myDocument.append("FATAL: can't find layout file<br>");
         }
 
 

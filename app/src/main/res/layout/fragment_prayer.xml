@@ -9,6 +9,12 @@
     tools:actionBarNavMode="standard"
     tools:context=".fragment_Prayer">
 
+    <ProgressBar
+        android:id="@+id/ProgressBar2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true" />
+
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -33,9 +39,8 @@
             android:id="@+id/txt_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-
             android:text="TextView" />
+
     </LinearLayout>
 
 
