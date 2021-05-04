@@ -1,6 +1,5 @@
 package com.churchinwales.prayer;
 
-import android.app.Application;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -371,19 +370,15 @@ public class fragment_Prayer extends Fragment {
 
     protected void setAppLocale(String localeCode)
     {
-        Context myContext = getActivity().getApplicationContext();
-        Resources resources = myContext.getResources();
-        //Resources resources = getResources();
+        Resources resources = getResources();
         DisplayMetrics dm = resources.getDisplayMetrics();
         Configuration config = resources.getConfiguration();
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1){
             config.setLocale(new Locale(localeCode.toLowerCase()));
-            myContext = myContext.createConfigurationContext(config);
         } else {
             config.locale = new Locale(localeCode.toLowerCase());
         }
         resources.updateConfiguration(config,dm);
-        myContext.getResources().updateConfiguration(config,dm);
 
     }
 
@@ -400,13 +395,9 @@ public class fragment_Prayer extends Fragment {
             language="EN";
             this.setAppLocale("EN");
             this.setUpPrayer();
-
         }
 
-        btn_Language.setText(getString(R.string.btn_Language));
-
         //This is necessary as the app doesn't update 'top level' resources!
-
+        btn_Language.setText(getString(R.string.btn_Language));
     }
-
 }
