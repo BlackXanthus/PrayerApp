@@ -54,6 +54,7 @@ public class fragment_Prayer extends Fragment {
     String language="EN";
     JSONArray lectionaryJSON;
     String myData="";
+    String prayerType = "";
 
     private ProgressBar spinner;
     // TODO: Rename parameter arguments, choose names that match
@@ -78,11 +79,11 @@ public class fragment_Prayer extends Fragment {
      * @return A new instance of fragment fragment_Prayer.
      */
     // TODO: Rename and change types and number of parameters
-    public static fragment_Prayer newInstance(String param1, String param2) {
+    public static fragment_Prayer newInstance(String param1) {
         fragment_Prayer fragment = new fragment_Prayer();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        //args.putString(ARG_PARAM2, param2);
         //fragment.setArguments(args);
         return fragment;
     }
@@ -90,12 +91,19 @@ public class fragment_Prayer extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /**
         if (getArguments() != null) {
+            /**
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
-        }
 **/
+            prayerType = getArguments().getString("Type");
+            Log.v("TAG",prayerType);
+        }
+        else {
+            prayerType = "MorningPrayer";
+        }
+
+
         myData ="";
     }
 
@@ -121,7 +129,13 @@ public class fragment_Prayer extends Fragment {
 
         spinner = (ProgressBar) rootView.findViewById(R.id.ProgressBar2);
         //This needs to be a translatable string. TODO
-        tv_Title.setText("Morning Prayer");
+        if(prayerType.equalsIgnoreCase("MorningPrayer")) {
+            tv_Title.setText(getString(R.string.app_MorningPrayer));
+        }
+
+        if(prayerType.equalsIgnoreCase("EveningPrayer")) {
+            tv_Title.setText(getString(R.string.app_EveningPrayer));
+        }
 
         spinner.setVisibility(View.VISIBLE);
 

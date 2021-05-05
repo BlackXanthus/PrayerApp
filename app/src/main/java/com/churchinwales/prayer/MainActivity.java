@@ -2,6 +2,8 @@ package com.churchinwales.prayer;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.ProgressBar;
@@ -10,6 +12,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.core.view.GravityCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
@@ -19,7 +24,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements
+    NavigationView.OnNavigationItemSelectedListener
+{
 
     private AppBarConfiguration mAppBarConfiguration;
     private ProgressBar spinner;
@@ -37,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        spinner = (ProgressBar) findViewById(R.id.ProgressBar1);
-        spinner.setVisibility(View.GONE);
+        //spinner = (ProgressBar) findViewById(R.id.ProgressBar1);
+        //spinner.setVisibility(View.GONE);
         /**
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +72,9 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = navHostFragment.getNavController();
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+        navigationView.setNavigationItemSelectedListener(this);
+        //(onNavigationItemSelected())
+
 
 
     }
@@ -82,4 +92,50 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+    public boolean onNavigationItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        Log.v("TAG", "On Navigation Item Selected");
+        Bundle args = new Bundle();
+
+        Fragment fragment = null;
+        Class fragmentClass = null;
+        if (id == R.id.homeFragment) {
+          //fragment = findViewById(R.id.homeFragment);
+           setContentView(R.layout.activity_main);
+        }
+        else {
+            try {
+                if (id == R.id.fragment_Prayer) {
+
+                    args.putString("Type","MorningPrayer");
+                }
+
+                if (id == R.id.nav_slideshow) {
+                    args.putString("Type","EveningPrayer");
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+/**
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment).commit();
+
+ Bundle args = new Bundle();
+ args.putString(ARG_PARAM1, param1);
+ **/
+
+
+            Navigation.findNavController(this,R.id.nav_host_fragment).navigate(R.id.fragment_Prayer,args);
+
+
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            drawer.closeDrawer(GravityCompat.START);
+        }
+        return true;
+    }
+
 }
