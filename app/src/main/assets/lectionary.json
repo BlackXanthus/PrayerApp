@@ -1,0 +1,4033 @@
+{
+    "ADVENT": {
+        "Name": "ADVENT",
+        "01:00:00": {
+            "Name": "01:00:00",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t50;[54]",
+                    "OT": "\tOT\tIsaiah4218-end",
+                    "NT": "\tNT\tRevelation19"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t[70;]71",
+                    "OT": "\tOT\tIsaiah2501/09/21",
+                    "NT": "\tNT\tMatthew121-21"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t80;[82]",
+                    "OT": "\tOT\tIsaiah431-13",
+                    "NT": "\tNT\tRevelation20"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t74;[75]",
+                    "OT": "\tOT\tIsaiah261-13",
+                    "NT": "\tNT\tMatthew1222-37"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[5]\"",
+                    "OT": "\tOT\tIsaiah281-13",
+                    "NT": "\tNT\tMatthew1238-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t[76;]77",
+                    "OT": "\tOT\tIsaiah4314-end",
+                    "NT": "\tNT\tRevelation2101/08/21"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t42;[43]",
+                    "OT": "\tOT\tIsaiah4401/08/21",
+                    "NT": "\tNT\tRevelation219-21"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t40;[46]",
+                    "OT": "\tOT\tIsaiah2814-end",
+                    "NT": "\tNT\tMatthew131-23"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t25;[26]",
+                    "OT": "\tOT\tIsaiah449-23",
+                    "NT": "\tNT\tRevelation21.22\u2013"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t[16;]17",
+                    "OT": "\tOT\tIsaiah291-14",
+                    "NT": "\tNT\tMatthew1324-43"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t9",
+                    "OT": "\tOT\tIsaiah44.24\u2013",
+                    "NT": "\tNT\tRevelation226-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t27;28",
+                    "OT": "\tOT\tIsaiah2915-end",
+                    "NT": "\tNT\tMatthew1344-end"
+                }
+            }
+        },
+        "02:00:00": {
+            "Name": "02:00:00",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t44",
+                    "OT": "\tOT\tIsaiah4514-end",
+                    "NT": "\tNT\t1Thessalonians1"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t144\"",
+                    "OT": "\tOT\tIsaiah301-18",
+                    "NT": "\tNT\tMatthew1401/12/21"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t56;[57]",
+                    "OT": "\tOT\tIsaiah46",
+                    "NT": "\tNT\t1Thessalonians2"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t11;[12;",
+                    "OT": "\tOT\tIsaiah3019-end",
+                    "NT": "\tNT\tMatthew1413-end"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t62;[63]",
+                    "OT": "\tOT\tIsaiah47",
+                    "NT": "\tNT\t1Thessalonians2"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t10;[14]",
+                    "OT": "\tOT\tIsaiah31",
+                    "NT": "\tNT\tMatthew151-20"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t[53;]54;",
+                    "OT": "\tOT\tIsaiah4801/11/21",
+                    "NT": "\tNT\t1Thessalonians3"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t73",
+                    "OT": "\tOT\tIsaiah32",
+                    "NT": "\tNT\tMatthew1521-28"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t[85;]86",
+                    "OT": "\tOT\tIsaiah4812-end",
+                    "NT": "\tNT\t1Thessalonians4"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t[82;]90",
+                    "OT": "\tOT\tIsaiah331-22",
+                    "NT": "\tNT\tMatthew1529-end"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t145",
+                    "OT": "\tOT\tIsaiah491-13",
+                    "NT": "\tNT\t1Thessalonians4"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t[93;]94",
+                    "OT": "\tOT\tIsaiah35",
+                    "NT": "\tNT\tMatthew1601/12/21"
+                }
+            }
+        },
+        "03:00:00": {
+            "Name": "03:00:00",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t40",
+                    "OT": "\tOT\tIsaiah4914-25",
+                    "NT": "\tNT\t1Thessalonians5"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t[25;]26",
+                    "OT": "\tOT\tIsaiah38\"1-8",
+                    "NT": "\tNT\tMatthew1613-end"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t70;[74]",
+                    "OT": "\tOT\tIsaiah50",
+                    "NT": "\tNT\t1Thessalonians5"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t50;[54]",
+                    "OT": "\tOT\tIsaiah389-20",
+                    "NT": "\tNT\tMatthew171-13"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t75;[96]",
+                    "OT": "\tOT\tIsaiah5101/08/21",
+                    "NT": "\tNT\t2Thessalonians1"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t[25;]82",
+                    "OT": "\tOT\tIsaiah39",
+                    "NT": "\tNT\tMatthew1714-21"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t76;[97]",
+                    "OT": "\tOT\tZephaniah1.1\u2013",
+                    "NT": "\tNT\t2Thessalonians2"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t44",
+                    "OT": "\tOT\tIsaiah519-16",
+                    "NT": "\tNT\tMatthew1722-end"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t[77;]98",
+                    "OT": "\tOT\tIsaiah5117-end",
+                    "NT": "\tNT\t2Thessalonians3"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t49",
+                    "OT": "\tOT\tZephaniah31-13",
+                    "NT": "\tNT\tMatthew181-20"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t71",
+                    "OT": "\tOT\tIsaiah5201/12/21",
+                    "NT": "\tNT\tJude"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t[42;]43",
+                    "OT": "\tOT\tZephaniah314-end",
+                    "NT": "\tNT\tMatthew1821-end"
+                }
+            }
+        },
+        "04:00:00": {
+            "Name": "04:00:00",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t",
+                    "OT": "\tOT\tIsaiah52.13\u2013endof",
+                    "NT": "\tNT\t2Peter1.1\u201315"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t",
+                    "OT": "\tOT\tMalachi\"1.1\"",
+                    "NT": "\tNT\tMatthew19.1\u201312"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t",
+                    "OT": "\tOT\tIsaiah54",
+                    "NT": "\tNT\t2Peter1.16\u20132.3"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t",
+                    "OT": "\tOT\tMalachi2.1\u201316",
+                    "NT": "\tNT\tMatthew19.13\u201315"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t",
+                    "OT": "\tOT\tIsaiah55",
+                    "NT": "\tNT\t2Peter2.4\u2013end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t",
+                    "OT": "\tOT\tMalachi2.17\u20133.12",
+                    "NT": "\tNT\tMatthew19.16\u2013end"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t",
+                    "OT": "\tOT\tIsaiah56.1\u20138",
+                    "NT": "\tNT\t2Peter3"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t",
+                    "OT": "\tOT\tMalachi3.13\u2013endof",
+                    "NT": "\tNT\tMatthew23.1\u201312"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t",
+                    "OT": "\tOT\tIsaiah63.1\u20136",
+                    "NT": "\tNT\t2John"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t",
+                    "OT": "\tOT\tNahum1",
+                    "NT": "\tNT\tMatthew23.13\u201328"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t96;[145]",
+                    "OT": "\tOT\tIsaiah6612-23",
+                    "NT": "\tNT\t3John"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t36",
+                    "OT": "\tOT\tIsaiah61",
+                    "NT": "\tNT\tTitus211-14;"
+                }
+            }
+        }
+    },
+    "Epiphany": {
+        "Name": "Epiphany",
+        "1": {
+            "Name": "1",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t2\"",
+                    "OT": "\tOT\tAmos1",
+                    "NT": "\tNT\t1Corinthians1"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t34\"",
+                    "OT": "\tOT\tGenesis11-19",
+                    "NT": "\tNT\tMatthew211-17"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[8]\"",
+                    "OT": "\tOT\tAmos2",
+                    "NT": "\tNT\t1Corinthians1"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t45\"",
+                    "OT": "\tOT\tGenesis1.2\u2013",
+                    "NT": "\tNT\tMatthew2118-32"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[19]\"",
+                    "OT": "\tOT\tAmos3",
+                    "NT": "\tNT\t1Corinthians2"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t47\"",
+                    "OT": "\tOT\tGenesis24-end",
+                    "NT": "\tNT\tMatthew2133-end"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t21\"",
+                    "OT": "\tOT\tAmos4",
+                    "NT": "\tNT\t1Corinthians3"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t61\"",
+                    "OT": "\tOT\tGenesis3",
+                    "NT": "\tNT\tMatthew221-14"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t67\"",
+                    "OT": "\tOT\tAmos51-17",
+                    "NT": "\tNT\t1Corinthians4"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t68",
+                    "OT": "\tOT\tGenesis4\"1-16",
+                    "NT": "\tNT\tMatthew2215-33"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[29]\"",
+                    "OT": "\tOT\tAmos518-end",
+                    "NT": "\tNT\t1Corinthians5"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[84]\"",
+                    "OT": "\tOT\tGenesis601/10/21",
+                    "NT": "\tNT\tMatthew2234-end"
+                }
+            }
+        },
+        "2": {
+            "Name": "2",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[145]\"",
+                    "OT": "\tOT\tAmos6",
+                    "NT": "\tNT\t1Corinthians6"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t71",
+                    "OT": "\tOT\tGenesis6.11\u2013",
+                    "NT": "\tNT\tMatthew241-14"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t132\"",
+                    "OT": "\tOT\tAmos7",
+                    "NT": "\tNT\t1Corinthians6"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t89.1-37",
+                    "OT": "\tOT\tGenesis711-end",
+                    "NT": "\tNT\tMatthew2415-28"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t81\"",
+                    "OT": "\tOT\tAmos8",
+                    "NT": "\tNT\t1Corinthians7"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t97\"",
+                    "OT": "\tOT\tGenesis81-14",
+                    "NT": "\tNT\tMatthew2429-end"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t76\"",
+                    "OT": "\tOT\tAmos9",
+                    "NT": "\tNT\t1Corinthians7"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[99\"",
+                    "OT": "\tOT\tGenesis8.15\u2013",
+                    "NT": "\tNT\tMatthew251-13"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t27\"",
+                    "OT": "\tOT\tHosea1.1\u2013",
+                    "NT": "\tNT\t1Corinthians8"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t73",
+                    "OT": "\tOT\tGenesis98-19",
+                    "NT": "\tNT\tMatthew2514-30"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t122\"",
+                    "OT": "\tOT\tHosea22-17",
+                    "NT": "\tNT\t1Corinthians9"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t61\"",
+                    "OT": "\tOT\tGenesis1101/09/21",
+                    "NT": "\tNT\tMatthew2531-end"
+                }
+            }
+        },
+        "3": {
+            "Name": "3",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[40]\"",
+                    "OT": "\tOT\tHosea2.18\u2013",
+                    "NT": "\tNT\t1Corinthians9"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t138\"",
+                    "OT": "\tOT\tGenesis11.27\u2013",
+                    "NT": "\tNT\tMatthew261-16"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[34]\"",
+                    "OT": "\tOT\tHosea41-16",
+                    "NT": "\tNT\t1Corinthians10"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t145",
+                    "OT": "\tOT\tGenesis132-end",
+                    "NT": "\tNT\tMatthew2617-35"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[45]\"",
+                    "OT": "\tOT\tHosea501/07/21",
+                    "NT": "\tNT\t1Corinthians10.14"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[21]\"",
+                    "OT": "\tOT\tGenesis14",
+                    "NT": "\tNT\tMatthew2636-46"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t47\"",
+                    "OT": "\tOT\tHosea5.8\u2013",
+                    "NT": "\tNT\t1Corinthians11"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t24\"",
+                    "OT": "\tOT\tGenesis15",
+                    "NT": "\tNT\tMatthew2647-56"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[61]\"",
+                    "OT": "\tOT\tHosea6.7\u2013",
+                    "NT": "\tNT\t1Corinthians11"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t67\"",
+                    "OT": "\tOT\tGenesis16",
+                    "NT": "\tNT\tMatthew2657-end"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t68",
+                    "OT": "\tOT\tHosea8",
+                    "NT": "\tNT\t1Corinthians12"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t72\"",
+                    "OT": "\tOT\tGenesis171-22",
+                    "NT": "\tNT\tMatthew2701/10/21"
+                }
+            }
+        },
+        "4": {
+            "Name": "4",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t98\""
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t105or"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t106or"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t107"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t119.105-128"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t91\""
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[90]\""
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t94"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t88\""
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t102"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[96]\""
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t104"
+                }
+            }
+        }
+    },
+    "BeforeLent": {
+        "Name": "Before Lent",
+        "5": {
+            "Name": "5",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t",
+                    "OT": "\tOT\ta)1Chronicles",
+                    "NT": "\tNT\tJohn1301/11/21"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t",
+                    "OT": "\tOT\tExodus22\"21-27",
+                    "NT": "\tNT\tPhilippians101/11/21"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t",
+                    "OT": "\tOT\ta)1Chronicles",
+                    "NT": "\tNT\tJohn1312-20"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t",
+                    "OT": "\tOT\tExodus29.38\u2013",
+                    "NT": "\tNT\tPhilippians112-end"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t",
+                    "OT": "\tOT\ta)1Chronicles",
+                    "NT": "\tNT\tJohn1321-30"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t",
+                    "OT": "\tOT\tLeviticus8",
+                    "NT": "\tNT\tPhilippians21-13"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t",
+                    "OT": "\tOT\ta)1Chronicles",
+                    "NT": "\tNT\tJohn1331-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t",
+                    "OT": "\tOT\tLeviticus9",
+                    "NT": "\tNT\tPhilippians214-end"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t",
+                    "OT": "\tOT\ta)1Chronicles",
+                    "NT": "\tNT\tJohn141-14"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t",
+                    "OT": "\tOT\tLeviticus162-24",
+                    "NT": "\tNT\t1Philippians3.1"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t",
+                    "OT": "\tOT\ta)1Chronicles",
+                    "NT": "\tNT\tJohn1415-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t",
+                    "OT": "\tOT\tLeviticus17",
+                    "NT": "\tNT\tPhilippians42-end"
+                }
+            }
+        },
+        "4": {
+            "Name": "4",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t",
+                    "OT": "\tOT\ta)1Chronicles",
+                    "NT": "\tNT\tJohn1501/11/21"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t",
+                    "OT": "\tOT\tLeviticus19\"1-18",
+                    "NT": "\tNT\t1Timothy1"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t",
+                    "OT": "\tOT\ta)1Chronicles",
+                    "NT": "\tNT\tJohn1512-17"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t",
+                    "OT": "\tOT\tLeviticus231-22",
+                    "NT": "\tNT\t1Timothy1.18"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t",
+                    "OT": "\tOT\ta)1Chronicles",
+                    "NT": "\tNT\tJohn1518-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t",
+                    "OT": "\tOT\tLeviticus2323-end",
+                    "NT": "\tNT\t1Timothy3"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t",
+                    "OT": "\tOT\ta)1Chronicles",
+                    "NT": "\tNT\tJohn161-15"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t",
+                    "OT": "\tOT\tLeviticus2401/09/21",
+                    "NT": "\tNT\t1Timothy4"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t",
+                    "OT": "\tOT\ta)1Chronicles",
+                    "NT": "\tNT\tJohn1616-22"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t",
+                    "OT": "\tOT\tLeviticus251-24",
+                    "NT": "\tNT\t1Timothy5"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t",
+                    "OT": "\tOT\ta)2Chronicles",
+                    "NT": "\tNT\tJohn1623-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t",
+                    "OT": "\tOT\tNumbers6\"1-5",
+                    "NT": "\tNT\t1Timothy5"
+                }
+            }
+        }
+    },
+    "BEFORELENT": {
+        "Name": "BEFORE LENT",
+        "3": {
+            "Name": "3",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t",
+                    "OT": "\tOT\ta)2Chronicles",
+                    "NT": "\tNT\tJohn1701/05/21"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t",
+                    "OT": "\tOT\tGenesis241-28",
+                    "NT": "\tNT\t1Timothy6"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t",
+                    "OT": "\tOT\ta)2Chronicles",
+                    "NT": "\tNT\tJohn176-19"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t",
+                    "OT": "\tOT\tGenesis2429-end",
+                    "NT": "\tNT\t1Timothy6"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t",
+                    "OT": "\tOT\ta)2Chronicles",
+                    "NT": "\tNT\tJohn1720-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t",
+                    "OT": "\tOT\tGenesis25\"7-11",
+                    "NT": "\tNT\t2Timothy1"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t",
+                    "OT": "\tOT\ta)2Chronicles",
+                    "NT": "\tNT\tJohn1801/11/21"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t",
+                    "OT": "\tOT\tGenesis26.34\u2013",
+                    "NT": "\tNT\t2Timothy1.15"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t",
+                    "OT": "\tOT\ta)2Chronicles",
+                    "NT": "\tNT\tJohn1812-27"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t",
+                    "OT": "\tOT\tGenesis27.41\u2013",
+                    "NT": "\tNT\t2Timothy2"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t",
+                    "OT": "\tOT\ta)2Chronicles",
+                    "NT": "\tNT\tJohn1828-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t",
+                    "OT": "\tOT\tGenesis291-30",
+                    "NT": "\tNT\t2Timothy3"
+                }
+            }
+        },
+        "2": {
+            "Name": "2",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t",
+                    "OT": "\tOT\ta)2Chronicles",
+                    "NT": "\tNT\tJohn191-16"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t",
+                    "OT": "\tOT\tGenesis29.31\u2013",
+                    "NT": "\tNT\t2Timothy4"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t",
+                    "OT": "\tOT\ta)2Chronicles",
+                    "NT": "\tNT\tJohn1917-30"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t",
+                    "OT": "\tOT\tGenesis311-24",
+                    "NT": "\tNT\t2Timothy4"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t",
+                    "OT": "\tOT\ta)2Chronicles",
+                    "NT": "\tNT\tJohn1931-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t",
+                    "OT": "\tOT\tGenesis31.25\u2013",
+                    "NT": "\tNT\tTitus1"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t",
+                    "OT": "\tOT\ta)2Chronicles",
+                    "NT": "\tNT\tJohn2001/10/21"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t",
+                    "OT": "\tOT\tGenesis323-30",
+                    "NT": "\tNT\tTitus2"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t",
+                    "OT": "\tOT\ta)2Chronicles",
+                    "NT": "\tNT\tJohn2011-18"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t",
+                    "OT": "\tOT\tGenesis331-17",
+                    "NT": "\tNT\tTitus3"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t",
+                    "OT": "\tOT\ta)2Chronicles",
+                    "NT": "\tNT\tJohn20.19\u2013end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t",
+                    "OT": "\tOT\tGenesis35",
+                    "NT": "\tNT\tPhilemon"
+                }
+            }
+        },
+        "1": {
+            "Name": "1",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t",
+                    "OT": "\tOT\tJeremiah1",
+                    "NT": "\tNT\tJohn31-21"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t",
+                    "OT": "\tOT\tGenesis3701/11/21",
+                    "NT": "\tNT\tGalatians1"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t",
+                    "OT": "\tOT\tJeremiah21-13",
+                    "NT": "\tNT\tJohn322-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t",
+                    "OT": "\tOT\tGenesis3712-end",
+                    "NT": "\tNT\tGalatians201/10/21"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t77",
+                    "OT": "\tOT\tJeremiah214-32",
+                    "NT": "\tNT\tJohn41-26"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t74",
+                    "OT": "\tOT\tGenesis39",
+                    "NT": "\tNT\tGalatians211-end"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t3\"",
+                    "OT": "\tOT\tJeremiah36-22",
+                    "NT": "\tNT\tJohn427-42"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t31",
+                    "OT": "\tOT\tGenesis40",
+                    "NT": "\tNT\tGalatians31-14"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t71",
+                    "OT": "\tOT\tJeremiah41-18",
+                    "NT": "\tNT\tJohn443-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t73",
+                    "OT": "\tOT\tGenesis411-24",
+                    "NT": "\tNT\tGalatians315-22"
+                }
+            }
+        }
+    },
+    "LENT": {
+        "Name": "LENT",
+        "1": {
+            "Name": "1",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[10]\"",
+                    "OT": "\tOT\tJeremiah419-end",
+                    "NT": "\tNT\tJohn51-18"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[12]\"",
+                    "OT": "\tOT\tGenesis4125-45",
+                    "NT": "\tNT\tGalatians3.23\u2013"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t44",
+                    "OT": "\tOT\tJeremiah51-19",
+                    "NT": "\tNT\tJohn519-29"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[46]\"",
+                    "OT": "\tOT\tGenesis41.46\u2013",
+                    "NT": "\tNT\tGalatians48-20"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t6\"",
+                    "OT": "\tOT\tJeremiah520-end",
+                    "NT": "\tNT\tJohn530-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[9]\"",
+                    "OT": "\tOT\tGenesis426-17",
+                    "NT": "\tNT\tGalatians4.21\u2013"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t42\"",
+                    "OT": "\tOT\tJeremiah69-21",
+                    "NT": "\tNT\tJohn61-15"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[137\"",
+                    "OT": "\tOT\tGenesis4218-28",
+                    "NT": "\tNT\tGalatians52-15"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t22",
+                    "OT": "\tOT\tJeremiah622-end",
+                    "NT": "\tNT\tJohn616-27"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[54]\"",
+                    "OT": "\tOT\tGenesis4229-end",
+                    "NT": "\tNT\tGalatians516-end"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[59]\"",
+                    "OT": "\tOT\tJeremiah71-20",
+                    "NT": "\tNT\tJohn627-40"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t4\"",
+                    "OT": "\tOT\tGenesis431-15",
+                    "NT": "\tNT\tGalatians6"
+                }
+            }
+        },
+        "2": {
+            "Name": "2",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[26]\"",
+                    "OT": "\tOT\tJeremiah721-end",
+                    "NT": "\tNT\tJohn641-51"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[70]\"",
+                    "OT": "\tOT\tGenesis4316-end",
+                    "NT": "\tNT\tHebrews1"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t50",
+                    "OT": "\tOT\tJeremiah81-15",
+                    "NT": "\tNT\tJohn652-59"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t52\"",
+                    "OT": "\tOT\tGenesis441-17",
+                    "NT": "\tNT\tHebrews201/09/21"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t35",
+                    "OT": "\tOT\tJeremiah8.18\u2013",
+                    "NT": "\tNT\tJohn660-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t3\"",
+                    "OT": "\tOT\tGenesis4418-end",
+                    "NT": "\tNT\tHebrews210-end"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t34",
+                    "OT": "\tOT\tJeremiah912-24",
+                    "NT": "\tNT\tJohn71-13"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t71",
+                    "OT": "\tOT\tGenesis451-15",
+                    "NT": "\tNT\tHebrews301/06/21"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[40]\"",
+                    "OT": "\tOT\tJeremiah101-16",
+                    "NT": "\tNT\tJohn714-24"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t6\"",
+                    "OT": "\tOT\tGenesis4516-end",
+                    "NT": "\tNT\tHebrews37-end"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[3]\"",
+                    "OT": "\tOT\tJeremiah1017-24",
+                    "NT": "\tNT\tJohn725-36"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t23\"",
+                    "OT": "\tOT\tGenesis46\"1-7",
+                    "NT": "\tNT\tHebrews41-13"
+                }
+            }
+        },
+        "3": {
+            "Name": "3",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t5\"",
+                    "OT": "\tOT\tJeremiah111-17",
+                    "NT": "\tNT\tJohn737-52"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[11]\"",
+                    "OT": "\tOT\tGenesis471-27",
+                    "NT": "\tNT\tHebrews4.14\u2013"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[6]\"",
+                    "OT": "\tOT\tJeremiah11.18\u2013",
+                    "NT": "\tNT\tJohn7.53\u2013"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[61\"",
+                    "OT": "\tOT\tGenesis47.28\u2013",
+                    "NT": "\tNT\tHebrews5.11\u2013"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t38",
+                    "OT": "\tOT\tJeremiah1301/11/21",
+                    "NT": "\tNT\tJohn812-30"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[36]\"",
+                    "OT": "\tOT\tGenesis491-32",
+                    "NT": "\tNT\tHebrews613-end"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t56\"",
+                    "OT": "\tOT\tJeremiah14",
+                    "NT": "\tNT\tJohn831-47"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t59\"",
+                    "OT": "\tOT\tGenesis49.33\u2013",
+                    "NT": "\tNT\tHebrews701/10/21"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t22",
+                    "OT": "\tOT\tJeremiah1510-end",
+                    "NT": "\tNT\tJohn848-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t69",
+                    "OT": "\tOT\tExodus11-14",
+                    "NT": "\tNT\tHebrews711-end"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t31",
+                    "OT": "\tOT\tJeremiah16.1\u2013",
+                    "NT": "\tNT\tJohn91-17"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t116\"",
+                    "OT": "\tOT\tExodus1.22\u2013",
+                    "NT": "\tNT\tHebrews8"
+                }
+            }
+        },
+        "4": {
+            "Name": "4",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[70]\"",
+                    "OT": "\tOT\tJeremiah175-18",
+                    "NT": "\tNT\tJohn918-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t25\"",
+                    "OT": "\tOT\tExodus211-22",
+                    "NT": "\tNT\tHebrews91-14"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[54]\"",
+                    "OT": "\tOT\tJeremiah1801/12/21",
+                    "NT": "\tNT\tJohn1001/10/21"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t80\"",
+                    "OT": "\tOT\tExodus2.23\u2013",
+                    "NT": "\tNT\tHebrews915-end"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[63]\"",
+                    "OT": "\tOT\tJeremiah1813-end",
+                    "NT": "\tNT\tJohn1011-21"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[52]\"",
+                    "OT": "\tOT\tExodus41-23",
+                    "NT": "\tNT\tHebrews101-18"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[53]\"",
+                    "OT": "\tOT\tJeremiah191-13",
+                    "NT": "\tNT\tJohn1022-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t94",
+                    "OT": "\tOT\tExodus4.27\u2013",
+                    "NT": "\tNT\tHebrews1019-25"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t102",
+                    "OT": "\tOT\tJeremiah19.14\u2013",
+                    "NT": "\tNT\tJohn111-16"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[13]\"",
+                    "OT": "\tOT\tExodus62-13",
+                    "NT": "\tNT\tHebrews1026-end"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t32",
+                    "OT": "\tOT\tJeremiah207-end",
+                    "NT": "\tNT\tJohn1117-27"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t140\"",
+                    "OT": "\tOT\tExodus78-end",
+                    "NT": "\tNT\tHebrews111-16"
+                }
+            }
+        },
+        "5": {
+            "Name": "5",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t73\"",
+                    "OT": "\tOT\tJeremiah2101/10/21",
+                    "NT": "\tNT\tJohn1128-44"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t26\"",
+                    "OT": "\tOT\tExodus81-19",
+                    "NT": "\tNT\tHebrews1117-31"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t35\"",
+                    "OT": "\tOT\tJeremiah22\"1-5",
+                    "NT": "\tNT\tJohn1145-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t61\"",
+                    "OT": "\tOT\tExodus820-end",
+                    "NT": "\tNT\tHebrews11.32\u2013"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t55\"",
+                    "OT": "\tOT\tJeremiah22.2\u2013",
+                    "NT": "\tNT\tJohn1201/11/21"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[56]\"",
+                    "OT": "\tOT\tExodus901/12/21",
+                    "NT": "\tNT\tHebrews123-13"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t40\"",
+                    "OT": "\tOT\tJeremiah239-32",
+                    "NT": "\tNT\tJohn1212-19"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[42]\"",
+                    "OT": "\tOT\tExodus913-end",
+                    "NT": "\tNT\tHebrews1214-end"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t22\"",
+                    "OT": "\tOT\tJeremiah24",
+                    "NT": "\tNT\tJohn1220-36a"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t31",
+                    "OT": "\tOT\tExodus10",
+                    "NT": "\tNT\tHebrews131-16"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t23\"",
+                    "OT": "\tOT\tJeremiah251-14",
+                    "NT": "\tNT\tJohn1236b-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[128\"",
+                    "OT": "\tOT\tExodus11",
+                    "NT": "\tNT\tHebrews1317-end"
+                }
+            }
+        }
+    },
+    "Easter": {
+        "Name": "Easter",
+        "Eve": {
+            "Name": "Eve"
+        },
+        "Week": {
+            "Name": "Week",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t111\"",
+                    "OT": "\tOT\tSongofSolomon",
+                    "NT": "\tNT\tMark1601/08/21"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t135",
+                    "OT": "\tOT\tExodus121-14",
+                    "NT": "\tNT\t1Corinthians15.01/11/21"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t112\"",
+                    "OT": "\tOT\tSongofSolomon",
+                    "NT": "\tNT\tLuke2401/12/21"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t136",
+                    "OT": "\tOT\tExodus1214-36",
+                    "NT": "\tNT\t1Corinthians15"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t113\"",
+                    "OT": "\tOT\tSongofSolomon",
+                    "NT": "\tNT\tMatthew2816-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t105",
+                    "OT": "\tOT\tExodus1237-end",
+                    "NT": "\tNT\t1Corinthians15"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t114\"",
+                    "OT": "\tOT\tSongofSolomon",
+                    "NT": "\tNT\tLuke711-17"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t106",
+                    "OT": "\tOT\tExodus131-16",
+                    "NT": "\tNT\t1Corinthians15"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t115\"",
+                    "OT": "\tOT\tSongofSolomon",
+                    "NT": "\tNT\tLuke841-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t107",
+                    "OT": "\tOT\tExodus13.17\u2013",
+                    "NT": "\tNT\t1Corinthians15"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t116\"",
+                    "OT": "\tOT\tSongofSolomon",
+                    "NT": "\tNT\tJohn1117-44"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t145",
+                    "OT": "\tOT\tExodus1415-end",
+                    "NT": "\tNT\t1Corinthians15"
+                }
+            }
+        }
+    },
+    "EASTER": {
+        "Name": "EASTER",
+        "DAY:": {
+            "Name": "DAY:"
+        },
+        "2": {
+            "Name": "2",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[2]\"",
+                    "OT": "\tOT\tDeuteronomy13-18",
+                    "NT": "\tNT\tJohn2001/10/21"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t139",
+                    "OT": "\tOT\tExodus151-21",
+                    "NT": "\tNT\tColossians11-14"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t8\"",
+                    "OT": "\tOT\tDeuteronomy119-40",
+                    "NT": "\tNT\tJohn2011-18"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t104",
+                    "OT": "\tOT\tExodus15.22\u2013",
+                    "NT": "\tNT\tColossians115-end"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[16]\"",
+                    "OT": "\tOT\tDeuteronomy318-end",
+                    "NT": "\tNT\tJohn2019-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t33",
+                    "OT": "\tOT\tExodus1611-end",
+                    "NT": "\tNT\tColossians21-15"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t28\"",
+                    "OT": "\tOT\tDeuteronomy41-14",
+                    "NT": "\tNT\tJohn211-14"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t34",
+                    "OT": "\tOT\tExodus17",
+                    "NT": "\tNT\tColossians2.16\u2013"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[57]\"",
+                    "OT": "\tOT\tDeuteronomy415-31",
+                    "NT": "\tNT\tJohn2115-19"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t118",
+                    "OT": "\tOT\tExodus1801/12/21",
+                    "NT": "\tNT\tColossians3.12\u2013"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[63]\"",
+                    "OT": "\tOT\tDeuteronomy432-40",
+                    "NT": "\tNT\tJohn2120-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t66",
+                    "OT": "\tOT\tExodus1813-end",
+                    "NT": "\tNT\tColossians42-end"
+                }
+            }
+        },
+        "3": {
+            "Name": "3",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t96\"",
+                    "OT": "\tOT\tDeuteronomy51-22",
+                    "NT": "\tNT\tEphesians11-14"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t61\"",
+                    "OT": "\tOT\tExodus19",
+                    "NT": "\tNT\tLuke11-25"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t98\"",
+                    "OT": "\tOT\tDeuteronomy522-end",
+                    "NT": "\tNT\tEphesians115-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t71",
+                    "OT": "\tOT\tExodus201-21",
+                    "NT": "\tNT\tLuke126-38"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t105",
+                    "OT": "\tOT\tDeuteronomy6",
+                    "NT": "\tNT\tEphesians201/10/21"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[67]\"",
+                    "OT": "\tOT\tExodus24",
+                    "NT": "\tNT\tLuke139-56"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t136",
+                    "OT": "\tOT\tDeuteronomy701/11/21",
+                    "NT": "\tNT\tEphesians211-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t73",
+                    "OT": "\tOT\tExodus251-22",
+                    "NT": "\tNT\tLuke157-end"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t107",
+                    "OT": "\tOT\tDeuteronomy712-end",
+                    "NT": "\tNT\tEphesians31-13"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t77",
+                    "OT": "\tOT\tExodus28\"1-4a",
+                    "NT": "\tNT\tLuke21-20"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[108]\"",
+                    "OT": "\tOT\tDeuteronomy8",
+                    "NT": "\tNT\tEphesians314-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[23]\"",
+                    "OT": "\tOT\tExodus2901/09/21",
+                    "NT": "\tNT\tLuke221-40"
+                }
+            }
+        },
+        "4": {
+            "Name": "4",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t103",
+                    "OT": "\tOT\tDeuteronomy91-21",
+                    "NT": "\tNT\tEphesians41-16"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[112\"",
+                    "OT": "\tOT\tExodus321-14",
+                    "NT": "\tNT\tLuke241-end"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t139",
+                    "OT": "\tOT\tDeuteronomy9.23\u2013",
+                    "NT": "\tNT\tEphesians417-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[115]\"",
+                    "OT": "\tOT\tExodus3215-34",
+                    "NT": "\tNT\tLuke31-14"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t135",
+                    "OT": "\tOT\tDeuteronomy1012-end",
+                    "NT": "\tNT\tEphesians51-14"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t47\"",
+                    "OT": "\tOT\tExodus33",
+                    "NT": "\tNT\tLuke315-22"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t118",
+                    "OT": "\tOT\tDeuteronomy118-end",
+                    "NT": "\tNT\tEphesians515-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[81]\"",
+                    "OT": "\tOT\tExodus34\"1-10",
+                    "NT": "\tNT\tLuke41-13"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t33",
+                    "OT": "\tOT\tDeuteronomy121-14",
+                    "NT": "\tNT\tEphesians601/09/21"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t36\"",
+                    "OT": "\tOT\tExodus35.2\u2013",
+                    "NT": "\tNT\tLuke414-30"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t34",
+                    "OT": "\tOT\tDeuteronomy151-18",
+                    "NT": "\tNT\tEphesians610-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t84\"",
+                    "OT": "\tOT\tExodus4017-end",
+                    "NT": "\tNT\tLuke431-37"
+                }
+            }
+        },
+        "5": {
+            "Name": "5",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t145",
+                    "OT": "\tOT\tDeuteronomy161-20",
+                    "NT": "\tNT\t1Peter1"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t105",
+                    "OT": "\tOT\tNumbers915-end;",
+                    "NT": "\tNT\tLuke438-end"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t19\"",
+                    "OT": "\tOT\tDeuteronomy178-end",
+                    "NT": "\tNT\t1Peter1"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[96]\"",
+                    "OT": "\tOT\tNumbers111-33",
+                    "NT": "\tNT\tLuke501/11/21"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t30\"",
+                    "OT": "\tOT\tDeuteronomy189-end",
+                    "NT": "\tNT\t1Peter2"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[98]\"",
+                    "OT": "\tOT\tNumbers12",
+                    "NT": "\tNT\tLuke512-26"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t57\"",
+                    "OT": "\tOT\tDeuteronomy19",
+                    "NT": "\tNT\t1Peter2"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t104",
+                    "OT": "\tOT\tNumbers13\"1-3",
+                    "NT": "\tNT\tLuke527-end"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t138\"",
+                    "OT": "\tOT\tDeuteronomy21.22\u2013",
+                    "NT": "\tNT\t1Peter3"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t66",
+                    "OT": "\tOT\tNumbers141-25",
+                    "NT": "\tNT\tLuke601/11/21"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t146\"",
+                    "OT": "\tOT\tDeuteronomy245-end",
+                    "NT": "\tNT\t1Peter3"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t118",
+                    "OT": "\tOT\tNumbers1426-end",
+                    "NT": "\tNT\tLuke612-26"
+                }
+            }
+        },
+        "6": {
+            "Name": "6",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t65\"",
+                    "OT": "\tOT\tDeuteronomy26",
+                    "NT": "\tNT\t1Peter4"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t121\"",
+                    "OT": "\tOT\tNumbers161-35",
+                    "NT": "\tNT\tLuke627-38"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[124\"",
+                    "OT": "\tOT\tDeuteronomy281-14",
+                    "NT": "\tNT\t1Peter4"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t128\"",
+                    "OT": "\tOT\tNumbers1636-end",
+                    "NT": "\tNT\tLuke639-end"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t132\"",
+                    "OT": "\tOT\tDeuteronomy2858-end",
+                    "NT": "\tNT\t1Peter5"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t15;24",
+                    "OT": "\tOT\t2Samuel23",
+                    "NT": "\tNT\tColossians2.2\u2013"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[20]\"",
+                    "OT": "\tOT\tDeuteronomy292-15",
+                    "NT": "\tNT\t1John1"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t145",
+                    "OT": "\tOT\tNumbers201-13",
+                    "NT": "\tNT\tLuke711-17"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[21]\"",
+                    "OT": "\tOT\tDeuteronomy30",
+                    "NT": "\tNT\t1John2"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[84]\"",
+                    "OT": "\tOT\tNumbers2104/09/21",
+                    "NT": "\tNT\tLuke718-35"
+                }
+            }
+        },
+        "7": {
+            "Name": "7",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t93\"",
+                    "OT": "\tOT\tDeuteronomy311-13",
+                    "NT": "\tNT\t1John2"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t18",
+                    "OT": "\tOT\tNumbers221-35",
+                    "NT": "\tNT\tLuke736-end"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[98\"",
+                    "OT": "\tOT\tDeuteronomy3114-29",
+                    "NT": "\tNT\t1John3"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t68",
+                    "OT": "\tOT\tNumbers22.36\u2013",
+                    "NT": "\tNT\tLuke81-15"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[2]\"",
+                    "OT": "\tOT\tDeuteronomy31.3\u2013",
+                    "NT": "\tNT\t1John3"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[36]\"",
+                    "OT": "\tOT\tNumbers2313-end",
+                    "NT": "\tNT\tLuke816-25"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t24\"",
+                    "OT": "\tOT\tDeuteronomy3215-47",
+                    "NT": "\tNT\t1John4"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t139",
+                    "OT": "\tOT\tNumbers24",
+                    "NT": "\tNT\tLuke826-39"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t28\"",
+                    "OT": "\tOT\tDeuteronomy33",
+                    "NT": "\tNT\t1John4"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t147",
+                    "OT": "\tOT\tNumbers2712-end",
+                    "NT": "\tNT\tLuke840-end"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[42]\"",
+                    "OT": "\tOT\tDeuteronomy32\"48-end",
+                    "NT": "\tNT\t1John5"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t48",
+                    "OT": "\tOT\tDeuteronomy169-15",
+                    "NT": "\tNT\tJohn737-39"
+                }
+            }
+        }
+    },
+    "PENTECOST": {
+        "Name": "PENTECOST",
+        "(Year": {
+            "Name": "(Year",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[123\"",
+                    "OT": "\tOT\ta)2Chronicles",
+                    "NT": "\tNT\tRomans11-17"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t127\"",
+                    "OT": "\tOT\tJoshua1",
+                    "NT": "\tNT\tLuke918-27"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t132\"",
+                    "OT": "\tOT\ta)2Chronicles",
+                    "NT": "\tNT\tRomans118-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[134]\"",
+                    "OT": "\tOT\tJoshua2",
+                    "NT": "\tNT\tLuke928-36"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t119.153-end",
+                    "OT": "\tOT\ta)2Chronicles",
+                    "NT": "\tNT\tRomans21-16"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t136",
+                    "OT": "\tOT\tJoshua3",
+                    "NT": "\tNT\tLuke937-50"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t143\"",
+                    "OT": "\tOT\ta)2Chronicles",
+                    "NT": "\tNT\tRomans217-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t138\"",
+                    "OT": "\tOT\tJoshua4.1\u2013",
+                    "NT": "\tNT\tLuke951-end"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[142]\"",
+                    "OT": "\tOT\ta)2Chronicles",
+                    "NT": "\tNT\tRomans31-20"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t145",
+                    "OT": "\tOT\tJoshua52-end",
+                    "NT": "\tNT\tLuke101-16"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t147",
+                    "OT": "\tOT\ta)2Chronicles",
+                    "NT": "\tNT\tRomans321-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t148\"",
+                    "OT": "\tOT\tJoshua61-20",
+                    "NT": "\tNT\tLuke1017-24"
+                }
+            }
+        }
+    },
+    "TRINITY": {
+        "Name": "TRINITY",
+        "SUNDAY": {
+            "Name": "SUNDAY",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t1\"",
+                    "OT": "\tOT\ta)2Chronicles",
+                    "NT": "\tNT\tRomans401/12/21"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t4\"",
+                    "OT": "\tOT\tJoshua71-15",
+                    "NT": "\tNT\tLuke10"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t5\"",
+                    "OT": "\tOT\ta)2Chronicles",
+                    "NT": "\tNT\tRomans413-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t9\"",
+                    "OT": "\tOT\tJoshua716-end",
+                    "NT": "\tNT\tLuke1038-end"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t119.1-32",
+                    "OT": "\tOT\ta)2Chronicles",
+                    "NT": "\tNT\tRomans501/11/21"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t11\"",
+                    "OT": "\tOT\tJoshua81-29",
+                    "NT": "\tNT\tLuke111-13"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[14]\"",
+                    "OT": "\tOT\ta)2Chronicles",
+                    "NT": "\tNT\tRomans512-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t18",
+                    "OT": "\tOT\tJoshua830-end",
+                    "NT": "\tNT\tLuke1114-28"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[17]\"",
+                    "OT": "\tOT\ta)2Chronicles",
+                    "NT": "\tNT\tRomans61-14"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t22",
+                    "OT": "\tOT\tJoshua93-26",
+                    "NT": "\tNT\tLuke1129-36"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[20\"",
+                    "OT": "\tOT\ta)2Chronicles",
+                    "NT": "\tNT\tRomans615-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t24\"",
+                    "OT": "\tOT\tJoshua101-15",
+                    "NT": "\tNT\tLuke1137-end"
+                }
+            }
+        },
+        "1": {
+            "Name": "1",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[27]\"",
+                    "OT": "\tOT\ta)2Chronicles",
+                    "NT": "\tNT\tRomans701/06/21"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[26]\"",
+                    "OT": "\tOT\tJoshua14",
+                    "NT": "\tNT\tLuke1201/12/21"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[32]\"",
+                    "OT": "\tOT\ta)Chronicles34",
+                    "NT": "\tNT\tRomans77-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t33",
+                    "OT": "\tOT\tJoshua21.43\u2013",
+                    "NT": "\tNT\tLuke1213-21"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t34",
+                    "OT": "\tOT\ta)2Chronicles",
+                    "NT": "\tNT\tRomans801/11/21"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t119.33-56",
+                    "OT": "\tOT\tJoshua229-end",
+                    "NT": "\tNT\tLuke1222-31"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t37",
+                    "OT": "\tOT\ta)2Chronicles",
+                    "NT": "\tNT\tRomans812-17"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[39]\"",
+                    "OT": "\tOT\tJoshua23",
+                    "NT": "\tNT\tLuke1232-40"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t31",
+                    "OT": "\tOT\ta)2Chronicles",
+                    "NT": "\tNT\tRomans818-30"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t35",
+                    "OT": "\tOT\tJoshua241-28",
+                    "NT": "\tNT\tLuke1241-48"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[41]\"",
+                    "OT": "\tOT\ta)2Chronicles",
+                    "NT": "\tNT\tRomans831-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[45]\"",
+                    "OT": "\tOT\tJoshua2429-end",
+                    "NT": "\tNT\tLuke1249-end"
+                }
+            }
+        },
+        "2": {
+            "Name": "2",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t44",
+                    "OT": "\tOT\ta)Ezra1",
+                    "NT": "\tNT\tRomans91-18"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t47\"",
+                    "OT": "\tOT\tJudges2",
+                    "NT": "\tNT\tLuke1301/09/21"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t48\"",
+                    "OT": "\tOT\ta)Ezra3",
+                    "NT": "\tNT\tRomans91-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t50",
+                    "OT": "\tOT\tJudges41-23",
+                    "NT": "\tNT\tLuke1310-21"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t119.57-80",
+                    "OT": "\tOT\ta)Ezra4",
+                    "NT": "\tNT\tRomans1001/10/21"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t59\"",
+                    "OT": "\tOT\tJudges5",
+                    "NT": "\tNT\tLuke1322-end"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[56]\"",
+                    "OT": "\tOT\ta)Ezra4",
+                    "NT": "\tNT\tRomans1011-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[61]\"",
+                    "OT": "\tOT\tJudges61-24",
+                    "NT": "\tNT\tLuke1401/11/21"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t51\"",
+                    "OT": "\tOT\ta)Ezra5",
+                    "NT": "\tNT\tRomans1101/12/21"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t38",
+                    "OT": "\tOT\tJudges625-end",
+                    "NT": "\tNT\tLuke1412-24"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t68",
+                    "OT": "\tOT\ta)Ezra6",
+                    "NT": "\tNT\tRomans1113-24"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[65]\"",
+                    "OT": "\tOT\tJudges7",
+                    "NT": "\tNT\tLuke1425-end"
+                }
+            }
+        },
+        "3": {
+            "Name": "3",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t71",
+                    "OT": "\tOT\ta)Ezra7",
+                    "NT": "\tNT\tRomans1125-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t72\"",
+                    "OT": "\tOT\tJudges822-end",
+                    "NT": "\tNT\tLuke1501/10/21"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t73",
+                    "OT": "\tOT\ta)Ezra8",
+                    "NT": "\tNT\tRomans1201/08/21"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t74",
+                    "OT": "\tOT\tJudges91-21",
+                    "NT": "\tNT\tLuke1511-end"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t77",
+                    "OT": "\tOT\ta)Ezra9",
+                    "NT": "\tNT\tRomans129-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t119.81-104",
+                    "OT": "\tOT\tJudges922-end",
+                    "NT": "\tNT\tLuke161-18"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t78.1-39",
+                    "OT": "\tOT\ta)Ezra10",
+                    "NT": "\tNT\tRomans1301/07/21"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t78.40-end",
+                    "OT": "\tOT\tJudges1101/11/21",
+                    "NT": "\tNT\tLuke1619-end"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t55",
+                    "OT": "\tOT\ta)Nehemiah1",
+                    "NT": "\tNT\tRomans138-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t69",
+                    "OT": "\tOT\tJudges1129-end",
+                    "NT": "\tNT\tLuke1701/10/21"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t76\"",
+                    "OT": "\tOT\ta)Nehemiah2",
+                    "NT": "\tNT\tRomans1401/12/21"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[81]\"",
+                    "OT": "\tOT\tJudges1201/07/21",
+                    "NT": "\tNT\tLuke1711-19"
+                }
+            }
+        },
+        "4": {
+            "Name": "4",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t80\"",
+                    "OT": "\tOT\ta)Nehemiah4",
+                    "NT": "\tNT\tRomans1413-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[85]\"",
+                    "OT": "\tOT\tJudges131-24",
+                    "NT": "\tNT\tLuke1720-end"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[87]\"",
+                    "OT": "\tOT\ta)Nehemiah5",
+                    "NT": "\tNT\tRomans151-13"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t89.19-end",
+                    "OT": "\tOT\tJudges14",
+                    "NT": "\tNT\tLuke181-14"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t119.105-128",
+                    "OT": "\tOT\ta)Nehemiah6.1",
+                    "NT": "\tNT\tRomans1514-21"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t91\"",
+                    "OT": "\tOT\tJudges15.1\u2013",
+                    "NT": "\tNT\tLuke1815-30"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[90]\"",
+                    "OT": "\tOT\ta)Nehemiah7.73b",
+                    "NT": "\tNT\tRomans1522-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t94",
+                    "OT": "\tOT\tJudges164-end",
+                    "NT": "\tNT\tLuke1831-end"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t88\"",
+                    "OT": "\tOT\ta)Nehemiah9",
+                    "NT": "\tNT\tRomans161-16"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t102",
+                    "OT": "\tOT\tJudges17",
+                    "NT": "\tNT\tLuke1901/10/21"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[96]\"",
+                    "OT": "\tOT\ta)Nehemiah9",
+                    "NT": "\tNT\tRomans1617-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t104",
+                    "OT": "\tOT\tJudges18\"1-20",
+                    "NT": "\tNT\tLuke1911-27"
+                }
+            }
+        },
+        "5": {
+            "Name": "5",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[123\"",
+                    "OT": "\tOT\ta)Esther4",
+                    "NT": "\tNT\t2Corinthians6.1"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t127\"",
+                    "OT": "\tOT\t1Samuel5",
+                    "NT": "\tNT\tLuke20.41\u2013"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t132\"",
+                    "OT": "\tOT\ta)Esther5",
+                    "NT": "\tNT\t2Corinthians7"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[134]\"",
+                    "OT": "\tOT\t1Samuel6",
+                    "NT": "\tNT\tLuke215-19"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t119.153-end",
+                    "OT": "\tOT\ta)Esther6",
+                    "NT": "\tNT\t2Corinthians8"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t136",
+                    "OT": "\tOT\t1Samuel7",
+                    "NT": "\tNT\tLuke2120-28"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t143\"",
+                    "OT": "\tOT\ta)Esther6.14",
+                    "NT": "\tNT\t2Corinthians8.16"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t138\"",
+                    "OT": "\tOT\t1Samuel8",
+                    "NT": "\tNT\tLuke2129-end"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[142]\"",
+                    "OT": "\tOT\ta)Esther8",
+                    "NT": "\tNT\t2Corinthians9"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t145",
+                    "OT": "\tOT\t1Samuel9",
+                    "NT": "\tNT\tLuke221-13"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t147",
+                    "OT": "\tOT\ta)Esther9",
+                    "NT": "\tNT\t2Corinthians10"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t148\"",
+                    "OT": "\tOT\t1Samuel9.15",
+                    "NT": "\tNT\tLuke2214-23"
+                }
+            }
+        },
+        "7": {
+            "Name": "7",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t1\"",
+                    "OT": "\tOT\ta)Jeremiah26",
+                    "NT": "\tNT\t2Corinthians11"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t4\"",
+                    "OT": "\tOT\t1Samuel10",
+                    "NT": "\tNT\tLuke2224-30"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t5\"",
+                    "OT": "\tOT\ta)Jeremiah28",
+                    "NT": "\tNT\t2Corinthians11"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t9\"",
+                    "OT": "\tOT\t1Samuel10",
+                    "NT": "\tNT\tLuke2231-38"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t119.1-32",
+                    "OT": "\tOT\ta)Jeremiah29",
+                    "NT": "\tNT\t2Corinthians12"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t11\"",
+                    "OT": "\tOT\t1Samuel11",
+                    "NT": "\tNT\tLuke2239-46"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[14]\"",
+                    "OT": "\tOT\ta)Jeremiah30",
+                    "NT": "\tNT\t2Corinthians13"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t18",
+                    "OT": "\tOT\t1Samuel12",
+                    "NT": "\tNT\tLuke2247-62"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[17]\"",
+                    "OT": "\tOT\ta)Jeremiah30",
+                    "NT": "\tNT\tJames101/11/21"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t22",
+                    "OT": "\tOT\t1Samuel13",
+                    "NT": "\tNT\tLuke2263-end"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[20\"",
+                    "OT": "\tOT\ta)Jeremiah31",
+                    "NT": "\tNT\tJames112-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t24\"",
+                    "OT": "\tOT\t1Samuel13.19",
+                    "NT": "\tNT\tLuke2301/12/21"
+                }
+            }
+        },
+        "8": {
+            "Name": "8",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[27]\"",
+                    "OT": "\tOT\ta)Jeremiah31",
+                    "NT": "\tNT\tJames21-13"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[26]\"",
+                    "OT": "\tOT\t1Samuel14",
+                    "NT": "\tNT\tLuke2313-25"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[32]\"",
+                    "OT": "\tOT\ta)Jeremiah32",
+                    "NT": "\tNT\tJames214-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t33",
+                    "OT": "\tOT\t1Samuel15",
+                    "NT": "\tNT\tLuke2326-43"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t34",
+                    "OT": "\tOT\ta)Jeremiah33",
+                    "NT": "\tNT\tJames3"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t119.33-56",
+                    "OT": "\tOT\t1Samuel16",
+                    "NT": "\tNT\tLuke2344-56a"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t37",
+                    "OT": "\tOT\ta)Jeremiah33",
+                    "NT": "\tNT\tJames401/12/21"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[39]\"",
+                    "OT": "\tOT\t1Samuel17",
+                    "NT": "\tNT\tLuke23.56b\u2013"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t31",
+                    "OT": "\tOT\ta)Jeremiah35",
+                    "NT": "\tNT\tJames4.13\u2013"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t35",
+                    "OT": "\tOT\t1Samuel17",
+                    "NT": "\tNT\tLuke2413-35"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[41]\"",
+                    "OT": "\tOT\ta)Jeremiah36",
+                    "NT": "\tNT\tJames57-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[45]\"",
+                    "OT": "\tOT\t1Samuel17.55",
+                    "NT": "\tNT\tLuke2436-end"
+                }
+            }
+        },
+        "9": {
+            "Name": "9",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t44",
+                    "OT": "\tOT\ta)Jeremiah36",
+                    "NT": "\tNT\tMark11-13"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t47\"",
+                    "OT": "\tOT\t1Samuel19",
+                    "NT": "\tNT\tActs11-14"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t48\"",
+                    "OT": "\tOT\ta)Jeremiah37",
+                    "NT": "\tNT\tMark114-20"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t50",
+                    "OT": "\tOT\t1Samuel20",
+                    "NT": "\tNT\tActs115-end"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t119.57-80",
+                    "OT": "\tOT\ta)Jeremiah38",
+                    "NT": "\tNT\tMark121-28"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t59\"",
+                    "OT": "\tOT\t1Samuel20",
+                    "NT": "\tNT\tActs21-21"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[56]\"",
+                    "OT": "\tOT\ta)Jeremiah38",
+                    "NT": "\tNT\tMark129-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[61]\"",
+                    "OT": "\tOT\t1Samuel21.1",
+                    "NT": "\tNT\tActs222-36"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t51\"",
+                    "OT": "\tOT\ta)Jeremiah39",
+                    "NT": "\tNT\tMark201/12/21"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t38",
+                    "OT": "\tOT\t1Samuel22",
+                    "NT": "\tNT\tActs237-end"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t68",
+                    "OT": "\tOT\ta)Jeremiah40",
+                    "NT": "\tNT\tMark213-22"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[65]\"",
+                    "OT": "\tOT\t1Samuel23",
+                    "NT": "\tNT\tActs301/10/21"
+                }
+            }
+        },
+        "10": {
+            "Name": "10",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t71",
+                    "OT": "\tOT\ta)Jeremiah41",
+                    "NT": "\tNT\tMark2.23\u2013"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t72\"",
+                    "OT": "\tOT\t1Samuel24",
+                    "NT": "\tNT\tActs311-end"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t73",
+                    "OT": "\tOT\ta)Jeremiah42",
+                    "NT": "\tNT\tMark37-19a"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t74",
+                    "OT": "\tOT\t1Samuel26",
+                    "NT": "\tNT\tActs401/12/21"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t77",
+                    "OT": "\tOT\ta)Jeremiah43",
+                    "NT": "\tNT\tMark319b-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t119.81-104",
+                    "OT": "\tOT\t1Samuel28",
+                    "NT": "\tNT\tActs413-31"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t78.1-39",
+                    "OT": "\tOT\ta)Jeremiah44",
+                    "NT": "\tNT\tMark41-20"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t78.40-end",
+                    "OT": "\tOT\t1Samuel31",
+                    "NT": "\tNT\tActs4.32\u2013"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t55",
+                    "OT": "\tOT\ta)Jeremiah44",
+                    "NT": "\tNT\tMark421-34"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t69",
+                    "OT": "\tOT\t2Samuel1",
+                    "NT": "\tNT\tActs512-26"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t76\"",
+                    "OT": "\tOT\ta)Jeremiah45",
+                    "NT": "\tNT\tMark435-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[81]\"",
+                    "OT": "\tOT\t2Samuel2",
+                    "NT": "\tNT\tActs527-end"
+                }
+            }
+        },
+        "11": {
+            "Name": "11",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t80\"",
+                    "OT": "\tOT\ta)Micah1",
+                    "NT": "\tNT\tMark51-20"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[85]\"",
+                    "OT": "\tOT\t2Samuel3",
+                    "NT": "\tNT\tActs6"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[87]\"",
+                    "OT": "\tOT\ta)Micah2",
+                    "NT": "\tNT\tMark521-34"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t89.19-end",
+                    "OT": "\tOT\t2Samuel5",
+                    "NT": "\tNT\tActs71-16"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t119.105-128",
+                    "OT": "\tOT\ta)Micah3",
+                    "NT": "\tNT\tMark535-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t91\"",
+                    "OT": "\tOT\t2Samuel6",
+                    "NT": "\tNT\tActs717-43"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[90]\"",
+                    "OT": "\tOT\ta)Micah4.1",
+                    "NT": "\tNT\tMark61-13"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t94",
+                    "OT": "\tOT\t2Samuel7",
+                    "NT": "\tNT\tActs744-53"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t88\"",
+                    "OT": "\tOT\ta)Micah5",
+                    "NT": "\tNT\tMark614-29"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t102",
+                    "OT": "\tOT\t2Samuel7",
+                    "NT": "\tNT\tActs7.54\u2013"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[96]\"",
+                    "OT": "\tOT\ta)Micah6",
+                    "NT": "\tNT\tMark630-44"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t104",
+                    "OT": "\tOT\t2Samuel9",
+                    "NT": "\tNT\tActs84-25"
+                }
+            }
+        },
+        "12": {
+            "Name": "12",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[123\"",
+                    "OT": "\tOT\ta)Haggai1",
+                    "NT": "\tNT\tMark811-21"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t127\"",
+                    "OT": "\tOT\t2Samuel18",
+                    "NT": "\tNT\tActs1034-end"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t132\"",
+                    "OT": "\tOT\ta)Haggai1.12",
+                    "NT": "\tNT\tMark822-26"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[134]\"",
+                    "OT": "\tOT\t2Samuel18.19",
+                    "NT": "\tNT\tActs111-18"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t119.153-end",
+                    "OT": "\tOT\ta)Haggai2",
+                    "NT": "\tNT\tMark827"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t136",
+                    "OT": "\tOT\t2Samuel19",
+                    "NT": "\tNT\tActs1119-end"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t143\"",
+                    "OT": "\tOT\ta)Zechariah1",
+                    "NT": "\tNT\tMark92-13"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t138\"",
+                    "OT": "\tOT\t2Samuel19",
+                    "NT": "\tNT\tActs121-17"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[142]\"",
+                    "OT": "\tOT\ta)Zechariah1.18",
+                    "NT": "\tNT\tMark914-29"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t145",
+                    "OT": "\tOT\t2Samuel23",
+                    "NT": "\tNT\tActs1218-end"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t147",
+                    "OT": "\tOT\ta)Zechariah3",
+                    "NT": "\tNT\tMark930-37"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t148\"",
+                    "OT": "\tOT\t2Samuel24",
+                    "NT": "\tNT\tActs1301/12/21"
+                }
+            }
+        },
+        "14": {
+            "Name": "14",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t1\"",
+                    "OT": "\tOT\ta)Zechariah4",
+                    "NT": "\tNT\tMark938-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t4\"",
+                    "OT": "\tOT\t1Kings1",
+                    "NT": "\tNT\tActs1313-43"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t5\"",
+                    "OT": "\tOT\ta)Zechariah6",
+                    "NT": "\tNT\tMark101-16"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t9\"",
+                    "OT": "\tOT\t1Kings1.32",
+                    "NT": "\tNT\tActs13.44\u2013"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t119.1-32",
+                    "OT": "\tOT\ta)Zechariah7",
+                    "NT": "\tNT\tMark1017-31"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t11\"",
+                    "OT": "\tOT\t1Kings3",
+                    "NT": "\tNT\tActs14.8-end"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[14]\"",
+                    "OT": "\tOT\ta)Zechariah8",
+                    "NT": "\tNT\tMark1032-34"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t18",
+                    "OT": "\tOT\t1Kings4.29",
+                    "NT": "\tNT\tActs151-21"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[17]\"",
+                    "OT": "\tOT\ta)Zechariah8",
+                    "NT": "\tNT\tMark1035-45"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t22",
+                    "OT": "\tOT\t1Kings6",
+                    "NT": "\tNT\tActs1522-35"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[20\"",
+                    "OT": "\tOT\ta)Zechariah9",
+                    "NT": "\tNT\tMark1046-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t24\"",
+                    "OT": "\tOT\t1Kings8",
+                    "NT": "\tNT\tActs15.36\u2013"
+                }
+            }
+        },
+        "15": {
+            "Name": "15",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[27]\"",
+                    "OT": "\tOT\ta)Zechariah10",
+                    "NT": "\tNT\tMark1101/11/21"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[26]\"",
+                    "OT": "\tOT\t1Kings8",
+                    "NT": "\tNT\tActs166-24"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[32]\"",
+                    "OT": "\tOT\ta)Zechariah11",
+                    "NT": "\tNT\tMark1112-26"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t33",
+                    "OT": "\tOT\t1Kings8.63",
+                    "NT": "\tNT\tActs1625-end"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t34",
+                    "OT": "\tOT\ta)Zechariah12",
+                    "NT": "\tNT\tMark1127-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t119.33-56",
+                    "OT": "\tOT\t1Kings10",
+                    "NT": "\tNT\tActs171-15"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t37",
+                    "OT": "\tOT\ta)Zechariah13",
+                    "NT": "\tNT\tMark1201/12/21"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[39]\"",
+                    "OT": "\tOT\t1Kings11",
+                    "NT": "\tNT\tActs1716-end"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t31",
+                    "OT": "\tOT\ta)Zechariah14",
+                    "NT": "\tNT\tMark1213-17"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t35",
+                    "OT": "\tOT\t1Kings11",
+                    "NT": "\tNT\tActs181-21"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[41]\"",
+                    "OT": "\tOT\ta)Zechariah14",
+                    "NT": "\tNT\tMark1218-27"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[45]\"",
+                    "OT": "\tOT\t1Kings12",
+                    "NT": "\tNT\tActs18.22\u2013"
+                }
+            }
+        },
+        "16": {
+            "Name": "16",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t44",
+                    "OT": "\tOT\ta)Sirach1",
+                    "NT": "\tNT\tMark1228-34"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t47\"",
+                    "OT": "\tOT\t1Kings12.25",
+                    "NT": "\tNT\tActs198-20"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t48\"",
+                    "OT": "\tOT\ta)Sirach1",
+                    "NT": "\tNT\tMark1235-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t50",
+                    "OT": "\tOT\t1Kings13",
+                    "NT": "\tNT\tActs1921-end"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t119.57-80",
+                    "OT": "\tOT\ta)Sirach2",
+                    "NT": "\tNT\tMark131-13"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t59\"",
+                    "OT": "\tOT\t1Kings17",
+                    "NT": "\tNT\tActs201-16"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[56]\"",
+                    "OT": "\tOT\ta)Sirach3",
+                    "NT": "\tNT\tMark1314-23"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[61]\"",
+                    "OT": "\tOT\t1Kings18",
+                    "NT": "\tNT\tActs2017-end"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t51\"",
+                    "OT": "\tOT\ta)Sirach4",
+                    "NT": "\tNT\tMark13.24\u201331"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t38",
+                    "OT": "\tOT\t1Kings18",
+                    "NT": "\tNT\tActs211-16"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t68",
+                    "OT": "\tOT\ta)Sirach4.29",
+                    "NT": "\tNT\tMark1332-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[65]\"",
+                    "OT": "\tOT\t1Kings19",
+                    "NT": "\tNT\tActs2117-36"
+                }
+            }
+        },
+        "17": {
+            "Name": "17",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t71",
+                    "OT": "\tOT\ta)Sirach6",
+                    "NT": "\tNT\tMark1401/11/21"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t72\"",
+                    "OT": "\tOT\t1Kings21",
+                    "NT": "\tNT\tActs21.37\u2013"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t73",
+                    "OT": "\tOT\ta)Sirach7",
+                    "NT": "\tNT\tMark1412-25"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t74",
+                    "OT": "\tOT\t1Kings22",
+                    "NT": "\tNT\tActs22.22\u2013"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t77",
+                    "OT": "\tOT\ta)Sirach10",
+                    "NT": "\tNT\tMark1426-42"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t119.81-104",
+                    "OT": "\tOT\t1Kings22",
+                    "NT": "\tNT\tActs2312-end"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t78.1-39",
+                    "OT": "\tOT\ta)Sirach11",
+                    "NT": "\tNT\tMark1443-52"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t78.40-end",
+                    "OT": "\tOT\t2Kings1",
+                    "NT": "\tNT\tActs241-23"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t55",
+                    "OT": "\tOT\ta)Sirach14.2",
+                    "NT": "\tNT\tMark1453-65"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t69",
+                    "OT": "\tOT\t2Kings2",
+                    "NT": "\tNT\tActs24.24\u2013"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t76\"",
+                    "OT": "\tOT\ta)Sirach15",
+                    "NT": "\tNT\tMark1466-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[81]\"",
+                    "OT": "\tOT\t2Kings4",
+                    "NT": "\tNT\tActs2513-end"
+                }
+            }
+        },
+        "18": {
+            "Name": "18",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t80\"",
+                    "OT": "\tOT\ta)Sirach16",
+                    "NT": "\tNT\tMark151-15"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[85]\"",
+                    "OT": "\tOT\t2Kings5",
+                    "NT": "\tNT\tActs261-23"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[87]\"",
+                    "OT": "\tOT\ta)Sirach17",
+                    "NT": "\tNT\tMark1516-32"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t89.19-end",
+                    "OT": "\tOT\t2Kings6",
+                    "NT": "\tNT\tActs2624-end"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t119.105-128",
+                    "OT": "\tOT\ta)Sirach18",
+                    "NT": "\tNT\tMark1533-41"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t91\"",
+                    "OT": "\tOT\t2Kings9",
+                    "NT": "\tNT\tActs271-26"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[90]\"",
+                    "OT": "\tOT\ta)Sirach19",
+                    "NT": "\tNT\tMark1542-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t94",
+                    "OT": "\tOT\t2Kings9",
+                    "NT": "\tNT\tActs2727-end"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t88\"",
+                    "OT": "\tOT\ta)Sirach19",
+                    "NT": "\tNT\tMark1601/08/21"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t102",
+                    "OT": "\tOT\t2Kings12",
+                    "NT": "\tNT\tActs281-16"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[96]\"",
+                    "OT": "\tOT\ta)Sirach21",
+                    "NT": "\tNT\tMark169-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t104",
+                    "OT": "\tOT\t2Kings17",
+                    "NT": "\tNT\tActs2817-end"
+                }
+            }
+        },
+        "19": {
+            "Name": "19",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t98\"",
+                    "OT": "\tOT\ta)Sirach22.6\u201322",
+                    "NT": "\tNT\tJohn13.1\u201311"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t105or",
+                    "OT": "\tOT\t2Kings17.24\u2013end",
+                    "NT": "\tNT\tPhilippians1.1\u201311"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t106\"",
+                    "OT": "\tOT\ta)Sirach22.27",
+                    "NT": "\tNT\tJohn1312-20"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t107",
+                    "OT": "\tOT\t2Kings18",
+                    "NT": "\tNT\tPhilippians112-end"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[110]\"",
+                    "OT": "\tOT\ta)Sirach24",
+                    "NT": "\tNT\tJohn1321-30"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t119.129-152",
+                    "OT": "\tOT\t2Kings18",
+                    "NT": "\tNT\tPhilippians21-13"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[113]\"",
+                    "OT": "\tOT\ta)Sirach24",
+                    "NT": "\tNT\tJohn13.31\u2013end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[114]\"",
+                    "OT": "\tOT\t2Kings19",
+                    "NT": "\tNT\tPhilippians214-end"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t139",
+                    "OT": "\tOT\ta)Sirach27.3",
+                    "NT": "\tNT\tJohn141-14"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t130\"",
+                    "OT": "\tOT\t2Kings19",
+                    "NT": "\tNT\tPhilippians3.1\u2013"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t120\"",
+                    "OT": "\tOT\ta)Sirach28.14\u2013end",
+                    "NT": "\tNT\tJohn14.15\u2013end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t118",
+                    "OT": "\tOT\t2Kings20",
+                    "NT": "\tNT\tPhilippians4.2\u2013end"
+                }
+            }
+        },
+        "20": {
+            "Name": "20",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t123\"",
+                    "OT": "\tOT\ta)Sirach31.1\u201311",
+                    "NT": "\tNT\tJohn15.1\u201311"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t127\"",
+                    "OT": "\tOT\t2Kings21.1\u201318",
+                    "NT": "\tNT\t1Timothy1.1\u201317"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t132\"",
+                    "OT": "\tOT\ta)Sirach34.9\u2013end",
+                    "NT": "\tNT\tJohn15.12\u201317"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t134\"",
+                    "OT": "\tOT\t2Kings22.1\u201323.3",
+                    "NT": "\tNT\t1Timothy1.18\u2013end"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t119.153-end",
+                    "OT": "\tOT\ta)Sirach35",
+                    "NT": "\tNT\tJohn15.18\u2013end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t136",
+                    "OT": "\tOT\t2Kings23.4\u201325",
+                    "NT": "\tNT\t1Timothy3"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t143\"",
+                    "OT": "\tOT\ta)Sirach37.7\u201324",
+                    "NT": "\tNT\tJohn16.1\u201315"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t138\"",
+                    "OT": "\tOT\t2Kings23.36\u201324.17",
+                    "NT": "\tNT\t1Timothy4"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t142\"",
+                    "OT": "\tOT\ta)Sirach38.1\u201314",
+                    "NT": "\tNT\tJohn16.16\u201322"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t145",
+                    "OT": "\tOT\t2Kings24.18\u201325.12",
+                    "NT": "\tNT\t1Timothy5.1\u201316"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t147",
+                    "OT": "\tOT\ta)Sirach38.24\u2013end",
+                    "NT": "\tNT\tJohn16.23\u2013end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t148\"",
+                    "OT": "\tOT\t2Kings25.22\u2013end",
+                    "NT": "\tNT\t1Timothy5.17\u2013end"
+                }
+            }
+        },
+        "21": {
+            "Name": "21",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t1\"",
+                    "OT": "\tOT\ta)Sirach39.1\u201311",
+                    "NT": "\tNT\tJohn17.1\u20135"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t4\"",
+                    "OT": "\tOT\tJudith4or",
+                    "NT": "\tNT\t1Timothy6.1\u201310"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t5\"",
+                    "OT": "\tOT\ta)Sirach39.13\u2013end",
+                    "NT": "\tNT\tJohn17.6\u201319"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t9\"",
+                    "OT": "\tOT\tJudith5.1\u20136.4or",
+                    "NT": "\tNT\t1Timothy6.11\u2013end"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t119.1-32",
+                    "OT": "\tOT\ta)Sirach42.15\u2013end",
+                    "NT": "\tNT\tJohn17.20\u2013end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t11\"",
+                    "OT": "\tOT\tJudith6.10\u20137.7or",
+                    "NT": "\tNT\t2Timothy1.1\u201314"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t14\"",
+                    "OT": "\tOT\ta)Sirach43.1\u201312",
+                    "NT": "\tNT\tJohn18.1\u201311"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t18",
+                    "OT": "\tOT\tJudith7.19\u2013endor",
+                    "NT": "\tNT\t2Timothy1.15\u20132.13"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t17\"",
+                    "OT": "\tOT\ta)Sirach43.13\u2013end",
+                    "NT": "\tNT\tJohn18.12\u201327"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t22",
+                    "OT": "\tOT\tJudith8.9\u2013endor",
+                    "NT": "\tNT\t2Timothy2.14\u2013end"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t20\"",
+                    "OT": "\tOT\ta)Sirach44.1\u201315",
+                    "NT": "\tNT\tJohn18.28\u2013end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t24\"",
+                    "OT": "\tOT\tJudith9or",
+                    "NT": "\tNT\t2Timothy3"
+                }
+            }
+        },
+        "22": {
+            "Name": "22",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t27\"",
+                    "OT": "\tOT\ta)Sirach44.19\u201345.5",
+                    "NT": "\tNT\tJohn19.1\u201316"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t26\"",
+                    "OT": "\tOT\tJudith10or",
+                    "NT": "\tNT\t2Timothy4.1\u20138"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t32\"",
+                    "OT": "\tOT\ta)Sirach45.6\u201317",
+                    "NT": "\tNT\tJohn19.17\u201330"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t33",
+                    "OT": "\tOT\tJudith11or",
+                    "NT": "\tNT\t2Timothy4.9\u2013end"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t34",
+                    "OT": "\tOT\ta)Sirach46.1\u201310",
+                    "NT": "\tNT\tJohn19.31\u2013end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t119.33-56",
+                    "OT": "\tOT\tJudith12or",
+                    "NT": "\tNT\tTitus1"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t37",
+                    "OT": "\tOT\ta)Sirach50.1\u201324",
+                    "NT": "\tNT\tJohn20.1\u201310"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t39\"",
+                    "OT": "\tOT\tJudith13or",
+                    "NT": "\tNT\tTitus2"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t31",
+                    "OT": "\tOT\ta)Sirach51.1\u201312",
+                    "NT": "\tNT\tJohn20.11\u201318"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t35",
+                    "OT": "\tOT\tJudith15.1\u201313or",
+                    "NT": "\tNT\tTitus3"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t41\"",
+                    "OT": "\tOT\ta)Sirach51.13\u2013end",
+                    "NT": "\tNT\tJohn20.19\u2013end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t45\"",
+                    "OT": "\tOT\tJudith15.14\u2013endof",
+                    "NT": "\tNT\tPhilemon"
+                }
+            }
+        }
+    },
+    "KINGDOM": {
+        "Name": "KINGDOM",
+        "1": {
+            "Name": "1",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t2\"",
+                    "OT": "\tOT\tIsaiah11-20",
+                    "NT": "\tNT\tMatthew118-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t92\"",
+                    "OT": "\tOT\tDaniel1",
+                    "NT": "\tNT\tRevelation1"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t5\"",
+                    "OT": "\tOT\tIsaiah121-end",
+                    "NT": "\tNT\tMatthew21-15"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[98\"",
+                    "OT": "\tOT\tDaniel21-24",
+                    "NT": "\tNT\tRevelation201/11/21"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t9\"",
+                    "OT": "\tOT\tIsaiah201/11/21",
+                    "NT": "\tNT\tMatthew216-end"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[11]\"",
+                    "OT": "\tOT\tIsaiah212-end",
+                    "NT": "\tNT\tMatthew3"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t118",
+                    "OT": "\tOT\tDaniel31-18",
+                    "NT": "\tNT\tRevelation31-13"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t16\"",
+                    "OT": "\tOT\tIsaiah31-15",
+                    "NT": "\tNT\tMatthew401/11/21"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[137\"",
+                    "OT": "\tOT\tDaniel319-end",
+                    "NT": "\tNT\tRevelation314-end"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t18.\"31-end",
+                    "OT": "\tOT\tIsaiah4.2\u2013",
+                    "NT": "\tNT\tMatthew412-22"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t145",
+                    "OT": "\tOT\tDaniel41-18",
+                    "NT": "\tNT\tRevelation4"
+                }
+            }
+        },
+        "2": {
+            "Name": "2",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[19]\"",
+                    "OT": "\tOT\tIsaiah58-24",
+                    "NT": "\tNT\tMatthew4.23\u2013"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t34",
+                    "OT": "\tOT\tDaniel419-end",
+                    "NT": "\tNT\tRevelation5"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t21\"",
+                    "OT": "\tOT\tIsaiah525-end",
+                    "NT": "\tNT\tMatthew513-20"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[36]\"",
+                    "OT": "\tOT\tDaniel501/12/21",
+                    "NT": "\tNT\tRevelation6"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t23\"",
+                    "OT": "\tOT\tIsaiah6",
+                    "NT": "\tNT\tMatthew521-37"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t37",
+                    "OT": "\tOT\tDaniel513-end",
+                    "NT": "\tNT\tRevelation7\"1-4"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t26\"",
+                    "OT": "\tOT\tIsaiah71-17",
+                    "NT": "\tNT\tMatthew538-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[42]\"",
+                    "OT": "\tOT\tDaniel6",
+                    "NT": "\tNT\tRevelation8"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[28]\"",
+                    "OT": "\tOT\tIsaiah81-15",
+                    "NT": "\tNT\tMatthew61-18"
+                },
+                "EveningPrayer": {
+                    "Psalm": "EP\tPs\t31",
+                    "OT": "\tOT\tDaniel71-14",
+                    "NT": "\tNT\tRevelation901/12/21"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t33",
+                    "OT": "\tOT\tIsaiah8.16\u2013",
+                    "NT": "\tNT\tMatthew619-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[84]\"",
+                    "OT": "\tOT\tDaniel715-end",
+                    "NT": "\tNT\tRevelation913-end"
+                }
+            }
+        },
+        "3": {
+            "Name": "3",
+            "Monday": {
+                "Name": "Monday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[92]\"",
+                    "OT": "\tOT\tIsaiah143-20",
+                    "NT": "\tNT\tMatthew918-34"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t80\"",
+                    "OT": "\tOT\tIsaiah4001/11/21",
+                    "NT": "\tNT\tRevelation141-13"
+                }
+            },
+            "Tuesday": {
+                "Name": "Tuesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t97\"",
+                    "OT": "\tOT\tIsaiah17",
+                    "NT": "\tNT\tMatthew9.35\u2013"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[99]\"",
+                    "OT": "\tOT\tIsaiah4012-26",
+                    "NT": "\tNT\tRevelation14.14\u2013"
+                }
+            },
+            "Wednesday": {
+                "Name": "Wednesday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t[110\"",
+                    "OT": "\tOT\tIsaiah19",
+                    "NT": "\tNT\tMatthew1016-33"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[121]\"",
+                    "OT": "\tOT\tIsaiah40.27\u2013",
+                    "NT": "\tNT\tRevelation1601/11/21"
+                }
+            },
+            "Thursday": {
+                "Name": "Thursday",
+                "MorningPrayer": {
+                    "Psalm": "\"MP\tPs\t125\"",
+                    "OT": "\tOT\tIsaiah2101/12/21",
+                    "NT": "\tNT\tMatthew10.34\u2013"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[131\"",
+                    "OT": "\tOT\tIsaiah418-20",
+                    "NT": "\tNT\tRevelation1612-end"
+                }
+            },
+            "Friday": {
+                "Name": "Friday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t139",
+                    "OT": "\tOT\tIsaiah221-14",
+                    "NT": "\tNT\tMatthew11.2-19"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t146\"",
+                    "OT": "\tOT\tIsaiah41.21\u2013",
+                    "NT": "\tNT\tRevelation17"
+                }
+            },
+            "Saturday": {
+                "Name": "Saturday",
+                "MorningPrayer": {
+                    "Psalm": "MP\tPs\t145",
+                    "OT": "\tOT\tIsaiah24",
+                    "NT": "\tNT\tMatthew1120-end"
+                },
+                "EveningPrayer": {
+                    "Psalm": "\"EP\tPs\t[148\"",
+                    "OT": "\tOT\tIsaiah4210-17",
+                    "NT": "\tNT\tRevelation18"
+                }
+            }
+        }
+    }
+}

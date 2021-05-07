@@ -61,8 +61,8 @@ public class MainActivity extends AppCompatActivity implements
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.homeFragment, R.id.fragment_Prayer, R.id.nav_slideshow)
-                .setDrawerLayout(drawer)
+                R.id.homeFragment, R.id.fragment_Prayer, R.id.id_EveningPrayer, R.id.fragment_Lectionary)
+                .setOpenableLayout(drawer)
                 .build();
         //NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         //NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_container);
@@ -100,41 +100,35 @@ public class MainActivity extends AppCompatActivity implements
         Log.v("TAG", "On Navigation Item Selected");
         Bundle args = new Bundle();
 
-        Fragment fragment = null;
-        Class fragmentClass = null;
+        int destination=R.id.homeFragment;
+
         if (id == R.id.homeFragment) {
           //fragment = findViewById(R.id.homeFragment);
-           setContentView(R.layout.activity_main);
+           destination = R.id.homeFragment;
         }
-        else {
-            try {
-                if (id == R.id.fragment_Prayer) {
 
-                    args.putString("Type","MorningPrayer");
-                }
+        if (id == R.id.fragment_Prayer) {
 
-                if (id == R.id.nav_slideshow) {
-                    args.putString("Type","EveningPrayer");
-                }
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-/**
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment).commit();
-
- Bundle args = new Bundle();
- args.putString(ARG_PARAM1, param1);
- **/
-
-
-            Navigation.findNavController(this,R.id.nav_host_fragment).navigate(R.id.fragment_Prayer,args);
-
-
-            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-            drawer.closeDrawer(GravityCompat.START);
+            args.putString("Type","MorningPrayer");
+            destination=R.id.fragment_Prayer;
         }
+
+        if (id == R.id.id_EveningPrayer) {
+            args.putString("Type","EveningPrayer");
+            destination=R.id.fragment_Prayer;
+        }
+
+        if(id== R.id.nav_Lectionary) {
+            destination = R.id.fragment_Lectionary;
+        }
+
+
+        Navigation.findNavController(this,R.id.nav_host_fragment).navigate(destination,args);
+
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+
         return true;
     }
 
