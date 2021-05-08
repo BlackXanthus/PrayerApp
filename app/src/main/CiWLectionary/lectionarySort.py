@@ -12,7 +12,9 @@ def cleanString(myString):
 	myString = myString.replace("OT","")
 	myString = myString.replace("\"","")
 	myString = myString.replace("\u2013","")
-	myString = myString.strip(" ");
+	myString = myString.replace("\u00e2\u20ac\u201c","")
+	myString = myString.strip(" ")
+	
 	return myString
 
 
@@ -122,23 +124,23 @@ for line in lectionaryArray:
 
 	if(line[0].startswith('EP') or line[0].startswith('\"EP') and not ignore):
 		lectionary[season][week][day]["EveningPrayer"] = {}
-		lectionary[season][week][day]["EveningPrayer"]["Psalm"] = cleanString(line[0]+" "+line[1])
+		lectionary[season][week][day]["EveningPrayer"]["Psalm"] = cleanString(line[0]+" "+line[1]+" "+line[2])
 		ep = True;	
 		mp = False;
 
 
 	if(mp and not ignore) :
 		if(line[0].startswith('\tOT')):
-			lectionary[season][week][day]["MorningPrayer"]["OT"] = cleanString(line[0]+" "+line[1]+" "+line[2])
+			lectionary[season][week][day]["MorningPrayer"]["OT"] = cleanString(line[0]+" "+line[1]+" "+line[2]+" "+line[3])
 		if(line[0].startswith('\tNT')):
-			lectionary[season][week][day]["MorningPrayer"]["NT"] = cleanString(line[0]+" "+line[1]+" "+line[2])
+			lectionary[season][week][day]["MorningPrayer"]["NT"] = cleanString(line[0]+" "+line[1]+" "+line[2]+" "+line[3])
 			mp=False;
 
 	if(ep and not ignore) :
 		if(line[0].startswith('\tOT')):
-			lectionary[season][week][day]["EveningPrayer"]["OT"] = cleanString(line[0]+line[1]+line[2])
+			lectionary[season][week][day]["EveningPrayer"]["OT"] = cleanString(line[0]+" "+line[1]+" "+line[2]+" "+line[3])
 		if(line[0].startswith('\tNT')):
-			lectionary[season][week][day]["EveningPrayer"]["NT"] = cleanString(line[0]+line[1]+line[2])
+			lectionary[season][week][day]["EveningPrayer"]["NT"] = cleanString(line[0]+" "+line[1]+" "+line[2]+" "+line[3])
 			ep=False;
 
 	if(not ignore):
