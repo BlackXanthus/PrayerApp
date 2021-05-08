@@ -104,7 +104,7 @@ public class fragment_Lectionary extends Fragment {
         try {
 
             Context app_Context = getActivity().getApplicationContext();
-            String myData = theHelper.readAsset(app_Context,"lectionary.json");
+            String myData = theHelper.readAsset(app_Context,"lectionary-YearTwo.json");
 
             String season="ADVENT";
             int weekOfSeason=1;
