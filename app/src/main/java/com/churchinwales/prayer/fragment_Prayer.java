@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
@@ -55,6 +56,7 @@ public class fragment_Prayer extends Fragment {
     JSONArray lectionaryJSON;
     String myData="";
     String prayerType = "";
+    Helper myHelper;
 
     private ProgressBar spinner;
     // TODO: Rename parameter arguments, choose names that match
@@ -104,6 +106,7 @@ public class fragment_Prayer extends Fragment {
         }
 
 
+        myHelper =new Helper();
         myData ="";
     }
 
@@ -250,7 +253,40 @@ public class fragment_Prayer extends Fragment {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private SpannableStringBuilder getBibleReading(Context app_context, String type) {
+
+        JSONObject prayer = myHelper.getLectionaryJson(app_context,"MP");
+        SpannableStringBuilder text_Prayer = new SpannableStringBuilder();
+
+
+
+        try {
+            if (type.equalsIgnoreCase("OT")) {
+                text_Prayer.append(Html.fromHtml("Old Testament: "));
+                text_Prayer.append(Html.fromHtml("<a href=https://www.biblegateway.com/passage/?search="+prayer.getString("OT")+">"+prayer.getString("OT")+"</a>"));
+                text_Prayer.append(Html.fromHtml("<br><br> "));
+            }
+            if (type.equalsIgnoreCase("NT")) {
+                text_Prayer.append(Html.fromHtml("New Testament: "));
+                text_Prayer.append(prayer.getString("NT"));
+                text_Prayer.append(Html.fromHtml("<br><br> "));
+            }
+            if (type.equalsIgnoreCase("Psalm")) {
+                text_Prayer.append(Html.fromHtml("Psalm: "));
+                text_Prayer.append(prayer.getString("Psalm"));
+                text_Prayer.append(Html.fromHtml("<br><br> "));
+            }
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return text_Prayer;
+
+    }
+
+    private SpannableStringBuilder getBibleReadingOld(Context app_context, String type) {
 
         SpannableStringBuilder reading = new SpannableStringBuilder();
         String myData = "";

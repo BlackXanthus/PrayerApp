@@ -1,5 +1,6 @@
 package com.churchinwales.prayer;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
@@ -37,6 +38,7 @@ public class fragment_Lectionary extends Fragment {
     Helper theHelper;
 
     TextView tv_Lectionary;
+    String myLectionary="";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -74,6 +76,7 @@ public class fragment_Lectionary extends Fragment {
         theHelper = new Helper();
     }
 
+    @SuppressLint("NewApi")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -84,7 +87,7 @@ public class fragment_Lectionary extends Fragment {
 
        // tv_Lectionary.append("Hello World");
 
-        getLectionary();
+        updatePage();
 
         return rootView;
 
@@ -97,92 +100,9 @@ public class fragment_Lectionary extends Fragment {
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void getLectionary(){
+    public void updatePage(){
 
-        SpannableStringBuilder contents = new SpannableStringBuilder("");
-
-        try {
-
-            Context app_Context = getActivity().getApplicationContext();
-            String myData = theHelper.readAsset(app_Context,"lectionary-YearTwo.json");
-
-            String season="ADVENT";
-            int weekOfSeason=1;
-            String dayOfWeek="Monday";
-
-            JSONObject jsonRootObject = new JSONObject(myData);
-
-            Calendar cal = Calendar.getInstance();
-            Calendar easter = new Calendar.Builder()
-                    .setDate(2021, 3, 4)
-                    .build();
-
-            if( cal.compareTo(easter) > 0) {
-                contents.append(Html.fromHtml("Date is after Easter<br>"));
-
-             //   cal.add(Calendar.YEAR, - easter.get(Calendar.YEAR));
-            //    cal.add(Calendar.MONTH, - easter.get(Calendar.MONTH));
-            //    cal.add(Calendar.DAY_OF_MONTH, - easter.get(Calendar.DAY_OF_MONTH));
-                contents.append(Html.fromHtml("Current Date: "+cal.get(Calendar.YEAR)+":"+cal.get(Calendar.MONTH)+ ":"+cal.get(Calendar.DAY_OF_MONTH)+"<BR>"));
-
-                long weeks = cal.getTimeInMillis() - easter.getTimeInMillis();
-
-                Calendar newCal = new Calendar.Builder().setInstant(weeks).build();
-
-                int weeksSinceEaster = newCal.get(Calendar.WEEK_OF_YEAR);
-
-                dayOfWeek = newCal.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
-
-               // weeksSinceEaster = weeksSinceEaster / (24 * 60 * 60 * 1000);
-
-                if(weeksSinceEaster <= 6) {
-                    season = "EASTER";
-                    weekOfSeason = weeksSinceEaster;
-                }
-                else {
-                    season = "TRINITY";
-                    weekOfSeason = weeksSinceEaster -6;
-                }
-
-                contents.append(Html.fromHtml("Weeks Since Easter: "+weeksSinceEaster+"<br> Date:"+newCal.get(Calendar.YEAR)+":"+newCal.get(Calendar.MONTH)+ ":"+newCal.get(Calendar.DAY_OF_MONTH)+"<BR>"));
-                contents.append(Html.fromHtml("Season: "+season+"<BR>"));
-            } else {
-                if (cal.compareTo(easter) < 0) {
-                    tv_Lectionary.append("Date is before Easter");
-                }
-            }
-
-            Log.v("TAG","Season:"+season+" Week:"+String.valueOf(weekOfSeason)+ " Day:"+dayOfWeek);
-
-            JSONObject jsonObject = jsonRootObject.optJSONObject(season);
-            JSONObject week =jsonObject.optJSONObject(String.valueOf(weekOfSeason));
-            JSONObject day = week.optJSONObject(dayOfWeek);
-            JSONObject prayer =  day.optJSONObject("MorningPrayer");
-
-            contents.append(Html.fromHtml("<br>"));
-            contents.append(Html.fromHtml("Morning Prayer<br>"));
-            contents.append(Html.fromHtml("Psalm: "+prayer.getString("Psalm")+"<BR>"));
-            contents.append(Html.fromHtml("OT: "+prayer.getString("OT")+"<br>"));
-            contents.append(Html.fromHtml("NT: "+prayer.getString("NT")+"<BR>"));
-            contents.append(Html.fromHtml("<br><br>"));
-
-            prayer =  day.optJSONObject("EveningPrayer");
-
-            contents.append(Html.fromHtml("Evening Prayer<br>"));
-            contents.append(Html.fromHtml("Psalm: "+prayer.getString("Psalm")+"<BR>"));
-            contents.append(Html.fromHtml("OT: "+prayer.getString("OT")+"<br>"));
-            contents.append(Html.fromHtml("NT: "+prayer.getString("NT")+"<BR>"));
-
-            tv_Lectionary.append(contents);
-
-        }
-
-        catch(IOException e) {
-            e.printStackTrace();
-        }
-        catch (JSONException e) {
-            e.printStackTrace();
-        }
-
+        SpannableStringBuilder contents = theHelper.getLectionaryText(getActivity().getApplicationContext());
+        tv_Lectionary.append(contents);
     }
 }
