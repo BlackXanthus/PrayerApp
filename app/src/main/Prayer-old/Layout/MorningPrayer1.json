@@ -14,6 +14,10 @@
       "Location" : "Canticles",
       "File" : ["Venite","Jubilate"]
     },
+    "Bible0" : {
+      "Name": "Bible Reading : Psalm",
+      "Type": "Psalm"
+    },
     "Bible1" : {
       "Name": "Bible Reading : Old Testament",
       "Type": "OT"
