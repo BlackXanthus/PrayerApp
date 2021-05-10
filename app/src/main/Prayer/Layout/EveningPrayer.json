@@ -1,18 +1,22 @@
 {
-	"MorningPrayer" : {
+	"EveningPrayer" : {
 		"Name": {
-			"EN": "Morning Prayer",
-			"CY": "Boreol Gweddi"
+			"EN": "Evening Prayer",
+			"CY": "Hywrol Gweddi"
 		},
 		"Section1": { 
 			"Name": "Opening",
-			"Location": "MorningPrayer/Introductions",
-			"File" : "OpeningB"
+			"Location": "EveningPrayer/Introductions",
+			"File" : "OpeningE"
 		},
 		"Section2": {
 			"Name": "Canticle",
-			"Location" : "Canticles",
-			"File" : ["Venite","Jubilate"]
+			"Location" : "EveningPrayer/Canticles",
+			"File" :"PhosHilaron" 
+		},
+		"Bible0" : {
+			"Name": "Bible Reading : Psalm",
+			"Type": "Psalm"
 		},
 		"Bible1" : {
 			"Name": "Bible Reading : Old Testament",
@@ -20,16 +24,12 @@
 		},
 		"Section3":{
 			"Name":"Gospel Canticle",
-			"Location" : "MorningPrayer/GospelCanticle",
-			"File":"Benedictus"
+			"Location" : "EveningPrayer/Canticles",
+			"File":"Magnificat"
 		},
 		"Bible2" : {
 			"Name": "Bible Reading : New Testament",
 			"Type": "NT"
-		},
-		"Bible3": {
-			"Name" : "Bible Reading: Gospel",
-			"Type": "GP"
 		},
 		"Section4":{
 			"Name": "Affirmation",
@@ -39,7 +39,7 @@
 		"Section5": {
 			"Name":"Intercessions",
 			"Location":"Intercessions",
-			"File" :"IntercessionsMP"
+			"File" :"IntercessionsEP"
 		},
 		"Section6" : {
 			"Name":"Prayer",
@@ -48,18 +48,23 @@
 		},
 		"Section7": {
 			"Name":"Collect For Peace",
-			"Location":"Collects",
-			"File":"Peace"
+			"Location":"Collects/EP",
+			"File":"PeaceEP"
 		},
 		"Section8": {
 			"Name": "Collect For Grace",
-			"Location":"Collects",
-			"File":"Grace1"
+			"Location":"Collects/EP",
+			"File":"Collect3"
 		},
 		"Section9": {
 			"Name": "Conclusion",
 			"Location": "MorningPrayer/Conclusions",
 			"File":"Conclusion1"
+		},
+		"Section91":{
+			"Name":"Dismissal",
+			"Location": "MorningPrayer/Dismissals",
+			"File":"Dismissal1"
 		},
 		"Section10": {
 			"Name": "Copyright",

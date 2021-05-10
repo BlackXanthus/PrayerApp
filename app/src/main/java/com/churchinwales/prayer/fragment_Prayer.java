@@ -142,7 +142,7 @@ public class fragment_Prayer extends Fragment {
 
         spinner.setVisibility(View.VISIBLE);
 
-        this.setUpPrayer();
+        this.setUpPrayer(prayerType);
 
         spinner.setVisibility(View.GONE);
 
@@ -150,7 +150,7 @@ public class fragment_Prayer extends Fragment {
 
     }
 
-    protected void setUpPrayer()
+    protected void setUpPrayer(String prayerType)
     {
         Context app_Context = getActivity().getApplicationContext();
         //Context app_Context = getApplicationContext();
@@ -162,20 +162,21 @@ public class fragment_Prayer extends Fragment {
         try {
                 if(myData == "") {
 
-                    myData = readFile(app_Context, "/Prayer/Layout/MorningPrayer.json");
+                    myData = readFile(app_Context, "/Prayer/Layout/"+prayerType+".json");
 
                     String path = app_Context.getFilesDir().getPath() + "/Prayer/Layout/";
                     Log.d("Files", "Path: " + path);
                     File directory = new File(path);
                     File[] files = directory.listFiles(new FilenameFilter() {
                         public boolean accept(File dir, String name) {
-                            return name.toLowerCase().endsWith(".json");
+                            return name.toLowerCase().endsWith(".json")&&(name.toLowerCase().startsWith(prayerType.toLowerCase()));
                         }
                     });
                     Log.d("Files", "Size: " + files.length);
                     for (int i = 0; i < files.length; i++) {
                         Log.d("Files", "FileName:" + files[i].getName());
                     }
+
                     int min = 0;
                     int max = files.length - 1;
                     int random = (int) Math.floor(Math.random() * (max - min + 1) + min);
@@ -191,7 +192,7 @@ public class fragment_Prayer extends Fragment {
         StringBuilder data = new StringBuilder();
         try {
             JSONObject jsonRootObject = new JSONObject(myData);
-            JSONObject jsonObject = jsonRootObject.optJSONObject("MorningPrayer");
+            JSONObject jsonObject = jsonRootObject.optJSONObject(prayerType);
 
 
 
@@ -263,17 +264,17 @@ public class fragment_Prayer extends Fragment {
 
         try {
             if (type.equalsIgnoreCase("OT")) {
-                text_Prayer.append(Html.fromHtml("Old Testament: "));
+                text_Prayer.append(Html.fromHtml("<br><h2>"+getString(R.string.OTReading)+"</h2>"));
                 text_Prayer.append(Html.fromHtml("<a href=https://www.biblegateway.com/passage/?search="+prayer.getString("OT")+">"+prayer.getString("OT")+"</a>"));
                 text_Prayer.append(Html.fromHtml("<br><br> "));
             }
             if (type.equalsIgnoreCase("NT")) {
-                text_Prayer.append(Html.fromHtml("New Testament: "));
+                text_Prayer.append(Html.fromHtml("<br><h2>"+getString(R.string.NewTestamentReading)+"</h2>"));
                 text_Prayer.append(prayer.getString("NT"));
                 text_Prayer.append(Html.fromHtml("<br><br> "));
             }
             if (type.equalsIgnoreCase("Psalm")) {
-                text_Prayer.append(Html.fromHtml("Psalm: "));
+                text_Prayer.append(Html.fromHtml("<br><h2>Psalm: </h2>"));
                 text_Prayer.append(prayer.getString("Psalm"));
                 text_Prayer.append(Html.fromHtml("<br><br> "));
             }
@@ -331,7 +332,8 @@ public class fragment_Prayer extends Fragment {
             reading.append(Html.fromHtml("<BR>"));
             if (type.equalsIgnoreCase("OT")) {
                 //should be a string resource!
-                reading.append(Html.fromHtml(getString(R.string.OTReading)+":<br>"));
+
+                reading.append(Html.fromHtml("<H2>"+getString(R.string.OTReading)+":</H2><br>"));
                 String newReading = ((JSONObject) myReadings.getJSONObject("lessons")).getString("first");
                 SpannableString string = new SpannableString(newReading);
                 string.setSpan(new URLSpan("https://www.biblegateway.com/passage/?search="+newReading+"&version=NRSV"), 0, newReading.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -342,7 +344,7 @@ public class fragment_Prayer extends Fragment {
 
             if (type.equalsIgnoreCase("NT")) {
                 //should be a string resource!
-                reading.append(Html.fromHtml(getString(R.string.NewTestamentReading)+":<br>"));
+                reading.append(Html.fromHtml("<h2>"+getString(R.string.NewTestamentReading)+":</H2><br>"));
                 reading.append(((JSONObject) myReadings.getJSONObject("lessons")).getString("second"));
             }
 
@@ -438,13 +440,13 @@ public class fragment_Prayer extends Fragment {
         if(language.equals("EN")){
             language = "CY";
             this.setAppLocale("cy");
-            this.setUpPrayer();
+            this.setUpPrayer(prayerType);
 
         }
         else {
             language="EN";
             this.setAppLocale("EN");
-            this.setUpPrayer();
+            this.setUpPrayer(prayerType);
         }
 
         //This is necessary as the app doesn't update 'top level' resources!

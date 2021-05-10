@@ -1,34 +1,21 @@
-package com.churchinwales.prayer;
+package com.churchinwales.prayer.ui;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.annotation.RequiresApi;
-import androidx.fragment.app.Fragment;
-
-import android.text.Html;
 import android.text.SpannableStringBuilder;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import androidx.annotation.RequiresApi;
+import androidx.fragment.app.Fragment;
 
-import java.io.IOException;
-import java.util.Calendar;
-import java.util.Locale;
+import com.churchinwales.prayer.Helper;
+import com.churchinwales.prayer.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link fragment_Lectionary#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class fragment_Lectionary extends Fragment {
+public class fragment_home extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -37,14 +24,14 @@ public class fragment_Lectionary extends Fragment {
 
     Helper theHelper;
 
-    TextView tv_Lectionary;
+    TextView txt_home;
     String myLectionary="";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    public fragment_Lectionary() {
+    public fragment_home() {
         // Required empty public constructor
     }
 
@@ -57,8 +44,8 @@ public class fragment_Lectionary extends Fragment {
      * @return A new instance of fragment nav_Lectionary.
      */
     // TODO: Rename and change types and number of parameters
-    public static fragment_Lectionary newInstance(String param1, String param2) {
-        fragment_Lectionary fragment = new fragment_Lectionary();
+    public static fragment_home newInstance(String param1, String param2) {
+        fragment_home fragment = new fragment_home();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -73,6 +60,7 @@ public class fragment_Lectionary extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
         theHelper = new Helper();
     }
 
@@ -81,29 +69,13 @@ public class fragment_Lectionary extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_lectionary, container, false);
-        getActivity().setTitle(getString(R.string.app_Lectionary));
+        View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
-        tv_Lectionary = (TextView)rootView.findViewById(R.id.txt_LectionaryOutput);
+        txt_home = (TextView)rootView.findViewById(R.id.text_gallery);
 
-       // tv_Lectionary.append("Hello World");
-
-        updatePage();
-
+        txt_home.append("Welcome!");
         return rootView;
 
     }
-
-    /**
-     * NOTE: Month is one digit down, January is month 0, not 1
-     *
-     */
-
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public void updatePage(){
-
-        SpannableStringBuilder contents = theHelper.getLectionaryText(getActivity().getApplicationContext());
-        tv_Lectionary.append(contents);
-    }
 }
+

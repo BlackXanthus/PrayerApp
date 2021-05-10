@@ -22,7 +22,7 @@
     <fragment
         android:id="@+id/fragment_Lectionary"
         android:name="com.churchinwales.prayer.fragment_Lectionary"
-        android:label="fragment_Lectionary"
+        android:label="@string/app_Lectionary"
         tools:layout="@layout/fragment_Lectionary" />
 </navigation>
 

@@ -244,7 +244,7 @@ public class Helper {
         return myData;
     }
 
-    protected String readAsset(Context app_Context, String relativePath) throws IOException
+    public String readAsset(Context app_Context, String relativePath) throws IOException
     {
         String myData = "";
 
