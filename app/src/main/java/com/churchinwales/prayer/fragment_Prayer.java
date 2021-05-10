@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
@@ -54,6 +55,8 @@ public class fragment_Prayer extends Fragment {
     String language="EN";
     JSONArray lectionaryJSON;
     String myData="";
+    String prayerType = "";
+    Helper myHelper;
 
     private ProgressBar spinner;
     // TODO: Rename parameter arguments, choose names that match
@@ -78,11 +81,11 @@ public class fragment_Prayer extends Fragment {
      * @return A new instance of fragment fragment_Prayer.
      */
     // TODO: Rename and change types and number of parameters
-    public static fragment_Prayer newInstance(String param1, String param2) {
+    public static fragment_Prayer newInstance(String param1) {
         fragment_Prayer fragment = new fragment_Prayer();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        //args.putString(ARG_PARAM2, param2);
         //fragment.setArguments(args);
         return fragment;
     }
@@ -90,12 +93,20 @@ public class fragment_Prayer extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /**
         if (getArguments() != null) {
+            /**
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
-        }
 **/
+            prayerType = getArguments().getString("Type");
+            Log.v("TAG",prayerType);
+        }
+        else {
+            prayerType = "MorningPrayer";
+        }
+
+
+        myHelper =new Helper();
         myData ="";
     }
 
@@ -121,7 +132,13 @@ public class fragment_Prayer extends Fragment {
 
         spinner = (ProgressBar) rootView.findViewById(R.id.ProgressBar2);
         //This needs to be a translatable string. TODO
-        tv_Title.setText("Morning Prayer");
+        if(prayerType.equalsIgnoreCase("MorningPrayer")) {
+            tv_Title.setText(getString(R.string.app_MorningPrayer));
+        }
+
+        if(prayerType.equalsIgnoreCase("EveningPrayer")) {
+            tv_Title.setText(getString(R.string.app_EveningPrayer));
+        }
 
         spinner.setVisibility(View.VISIBLE);
 
@@ -236,7 +253,40 @@ public class fragment_Prayer extends Fragment {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private SpannableStringBuilder getBibleReading(Context app_context, String type) {
+
+        JSONObject prayer = myHelper.getLectionaryJson(app_context,"MP");
+        SpannableStringBuilder text_Prayer = new SpannableStringBuilder();
+
+
+
+        try {
+            if (type.equalsIgnoreCase("OT")) {
+                text_Prayer.append(Html.fromHtml("Old Testament: "));
+                text_Prayer.append(Html.fromHtml("<a href=https://www.biblegateway.com/passage/?search="+prayer.getString("OT")+">"+prayer.getString("OT")+"</a>"));
+                text_Prayer.append(Html.fromHtml("<br><br> "));
+            }
+            if (type.equalsIgnoreCase("NT")) {
+                text_Prayer.append(Html.fromHtml("New Testament: "));
+                text_Prayer.append(prayer.getString("NT"));
+                text_Prayer.append(Html.fromHtml("<br><br> "));
+            }
+            if (type.equalsIgnoreCase("Psalm")) {
+                text_Prayer.append(Html.fromHtml("Psalm: "));
+                text_Prayer.append(prayer.getString("Psalm"));
+                text_Prayer.append(Html.fromHtml("<br><br> "));
+            }
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return text_Prayer;
+
+    }
+
+    private SpannableStringBuilder getBibleReadingOld(Context app_context, String type) {
 
         SpannableStringBuilder reading = new SpannableStringBuilder();
         String myData = "";
