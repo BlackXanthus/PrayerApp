@@ -121,6 +121,9 @@ public class MainActivity extends AppCompatActivity implements
         if(id== R.id.nav_Lectionary) {
             destination = R.id.fragment_Lectionary;
         }
+        if(id == R.id.fragment_oremus){
+            destination = R.id.fragment_oremus;
+        }
 
 
         Navigation.findNavController(this,R.id.nav_host_fragment).navigate(destination,args);
