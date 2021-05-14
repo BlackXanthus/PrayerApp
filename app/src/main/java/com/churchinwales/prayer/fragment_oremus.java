@@ -4,11 +4,15 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.Html;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.churchinwales.prayer.ui.Result;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -17,6 +21,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -25,13 +32,15 @@ import javax.net.ssl.HttpsURLConnection;
  * Use the {@link fragment_oremus#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class fragment_oremus extends Fragment {
+public class fragment_oremus extends Fragment implements app_BiblePericope_Callback<String> {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    private ExecutorService executorService = Executors.newFixedThreadPool(2);
+    Executor myExecutor;
     TextView txt_Bible;
 
     // TODO: Rename and change types of parameters
@@ -66,6 +75,7 @@ public class fragment_oremus extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
     }
 
@@ -76,6 +86,7 @@ public class fragment_oremus extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_oremus, container, false);
 
         txt_Bible = (TextView) rootView.findViewById(R.id.txt_Bible);
+        txt_Bible.setMovementMethod(new ScrollingMovementMethod());
 
         getOnlineBibleReading();
 
@@ -84,9 +95,20 @@ public class fragment_oremus extends Fragment {
 
     public void getOnlineBibleReading() {
 
-        new HttpReqTask().execute();
+        HttpReqTask myTask = new HttpReqTask(executorService);
+        txt_Bible.setText("... loading");
+       myTask.makeBibleRequest("Mark 2:1-22", this);
     }
 
+    public void onComplete(Result<String> result)
+    {
+        if(result instanceof Result.Success) {
+            txt_Bible.setText(Html.fromHtml(((Result.Success<String>) result).data));
+        } else {
+            txt_Bible.setText("There was an error");
+        }
+
+    }
 
 
 }
