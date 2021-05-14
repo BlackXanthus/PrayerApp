@@ -56,9 +56,24 @@ public class HttpReqTask  {
 
             String line = "";
 
+            Boolean ignore = true;
+
             while ((line = rd.readLine()) != null) {
+
                 Log.v("TAG", line);
-                myData = myData+line;
+
+                if(line.toLowerCase().startsWith("<sup")) {
+                    ignore = false;
+                }
+                if(line.toLowerCase().startsWith("<cite")) {
+                        myData = myData+"<br><br>";
+                        ignore=false;
+                }
+
+                if(!ignore) {
+                    myData = myData + line;
+                    ignore = true;
+                }
             }
 
             myResult = new Result.Success<String>(myData);

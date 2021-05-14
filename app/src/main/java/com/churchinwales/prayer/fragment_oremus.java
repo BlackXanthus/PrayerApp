@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import android.text.Html;
+import android.text.SpannableStringBuilder;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.churchinwales.prayer.ui.Result;
+
+import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -95,15 +98,25 @@ public class fragment_oremus extends Fragment implements app_BiblePericope_Callb
 
     public void getOnlineBibleReading() {
 
+        Helper myHelper = new Helper();
+        JSONObject JSONObj_prayer = myHelper.getLectionaryJson(getContext(),"MorningPrayer");
+
         HttpReqTask myTask = new HttpReqTask(executorService);
         txt_Bible.setText("... loading");
-       myTask.makeBibleRequest("Mark 2:1-22", this);
+        try {
+            txt_Bible.append(new SpannableStringBuilder(Html.fromHtml("<H2>"+getString(R.string.app_MorningPrayer)+" "+getString(R.string.NewTestamentReading)+ ":"+JSONObj_prayer.getString("NT")+" </H2>",Html.FROM_HTML_OPTION_USE_CSS_COLORS)));
+            myTask.makeBibleRequest(JSONObj_prayer.getString("NT"), this);
+        }
+        catch(Exception e) {
+            txt_Bible.append("JSON Error");
+        }
+
     }
 
     public void onComplete(Result<String> result)
     {
         if(result instanceof Result.Success) {
-            txt_Bible.setText(Html.fromHtml(((Result.Success<String>) result).data));
+            txt_Bible.setText(new SpannableStringBuilder(Html.fromHtml(((Result.Success<String>) result).data,Html.FROM_HTML_OPTION_USE_CSS_COLORS)));
         } else {
             txt_Bible.setText("There was an error");
         }

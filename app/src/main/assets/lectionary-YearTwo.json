@@ -2226,13 +2226,13 @@
                 "Name": "Friday",
                 "MorningPrayer": {
                     "Psalm": "Ps 31",
-                    "OT": "Joshua 24 1-28",
-                    "NT": "Luke 12 41-48"
+                    "OT": "Joshua:24 1-28",
+                    "NT": "Luke 12:41-48"
                 },
                 "EveningPrayer": {
                     "Psalm": "Ps 35",
                     "OT": "a) 2 Chr. 35.2 - 36.1 b) Job 17 3-end",
-                    "NT": "Romans 8 18-30"
+                    "NT": "Romans 8:18-30"
                 }
             },
             "Saturday": {
