@@ -1,17 +1,13 @@
 package com.churchinwales.prayer;
 
-import android.os.AsyncTask;
 import android.text.TextUtils;
 import android.util.Log;
-
-import com.churchinwales.prayer.ui.Result;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -75,8 +71,12 @@ public class HttpReqTask  {
                     ignore = true;
                 }
             }
+            if(myData.equals("")) {
+                myData = "Error getting bible reading for:"+pericope;
+            }
 
-            myResult = new Result.Success<String>(myData);
+            myResult = new Result.Success<String>(pericope,myData);
+
 
 
         } catch (Exception e) {

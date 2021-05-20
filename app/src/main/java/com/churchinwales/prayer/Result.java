@@ -1,4 +1,4 @@
-package com.churchinwales.prayer.ui;
+package com.churchinwales.prayer;
 
 /**
  * A Barebones class to hold the result of the HTML request
@@ -11,8 +11,10 @@ public abstract class Result<T> {
 
     public static final class Success<T> extends Result<T> {
         public T data;
+        public T type;
 
-        public Success(T data) {
+        public Success(T type, T data) {
+            this.type= type;
             this.data = data;
         }
     }

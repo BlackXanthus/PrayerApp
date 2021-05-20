@@ -3,39 +3,28 @@ package com.churchinwales.prayer;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 
 import android.text.Html;
 import android.text.SpannableStringBuilder;
 import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.churchinwales.prayer.ui.Result;
-
 import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
-import javax.net.ssl.HttpsURLConnection;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link fragment_oremus#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class fragment_oremus extends Fragment implements app_BiblePericope_Callback<String> {
+public class fragment_oremus extends Fragment implements app_BiblePericope_Callback<String>, Observer {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -45,6 +34,7 @@ public class fragment_oremus extends Fragment implements app_BiblePericope_Callb
     private ExecutorService executorService = Executors.newFixedThreadPool(2);
     Executor myExecutor;
     TextView txt_Bible;
+    BibleReadingsViewModel br_ViewModel = new BibleReadingsViewModel();
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -90,6 +80,7 @@ public class fragment_oremus extends Fragment implements app_BiblePericope_Callb
 
         txt_Bible = (TextView) rootView.findViewById(R.id.txt_Bible);
         txt_Bible.setMovementMethod(new ScrollingMovementMethod());
+        br_ViewModel.getObservable().observe(getViewLifecycleOwner(), this);
 
         getOnlineBibleReading();
 
@@ -104,11 +95,15 @@ public class fragment_oremus extends Fragment implements app_BiblePericope_Callb
         HttpReqTask myTask = new HttpReqTask(executorService);
         txt_Bible.setText("... loading");
         try {
-            txt_Bible.append(new SpannableStringBuilder(Html.fromHtml("<H2>"+getString(R.string.app_MorningPrayer)+" "+getString(R.string.NewTestamentReading)+ ":"+JSONObj_prayer.getString("NT")+" </H2>",Html.FROM_HTML_OPTION_USE_CSS_COLORS)));
+            //br_ViewModel.postAppendValue(new SpannableStringBuilder(Html.fromHtml("<H2>"+getString(R.string.app_MorningPrayer)+" "+getString(R.string.NewTestamentReading)+ ":"+JSONObj_prayer.getString("NT")+" </H2>",Html.FROM_HTML_OPTION_USE_CSS_COLORS)));
+            br_ViewModel.setValue("NTIntro","New Testament Reading");
             myTask.makeBibleRequest(JSONObj_prayer.getString("NT"), this);
+            br_ViewModel.setValue("OTIntro","Old Testament Reading");
+            myTask.makeBibleRequest(JSONObj_prayer.getString("OT"), this);
         }
         catch(Exception e) {
             txt_Bible.append("JSON Error");
+            e.printStackTrace();
         }
 
     }
@@ -116,12 +111,17 @@ public class fragment_oremus extends Fragment implements app_BiblePericope_Callb
     public void onComplete(Result<String> result)
     {
         if(result instanceof Result.Success) {
-            txt_Bible.setText(new SpannableStringBuilder(Html.fromHtml(((Result.Success<String>) result).data,Html.FROM_HTML_OPTION_USE_CSS_COLORS)));
+          //  br_ViewModel.setValue(new SpannableStringBuilder(Html.fromHtml(((Result.Success<String>) result).data,Html.FROM_HTML_OPTION_USE_CSS_COLORS)));
+            br_ViewModel.postValue((((Result.Success<String>)result).type),(((Result.Success<String>)result).data));
         } else {
-            txt_Bible.setText("There was an error");
+            br_ViewModel.postValue("Error","There was an error");
         }
 
     }
 
 
+    @Override
+    public void onChanged(Object o) {
+        txt_Bible.setText(br_ViewModel.getPage());
+    }
 }
