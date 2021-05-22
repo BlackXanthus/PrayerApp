@@ -90,6 +90,12 @@ public class fragment_oremus extends Fragment implements app_BiblePericope_Callb
     public void getOnlineBibleReading() {
 
         Helper myHelper = new Helper();
+        try {
+            JSONObject JSOnObj_order = new JSONObject(myHelper.readAsset(getContext(), "Order.json"));
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
         JSONObject JSONObj_prayer = myHelper.getLectionaryJson(getContext(),"MorningPrayer");
 
         HttpReqTask myTask = new HttpReqTask(executorService);
