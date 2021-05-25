@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Collection;
@@ -21,14 +22,16 @@ public class BibleReadingsViewModel extends ViewModel {
 
     MutableLiveData<Map> document = new MutableLiveData<Map>();
     JSONObject jsonobj_Order = new JSONObject();
+    String type = "Order";
     Boolean order = false;
 
-    public BibleReadingsViewModel(JSONObject theOrder)
+    public BibleReadingsViewModel(JSONObject theOrder, String JSONSubtype)
     {
         super();
         Map temp = Collections.synchronizedMap(new HashMap());
         document.setValue(temp);
         jsonobj_Order = theOrder;
+        type = JSONSubtype;
         order = true;
     }
 
@@ -78,6 +81,23 @@ public class BibleReadingsViewModel extends ViewModel {
         Log.v("TAG", "Getting page...");
 
         if(order) {
+
+                JSONObject jsonOrder = jsonobj_Order.optJSONObject(type);
+                Iterator keys = jsonOrder.keys();
+
+                while (keys.hasNext()) {
+                    Object key = keys.next();
+
+                    try {
+                        String name = jsonOrder.getString((String) key);
+
+                        page = page + document.getValue().get((String)key);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
 
         } else {
             Set s = document.getValue().keySet();

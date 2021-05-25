@@ -27,7 +27,7 @@ public class HttpReqTask  {
     }
 
 
-    protected Result<String> request(String pericope) {
+    protected Result<String> request(String pericope, String section) {
         URLConnection urlConnection = null;
         HttpURLConnection https = null;
         String myData ="";
@@ -58,8 +58,11 @@ public class HttpReqTask  {
 
                 Log.v("TAG", line);
 
-                if(line.toLowerCase().startsWith("<sup")) {
+                if(line.toLowerCase().startsWith("<div class=\"bibletext\">")) {
                     ignore = false;
+                }
+                if(line.toLowerCase().startsWith("</div>")) {
+                    ignore=true;
                 }
                 if(line.toLowerCase().startsWith("<cite")) {
                         myData = myData+"<br><br>";
@@ -68,14 +71,14 @@ public class HttpReqTask  {
 
                 if(!ignore) {
                     myData = myData + line;
-                    ignore = true;
+
                 }
             }
             if(myData.equals("")) {
                 myData = "Error getting bible reading for:"+pericope;
             }
 
-            myResult = new Result.Success<String>(pericope,myData);
+            myResult = new Result.Success<String>(section,myData);
 
 
 
@@ -92,12 +95,12 @@ public class HttpReqTask  {
         return myResult;
     }
 
-    public void makeBibleRequest(final String pericope,app_BiblePericope_Callback<String> callback) {
+    public void makeBibleRequest(final String pericope,String section, app_BiblePericope_Callback<String> callback) {
         executor.execute(new Runnable() {
             @Override
             public void run() {
                 try {
-                    Result<String> result = request(pericope);
+                    Result<String> result = request(pericope, section);
                     callback.onComplete(result);
                 }
                 catch(Exception e) {
