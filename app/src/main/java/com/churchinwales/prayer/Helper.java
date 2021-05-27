@@ -133,7 +133,7 @@ public class Helper {
 
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
+
     public JSONObject getLectionaryJson(Context app_Context, String prayerTime){
 
         JSONObject prayer = new JSONObject();
@@ -195,7 +195,7 @@ public class Helper {
 
 
 
-            if(prayerTime == "MP") {
+            if((prayerTime == "MP") || (prayerTime.equalsIgnoreCase("morningprayer"))) {
                 prayer = day.optJSONObject("MorningPrayer");
             }
             else {
@@ -244,7 +244,7 @@ public class Helper {
         return myData;
     }
 
-    protected String readAsset(Context app_Context, String relativePath) throws IOException
+    public String readAsset(Context app_Context, String relativePath) throws IOException
     {
         String myData = "";
 
