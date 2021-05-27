@@ -27,7 +27,7 @@
     <fragment
         android:id="@+id/fragment_oremus"
         android:name="com.churchinwales.prayer.fragment_oremus"
-        android:label="fragment_oremus"
+        android:label="@string/app_Oremus"
         tools:layout="@layout/fragment_oremus" />
 </navigation>
 

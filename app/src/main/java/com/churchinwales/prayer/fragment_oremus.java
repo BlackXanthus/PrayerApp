@@ -90,16 +90,7 @@ public class fragment_oremus extends Fragment implements app_BiblePericope_Callb
 
         txt_Bible = (TextView) rootView.findViewById(R.id.txt_Bible);
         txt_Bible.setMovementMethod(new ScrollingMovementMethod());
-        try {
-            Helper myHelper = new Helper();
-            JSONObject theOrder = new JSONObject(myHelper.readAsset(getContext(),"Order.json"));
-            br_ViewModel = new BibleReadingsViewModel(theOrder, "Order");
-        }
-        catch(Exception e) {
-            Log.v("TAG", "Failed to load the order");
-            e.printStackTrace();
-            br_ViewModel = new BibleReadingsViewModel();
-        }
+        br_ViewModel = new BibleReadingsViewModel();
 
         br_ViewModel.getObservable().observe(getViewLifecycleOwner(), this);
 

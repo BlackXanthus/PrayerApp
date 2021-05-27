@@ -1,12 +1,15 @@
 package com.churchinwales.prayer;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.core.content.PermissionChecker;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
@@ -25,6 +28,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -62,6 +66,7 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
     Helper myHelper;
     BibleReadingsViewModel br_ViewModel= new BibleReadingsViewModel();
     private ExecutorService executorService = Executors.newFixedThreadPool(2);
+    private static final int REQUEST_CODE_ASK_PERMISSONS =1;
 
 
     private ProgressBar spinner;
@@ -199,7 +204,7 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
         StringBuilder data = new StringBuilder();
         try {
             JSONObject jsonRootObject = new JSONObject(myData);
-            br_ViewModel = new BibleReadingsViewModel(jsonRootObject,prayerType);
+
             br_ViewModel.getObservable().observe(getViewLifecycleOwner(), this);
             JSONObject jsonObject = jsonRootObject.optJSONObject(prayerType);
 
@@ -266,8 +271,6 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
         //myDocument.append(confessional());
 
         tv_Prayer.setText(myDocument, TextView.BufferType.NORMAL);
-
-
     }
 
     private void getBibleReading(Context app_context, String type, String section) {
@@ -278,11 +281,6 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
         Helper myHelper = new Helper();
         HttpReqTask myTask = new HttpReqTask(executorService);
 
-        /**
-        br_ViewModel.setValue("OTIntro", "<br><br><H1>Old Testament Reading</H1><br><br>");
-        br_ViewModel.setValue("OTTitle", "<H2>" + prayer.getString("OT") + "</H2><br>");
-        br_ViewModel.setValue("OTVerse", "..." + getString(R.string.app_loading));
-         **/
         try {
             if(type.equalsIgnoreCase("OT")) {
                br_ViewModel.setValue(type+"_Name","<br><br><h1>"+getString(R.string.OTReading)+"</h1><br>");
@@ -296,7 +294,12 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
 
             br_ViewModel.setValue(type+"_Title","<h2>"+prayer.getString(type)+"</h2>");
             br_ViewModel.setValue(section,".."+getString(R.string.app_loading));
-            myTask.makeBibleRequest(prayer.getString(type), section, this);
+            if(checkPermissions()) {
+                myTask.makeBibleRequest(prayer.getString(type), section, this);
+            }
+            else {
+                br_ViewModel.setValue(section,"... No internet permission granted");
+            }
             br_ViewModel.setValue(type+"_Spacing","<BR><BR>");
         }
         catch(Exception e) {
@@ -311,7 +314,6 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
 
         JSONObject prayer = myHelper.getLectionaryJson(app_context,"MP");
         SpannableStringBuilder text_Prayer = new SpannableStringBuilder();
-
 
 
         try {
@@ -522,5 +524,21 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
         tv_Prayer.setText(Html.fromHtml(br_ViewModel.getPage(),Html.FROM_HTML_SEPARATOR_LINE_BREAK_HEADING));
 
     }
+
+    public boolean checkPermissions()
+    {
+        if(PermissionChecker.checkSelfPermission(getContext(), Manifest.permission.INTERNET) == PermissionChecker.PERMISSION_GRANTED ) {
+            return true;
+        } else {
+            String[] permissionArrays = new String[]{Manifest.permission.INTERNET};
+            requestPermissions(permissionArrays, REQUEST_CODE_ASK_PERMISSONS);
+        }
+        return false;
+    }
+
+    public void onRequestPermissions(int requestCode, @NonNull String permissions[]) {
+        Toast.makeText(getContext(), "Permission Requested", Toast.LENGTH_SHORT).show();
+    }
+
 
 }

@@ -41,8 +41,10 @@ public class BibleReadingsViewModel extends ViewModel {
     public BibleReadingsViewModel()
     {
         super();
+        jsonobj_Order = new JSONObject();
         Map temp = Collections.synchronizedMap(new HashMap());
         document.setValue(temp);
+        order = true;
     }
 
     public String getValue(@NotNull String key) {
