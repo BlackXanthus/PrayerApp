@@ -1,5 +1,6 @@
 package com.churchinwales.prayer;
 
+import android.Manifest;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -94,6 +95,10 @@ public class HttpReqTask  {
 
         return myResult;
     }
+
+
+
+
 
     public void makeBibleRequest(final String pericope,String section, app_BiblePericope_Callback<String> callback) {
         executor.execute(new Runnable() {

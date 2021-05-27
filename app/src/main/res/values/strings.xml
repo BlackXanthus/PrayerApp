@@ -25,4 +25,5 @@
     <string name="app_Lectionary">Lectionary</string>
     <string name="app_Oremus" translatable="false">Oremus Bible Readings</string>
     <string name="app_loading">loading</string>
+    <string name="Psalm" translatable="false">Psalm</string>
 </resources>

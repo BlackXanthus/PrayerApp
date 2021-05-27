@@ -1,7 +1,10 @@
 package com.churchinwales.prayer;
 
+import android.Manifest;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.core.content.PermissionChecker;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 
@@ -14,6 +17,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONObject;
 
@@ -32,6 +38,8 @@ public class fragment_oremus extends Fragment implements app_BiblePericope_Callb
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    //This should really be somewhere in the Android System, but I couldn't find it!
+    private static final int REQUEST_CODE_ASK_PERMISSONS =1;
 
     private ExecutorService executorService = Executors.newFixedThreadPool(2);
     Executor myExecutor;
@@ -102,35 +110,67 @@ public class fragment_oremus extends Fragment implements app_BiblePericope_Callb
 
     public void getOnlineBibleReading() {
 
-        Helper myHelper = new Helper();
-        try {
-            JSONObject JSOnObj_order = new JSONObject(myHelper.readAsset(getContext(), "Order.json"));
-        }
-        catch(Exception e) {
-            e.printStackTrace();
-        }
-        JSONObject JSONObj_prayer = myHelper.getLectionaryJson(getContext(),"MorningPrayer");
+        if(checkPermissions()) {
+            Helper myHelper = new Helper();
+            try {
+                JSONObject JSOnObj_order = new JSONObject(myHelper.readAsset(getContext(), "Order.json"));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            JSONObject JSONObj_prayer = myHelper.getLectionaryJson(getContext(), "MorningPrayer");
 
-        HttpReqTask myTask = new HttpReqTask(executorService);
-        txt_Bible.setText("... loading");
-        try {
-            //br_ViewModel.postAppendValue(new SpannableStringBuilder(Html.fromHtml("<H2>"+getString(R.string.app_MorningPrayer)+" "+getString(R.string.NewTestamentReading)+ ":"+JSONObj_prayer.getString("NT")+" </H2>",Html.FROM_HTML_OPTION_USE_CSS_COLORS)));
+            HttpReqTask myTask = new HttpReqTask(executorService);
+            txt_Bible.setText("... loading");
+            try {
+                //br_ViewModel.postAppendValue(new SpannableStringBuilder(Html.fromHtml("<H2>"+getString(R.string.app_MorningPrayer)+" "+getString(R.string.NewTestamentReading)+ ":"+JSONObj_prayer.getString("NT")+" </H2>",Html.FROM_HTML_OPTION_USE_CSS_COLORS)));
 
-            br_ViewModel.setValue("OTIntro","<br><br><H1>Old Testament Reading</H1><br><br>");
-            br_ViewModel.setValue("OTTitle","<H2>"+JSONObj_prayer.getString("OT")+"</H2><br>");
-            br_ViewModel.setValue("OTVerse","..."+getString(R.string.app_loading));
-            myTask.makeBibleRequest(JSONObj_prayer.getString("OT"), "OTVerse",this);
-            br_ViewModel.setValue("NTIntro","<H1>New Testament Reading</H1><br>");
-            br_ViewModel.setValue("NTTitle","<H2>"+JSONObj_prayer.getString("NT")+"</H2><br>");
-            br_ViewModel.setValue("NTVerse","..."+getString(R.string.app_loading));
-            myTask.makeBibleRequest(JSONObj_prayer.getString("NT"),"NTVerse",this);
+                br_ViewModel.setValue("OTIntro", "<br><br><H1>Old Testament Reading - Morning Prayer</H1><br><br>");
+                br_ViewModel.setValue("OTTitle", "<H2>" + JSONObj_prayer.getString("OT") + "</H2><br>");
+                br_ViewModel.setValue("OTVerse", "..." + getString(R.string.app_loading));
+                myTask.makeBibleRequest(JSONObj_prayer.getString("OT"), "OTVerse", this);
+                br_ViewModel.setValue("NTIntro", "<H1>New Testament Reading - Morning Prayer</H1><br>");
+                br_ViewModel.setValue("NTTitle", "<H2>" + JSONObj_prayer.getString("NT") + "</H2><br>");
+                br_ViewModel.setValue("NTVerse", "..." + getString(R.string.app_loading));
+                myTask.makeBibleRequest(JSONObj_prayer.getString("NT"), "NTVerse", this);
+
+                JSONObj_prayer = myHelper.getLectionaryJson(getContext(), "EveningPrayer");
+
+                br_ViewModel.setValue("EP_OTIntro", "<br><br><H1>Old Testament Reading - Evening Prayer</H1><br><br>");
+                br_ViewModel.setValue("EP_OTTitle", "<H2>" + JSONObj_prayer.getString("OT") + "</H2><br>");
+                br_ViewModel.setValue("EP_OTVerse", "..." + getString(R.string.app_loading));
+                myTask.makeBibleRequest(JSONObj_prayer.getString("OT"), "EP_OTVerse", this);
+                br_ViewModel.setValue("EP_NTIntro", "<H1>New Testament Reading -Evening Prayer</H1><br>");
+                br_ViewModel.setValue("EP_NTTitle", "<H2>" + JSONObj_prayer.getString("NT") + "</H2><br>");
+                br_ViewModel.setValue("EP_NTVerse", "..." + getString(R.string.app_loading));
+                myTask.makeBibleRequest(JSONObj_prayer.getString("NT"), "EP_NTVerse", this);
+
+            } catch (Exception e) {
+                txt_Bible.append("JSON Error");
+                e.printStackTrace();
+            }
         }
-        catch(Exception e) {
-            txt_Bible.append("JSON Error");
-            e.printStackTrace();
+        else {
+            br_ViewModel.setValue("NTVerse","... no permission to access the internet");
+            br_ViewModel.setValue("OTVerse","... no permission to access the internet");
         }
 
     }
+
+    public boolean checkPermissions()
+    {
+        if(PermissionChecker.checkSelfPermission(getContext(), Manifest.permission.INTERNET) == PermissionChecker.PERMISSION_GRANTED ) {
+            return true;
+        } else {
+            String[] permissionArrays = new String[]{Manifest.permission.INTERNET};
+            requestPermissions(permissionArrays, REQUEST_CODE_ASK_PERMISSONS);
+        }
+        return false;
+    }
+
+    public void onRequestPermissions(int requestCode, @NonNull String permissions[]) {
+        Toast.makeText(getContext(), "Permission Requested", Toast.LENGTH_SHORT).show();
+    }
+
 
     public void onComplete(Result<String> result)
     {

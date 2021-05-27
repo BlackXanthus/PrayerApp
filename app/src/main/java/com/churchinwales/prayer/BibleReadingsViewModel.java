@@ -30,7 +30,9 @@ public class BibleReadingsViewModel extends ViewModel {
         super();
         Map temp = Collections.synchronizedMap(new HashMap());
         document.setValue(temp);
-        jsonobj_Order = theOrder;
+        //jsonobj_Order = theOrder;
+        jsonobj_Order = new JSONObject();
+
         type = JSONSubtype;
         order = true;
     }
@@ -50,6 +52,12 @@ public class BibleReadingsViewModel extends ViewModel {
     public void setValue(String key, String value)
     {
         Map temp = document.getValue();
+        try{
+            jsonobj_Order.put(key,value);
+        }
+        catch(JSONException e) {
+            e.printStackTrace();
+        }
         temp.put(key,value);
         document.setValue(temp);
     }
@@ -67,6 +75,12 @@ public class BibleReadingsViewModel extends ViewModel {
     {
         Map temp = document.getValue();
         temp.put(key,value);
+        try{
+            jsonobj_Order.put(key,value);
+        }
+        catch(JSONException e) {
+            e.printStackTrace();
+        }
         document.postValue(temp);
     }
 
@@ -82,7 +96,8 @@ public class BibleReadingsViewModel extends ViewModel {
 
         if(order) {
 
-                JSONObject jsonOrder = jsonobj_Order.optJSONObject(type);
+                //JSONObject jsonOrder = jsonobj_Order.optJSONObject(type);
+                JSONObject jsonOrder = jsonobj_Order;
                 Iterator keys = jsonOrder.keys();
 
                 while (keys.hasNext()) {

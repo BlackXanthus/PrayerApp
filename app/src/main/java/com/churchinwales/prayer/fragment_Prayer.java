@@ -284,8 +284,20 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
         br_ViewModel.setValue("OTVerse", "..." + getString(R.string.app_loading));
          **/
         try {
+            if(type.equalsIgnoreCase("OT")) {
+               br_ViewModel.setValue(type+"_Name","<br><br><h1>"+getString(R.string.OTReading)+"</h1><br>");
+            }
+            if(type.equalsIgnoreCase("NT")) {
+                br_ViewModel.setValue(type+"_Name","<br><br><h1>"+getString(R.string.NewTestamentReading)+"</h1><br>");
+            }
+            if(type.equalsIgnoreCase("Psalm")) {
+                br_ViewModel.setValue(type+"_Name","<h1>"+getString(R.string.Psalm)+"</h1><br>");
+            }
+
+            br_ViewModel.setValue(type+"_Title","<h2>"+prayer.getString(type)+"</h2>");
             br_ViewModel.setValue(section,".."+getString(R.string.app_loading));
             myTask.makeBibleRequest(prayer.getString(type), section, this);
+            br_ViewModel.setValue(type+"_Spacing","<BR><BR>");
         }
         catch(Exception e) {
             e.printStackTrace();
