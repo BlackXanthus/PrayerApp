@@ -26,4 +26,5 @@
     <string name="app_Oremus" translatable="false">Oremus Bible Readings</string>
     <string name="app_loading">loading</string>
     <string name="Psalm" translatable="false">Psalm</string>
+    <string name="app_JSWORD">JSWORD</string>
 </resources>
