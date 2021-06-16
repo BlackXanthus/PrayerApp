@@ -28,7 +28,8 @@ while waiting for it to return</li>
 <li>Fixed the 'Lords Prayer' to be the one from the Church In Wales' Eucharist book.</li>
 <li>Bible readings provided as part of Morning/Evening Prayer (for the most part)</li>
 <li>Improved the scrolling behaviour of the Prayer, Oremus, and Home windows. </li>
-<li>Fixed the Oremus fragment window title.
+<li>Fixed the Oremus fragment window title.</li>
+<li>Fixed Missing Items in Morning Prayer Layout 2</li>
 </ul>
 
 
