@@ -28,5 +28,9 @@
         android:id="@+id/fragment_oremus"
         android:icon="@drawable/ic_menu_camera"
         android:title="@string/app_Oremus" />
+        <item
+            android:id="@+id/fragment_JSWORD"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/app_JSWORD" />
     </group>
 </menu>

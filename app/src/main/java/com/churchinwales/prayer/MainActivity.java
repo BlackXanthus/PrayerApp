@@ -129,6 +129,10 @@ public class MainActivity extends AppCompatActivity implements
             destination = R.id.fragment_oremus;
         }
 
+        if(id == R.id.fragment_JSWORD) {
+            destination = R.id.fragment_JSWORD;
+        }
+
 
         Navigation.findNavController(this,R.id.nav_host_fragment).navigate(destination,args);
 
