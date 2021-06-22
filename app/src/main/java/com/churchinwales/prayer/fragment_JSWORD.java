@@ -20,9 +20,11 @@ import org.crosswire.jsword.book.Book;
 import org.crosswire.jsword.book.BookFilters;
 import org.crosswire.jsword.book.BookMetaData;
 import org.crosswire.jsword.book.Books;
+import org.crosswire.jsword.book.sword.SwordBookPath;
 import org.crosswire.jsword.passage.NoSuchKeyException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
@@ -117,8 +119,13 @@ public class fragment_JSWORD extends Fragment implements app_BiblePericope_Callb
     }
 
     public void getJSWORDBible() {
+        File location = new File(String.valueOf(getContext().getCacheDir()));
+        File[] myFile = {location};
+        //myFile[0] = location;
+        SwordBookPath.getAugmentPath(myFile);
         List<Book> lbmds = Books.installed().getBooks(BookFilters.getOnlyBibles());
         int numBibles = lbmds.size();
+        Log.v("TAG","Total Bibles Found:"+numBibles);
         bibles = new Book[numBibles];
         bmds = new BookMetaData[numBibles];
         gen11 = new Key[numBibles];

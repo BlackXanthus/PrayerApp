@@ -133,7 +133,12 @@ public class Helper {
 
     }
 
-
+    /**
+     * This should through an exception when there is no relevant Bible Reading!!!!
+     * @param app_Context
+     * @param prayerTime
+     * @return
+     */
     public JSONObject getLectionaryJson(Context app_Context, String prayerTime){
 
         JSONObject prayer = new JSONObject();
@@ -194,8 +199,8 @@ public class Helper {
             JSONObject day = week.optJSONObject(dayOfWeek);
 
 
-
-            if((prayerTime == "MP") || (prayerTime.equalsIgnoreCase("morningprayer"))) {
+            Log.v("TAG", "Prayer Time:"+prayerTime);
+            if((prayerTime.equalsIgnoreCase("MP")) || (prayerTime.equalsIgnoreCase("morningprayer"))) {
                 prayer = day.optJSONObject("MorningPrayer");
             }
             else {
@@ -207,6 +212,9 @@ public class Helper {
             e.printStackTrace();
         }
         catch (JSONException e) {
+            e.printStackTrace();
+        }
+        catch(NullPointerException e){
             e.printStackTrace();
         }
 

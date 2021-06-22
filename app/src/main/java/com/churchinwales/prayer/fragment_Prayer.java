@@ -253,6 +253,7 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
                 if(((String)key).startsWith("Bible")) {
                     JSONObject data_JSOB = jsonObject.getJSONObject((String) key);
                     getBibleReading(app_Context,data_JSOB.getString("Type").toString(),(String)key);
+                    //getBibleReading(app_Context,this.prayerType,(String)key);
                     /**
                     SpannableStringBuilder bible= getBibleReading(app_Context,data_JSOB.getString("Type"));
                     myDocument.append(bible);
@@ -272,10 +273,10 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
 
         tv_Prayer.setText(myDocument, TextView.BufferType.NORMAL);
     }
-
+    
     private void getBibleReading(Context app_context, String type, String section) {
 
-        JSONObject prayer = myHelper.getLectionaryJson(app_context, type);
+        JSONObject prayer = myHelper.getLectionaryJson(app_context, this.prayerType);
         SpannableStringBuilder text_Prayer = new SpannableStringBuilder();
 
         Helper myHelper = new Helper();

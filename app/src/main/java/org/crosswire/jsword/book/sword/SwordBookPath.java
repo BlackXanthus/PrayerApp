@@ -74,8 +74,9 @@ public final class SwordBookPath {
      * Retrieve the additional locations that Sword may hold Books.
      * 
      * @return The new Sword directory
+     * @param myFile
      */
-    public static File[] getAugmentPath() {
+    public static File[] getAugmentPath(File[] myFile) {
         return augmentPath.clone();
     }
 
