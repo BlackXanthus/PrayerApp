@@ -84,7 +84,7 @@ public final class Job implements Progress {
         }
 
         // Report that the Job has started.
-        JobManager.fireWorkProgressed(this);
+        if(notifyUser) JobManager.fireWorkProgressed(this);
     }
 
     /* (non-Javadoc)
@@ -119,7 +119,7 @@ public final class Job implements Progress {
         }
 
         // Report that the Job has started.
-        JobManager.fireWorkProgressed(this);
+        if(notifyUser) JobManager.fireWorkProgressed(this);
     }
 
     /* (non-Javadoc)
@@ -193,7 +193,7 @@ public final class Job implements Progress {
             }
         }
 
-        JobManager.fireWorkProgressed(this);
+        if(notifyUser) JobManager.fireWorkProgressed(this);
     }
 
     /* (non-Javadoc)
@@ -208,14 +208,17 @@ public final class Job implements Progress {
             workUnits += step;
 
             int oldPercent = percent;
-            // use long in arithmetic to avoid integer overflow 
-            percent = (int) (100L * workUnits / totalUnits);
+            try {
+                percent = (int) (100L * workUnits / totalUnits);
+            } catch (ArithmeticException e) {
+                log.error("Artihmetic exception", e);
+            }
             if (oldPercent == percent) {
                 return;
             }
         }
 
-        JobManager.fireWorkProgressed(this);
+        if(notifyUser) JobManager.fireWorkProgressed(this);
     }
 
     /* (non-Javadoc)
@@ -251,7 +254,7 @@ public final class Job implements Progress {
 
         // Don't automatically tell listeners that the label changed.
         // Only do so if it is time to do an update.
-        if (doUpdate) {
+        if (doUpdate && notifyUser) {
             JobManager.fireWorkProgressed(this);
         }
     }
@@ -283,7 +286,7 @@ public final class Job implements Progress {
         }
 
         // Report that the job is done.
-        JobManager.fireWorkProgressed(this);
+        if(notifyUser) JobManager.fireWorkProgressed(this);
 
         synchronized (this) {
             if (predictionMapURI != null) {
@@ -491,6 +494,8 @@ public final class Job implements Progress {
      */
     private boolean finished;
 
+    private boolean notifyUser = true;
+
     /**
      * The amount of work done against the total.
      */
@@ -553,6 +558,14 @@ public final class Job implements Progress {
      */
     public String getJobID() {
         return jobID;
+    }
+
+    public boolean isNotifyUser() {
+        return notifyUser;
+    }
+
+    public void setNotifyUser(boolean notifyUser) {
+        this.notifyUser = notifyUser;
     }
 
     /**

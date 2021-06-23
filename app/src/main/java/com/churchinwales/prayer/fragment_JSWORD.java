@@ -16,16 +16,22 @@ import androidx.core.content.PermissionChecker;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 
+import org.crosswire.common.util.CWProject;
 import org.crosswire.jsword.book.Book;
+import org.crosswire.jsword.book.BookException;
 import org.crosswire.jsword.book.BookFilters;
 import org.crosswire.jsword.book.BookMetaData;
 import org.crosswire.jsword.book.Books;
+import org.crosswire.jsword.book.install.InstallException;
+import org.crosswire.jsword.book.install.InstallManager;
+import org.crosswire.jsword.book.install.Installer;
 import org.crosswire.jsword.book.sword.SwordBookPath;
 import org.crosswire.jsword.passage.NoSuchKeyException;
 import org.json.JSONObject;
 
 import java.io.File;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -36,6 +42,8 @@ import org.crosswire.jsword.passage.Key;
  * A simple {@link Fragment} subclass.
  * Use the {@link fragment_JSWORD#newInstance} factory method to
  * create an instance of this fragment.
+ *
+ * https://github.com/AndBible/jsword
  */
 public class fragment_JSWORD extends Fragment implements app_BiblePericope_Callback<String>, Observer {
 
@@ -119,10 +127,30 @@ public class fragment_JSWORD extends Fragment implements app_BiblePericope_Callb
     }
 
     public void getJSWORDBible() {
+
         File location = new File(String.valueOf(getContext().getCacheDir()));
         File[] myFile = {location};
+        CWProject.setHome(getContext().getFilesDir().getPath(),getContext().getFilesDir().getPath()+"/JSword",".Jsword");
+
+        Installer installer = null;
+        InstallManager imanager = new InstallManager();
+        Map<String, Installer> installers = imanager.getInstallers();
+        String name = null;
+        Log.v("TAG", "Getting Jsword Installers...");
+        for (Map.Entry<String, Installer> mapEntry : installers.entrySet()) {
+            name = mapEntry.getKey();
+            installer = mapEntry.getValue();
+            Log.v("TAG",name + ": " + installer.getInstallerDefinition());
+        }
+
+
         //myFile[0] = location;
-        SwordBookPath.getAugmentPath(myFile);
+        try {
+            SwordBookPath.setAugmentPath(myFile);
+        }
+        catch (BookException e) {
+            e.getDetailedMessage();
+        }
         List<Book> lbmds = Books.installed().getBooks(BookFilters.getOnlyBibles());
         int numBibles = lbmds.size();
         Log.v("TAG","Total Bibles Found:"+numBibles);

@@ -22,6 +22,7 @@ package org.crosswire.jsword.versification;
 import java.io.PrintStream;
 import java.io.Serializable;
 import java.util.Iterator;
+import java.util.Locale;
 
 import org.crosswire.jsword.JSMsg;
 import org.crosswire.jsword.JSOtherMsg;
@@ -322,6 +323,24 @@ public class Versification implements ReferenceSystem, Serializable {
       }
 
     /**
+     * Get the preferred name of a book in specified locale. Altered by the case setting (see
+     * setBookCase() and isFullBookName())
+     *
+     * @param book the desired book
+     * @param locale the desired locale for book name. If left null, returns with default locale
+     * @return The full name of the book or null if not in this versification
+     */
+    public String getPreferredNameInLocale(BibleBook book, Locale locale) {
+        if (containsBook(book)) {
+            if (locale != null) {
+                return BibleNames.instance().getPreferredNameInLocale(book, locale);
+            }
+            return BibleNames.instance().getPreferredName(book);
+        }
+        return null;
+    }
+
+    /**
      * Get the full name of a book (e.g. "Genesis"). Altered by the case setting
      * (see setBookCase())
      *
@@ -403,6 +422,13 @@ public class Versification implements ReferenceSystem, Serializable {
         }
     }
 
+    public Verse getLastVerse() {
+        BibleBook lastBook = getLastBook();
+        int lastChapter = getLastChapter(lastBook);
+        int lastVerse = getLastVerse(lastBook, lastChapter);
+        return new Verse(this, lastBook, lastChapter, lastVerse);
+    }
+
     /**
      * Get the number of chapters in the Bible not counting Chapter 0.
      * which is the one per book and one for the INTRO_BIBLE, INTRO_OT and INTRO_NT;
@@ -439,9 +465,7 @@ public class Versification implements ReferenceSystem, Serializable {
      */
     public VerseRange getAllVerses() {
         Verse first = new Verse(this, bookList.getFirstBook(), 0, 0);
-        BibleBook book = bookList.getLastBook();
-        int chapter = getLastChapter(book);
-        Verse last = new Verse(this, book, chapter, getLastVerse(book, chapter));
+        Verse last = getLastVerse();
         return new VerseRange(this, first, last);
     }
 

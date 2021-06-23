@@ -8,66 +8,59 @@
  * See the GNU Lesser General Public License for more details.
  *
  * The License is available on the internet at:
- *      http://www.gnu.org/copyleft/lgpl.html
+ *       http://www.gnu.org/copyleft/lgpl.html
  * or by writing to:
  *      Free Software Foundation, Inc.
  *      59 Temple Place - Suite 330
  *      Boston, MA 02111-1307, USA
  *
- * © CrossWire Bible Society, 2007 - 2016
+ * Copyright: 2007
+ *     The copyright to this program is held by it's authors.
  *
  */
 package org.crosswire.jsword.index.lucene.analysis;
 
+import org.apache.lucene.analysis.StopFilter;
+import org.apache.lucene.analysis.TokenStream;
+import org.apache.lucene.analysis.el.GreekAnalyzer;
+import org.apache.lucene.analysis.el.GreekLowerCaseFilter;
+import org.apache.lucene.analysis.standard.StandardTokenizer;
+import org.apache.lucene.util.Version;
+
 import java.io.IOException;
 import java.io.Reader;
 
-import org.apache.lucene.analysis.StopFilter;
-import org.apache.lucene.analysis.TokenStream;
-import org.apache.lucene.analysis.standard.StandardTokenizer;
-import org.apache.lucene.analysis.th.ThaiWordFilter;
-import org.apache.lucene.util.Version;
-
 /**
- * Tokenization using ThaiWordFilter. It uses java.text.BreakIterator to break
- * words. Stemming: Not implemented
+ * Analyzer that removes the accents from the Hebrew text
  * 
- * @see gnu.lgpl.License The GNU Lesser General Public License for details.
- * @author sijo cherian
+ * @see gnu.lgpl.License for license details.<br>
+ *      The copyright to this program is held by it's authors.
+ * @author Sijo Cherian [sijocherian at yahoo dot com]
  */
-final public class ThaiLuceneAnalyzer extends AbstractBookAnalyzer {
+public class HebrewLuceneAnalyzer extends AbstractBookAnalyzer {
+    public HebrewLuceneAnalyzer() {
 
-    public ThaiLuceneAnalyzer() {
     }
 
     @Override
     public TokenStream tokenStream(String fieldName, Reader reader) {
-        TokenStream ts = new StandardTokenizer(matchVersion, reader);
-        ts = new ThaiWordFilter(ts);
-        if (doStopWords && stopSet != null) {
-            ts = new StopFilter(false, ts, stopSet);
-        }
-        return ts;
+        TokenStream result = new StandardTokenizer(matchVersion, reader);
+        result = new HebrewPointingFilter(result);
+
+        return result;
     }
 
-    /* (non-Javadoc)
-     * @see org.apache.lucene.analysis.Analyzer#reusableTokenStream(java.lang.String, java.io.Reader)
-     */
+
     @Override
     public TokenStream reusableTokenStream(String fieldName, Reader reader) throws IOException {
         SavedStreams streams = (SavedStreams) getPreviousTokenStream();
         if (streams == null) {
             streams = new SavedStreams(new StandardTokenizer(matchVersion, reader));
-            streams.setResult(new ThaiWordFilter(streams.getResult()));
-
-            if (doStopWords && stopSet != null) {
-                streams.setResult(new StopFilter(StopFilter.getEnablePositionIncrementsVersionDefault(matchVersion), streams.getResult(), stopSet));
-            }
+            streams.setResult(new HebrewPointingFilter(streams.getResult()));
 
             setPreviousTokenStream(streams);
         } else {
             streams.getSource().reset(reader);
-            streams.getResult().reset(); // reset the ThaiWordFilter's state
         }
         return streams.getResult();
     }
