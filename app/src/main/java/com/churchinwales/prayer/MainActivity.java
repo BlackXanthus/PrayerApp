@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements
         Context app_Context = getApplicationContext();
         //Loading Dialogue Start Here
         ResourceLoader.unzipFromAssets(app_Context,"Prayer.zip","");
+        ResourceLoader.unzipFromAssets(app_Context,"WelBeiblNet.zip","");
 
         //setContentView(R.layout.fragment_prayer);
         setContentView(R.layout.activity_main);
@@ -101,6 +102,8 @@ public class MainActivity extends AppCompatActivity implements
 
         int id = item.getItemId();
 
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+
         Log.v("TAG", "On Navigation Item Selected");
         Bundle args = new Bundle();
 
@@ -115,11 +118,13 @@ public class MainActivity extends AppCompatActivity implements
 
             args.putString("Type","MorningPrayer");
             destination=R.id.fragment_Prayer;
+            mToolbar.setTitle(getString(R.string.app_MorningPrayer));
         }
 
         if (id == R.id.id_EveningPrayer) {
             args.putString("Type","EveningPrayer");
             destination=R.id.fragment_Prayer;
+            mToolbar.setTitle(getString(R.string.app_EveningPrayer));
         }
 
         if(id== R.id.nav_Lectionary) {
@@ -139,6 +144,14 @@ public class MainActivity extends AppCompatActivity implements
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+
+        if(id == R.id.id_EveningPrayer) {
+            mToolbar.setTitle(getString(R.string.app_EveningPrayer));
+        }
+
+        if(id == R.id.fragment_Prayer) {
+            mToolbar.setTitle(getString(R.string.app_MorningPrayer));
+        }
 
         return true;
     }

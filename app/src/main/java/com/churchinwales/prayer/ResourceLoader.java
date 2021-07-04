@@ -11,6 +11,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -25,6 +27,12 @@ public class ResourceLoader {
      */
 
     static void unpackResources(Context mContext) throws FileNotFoundException, IOException {
+        unpackResources2(mContext,"Prayer.zip");
+        unpackResources2(mContext,"WelBeibleNet.zip");
+    }
+
+
+    static void unpackResources2(Context mContext, String fileName) throws FileNotFoundException, IOException {
         final int BUFFER = 8192;
 
         //android.content.res.Resources t = mContext.getAssets();
@@ -83,7 +91,34 @@ public class ResourceLoader {
 
         }
 
-        public static void unzip(InputStream stream, String destination) {
+        public static void unzip(InputStream is, String theTargetDir) {
+            try {
+                File inputDir = new File(theTargetDir);
+                Path targetPath = inputDir.toPath();
+                Path targetDir = targetPath.toAbsolutePath();
+
+                ZipInputStream zipIn = new ZipInputStream(is);
+
+                for(ZipEntry ze; (ze = zipIn.getNextEntry()) != null; ) {
+                    Path resolvedPath = targetDir.resolve(ze.getName()).normalize();
+                    if(!resolvedPath.startsWith(targetDir)){
+                        throw new RuntimeException("Entry with Illegal Path:"+ze.getName());
+                    }
+                    if(ze.isDirectory()) {
+                        Files.createDirectories(resolvedPath);
+                    }
+                    else {
+                        Files.createDirectories(resolvedPath.getParent());
+                        Files.copy(zipIn,resolvedPath);
+                    }
+                }
+            }
+            catch(Exception e ) {
+                e.printStackTrace();
+            }
+        }
+
+        public static void unzip2(InputStream stream, String destination) {
             dirChecker(destination, "");
             byte[] buffer = new byte[BUFFER_SIZE];
             try {
@@ -92,6 +127,7 @@ public class ResourceLoader {
 
                 while ((ze = zin.getNextEntry()) != null) {
                     Log.v(TAG, "Unzipping :" +destination+"/"+ ze.getName());
+
 
                     if (ze.isDirectory()) {
                         dirChecker(destination, ze.getName());
@@ -123,7 +159,7 @@ public class ResourceLoader {
                 }
                 zin.close();
             } catch (Exception e) {
-                Log.e(TAG, "unzip", e);
+                Log.e(TAG, "Unzip Error:", e);
             }
 
         }

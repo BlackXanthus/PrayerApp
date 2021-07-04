@@ -116,7 +116,6 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
             prayerType = "MorningPrayer";
         }
 
-
         myHelper =new Helper();
         myData ="";
     }
@@ -145,10 +144,14 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
         //This needs to be a translatable string. TODO
         if(prayerType.equalsIgnoreCase("MorningPrayer")) {
             tv_Title.setText(getString(R.string.app_MorningPrayer));
+            getActivity().setTitle(getString(R.string.app_MorningPrayer));
+
         }
 
         if(prayerType.equalsIgnoreCase("EveningPrayer")) {
             tv_Title.setText(getString(R.string.app_EveningPrayer));
+            getActivity().setTitle(getString(R.string.app_EveningPrayer));
+
         }
 
        // spinner.setVisibility(View.VISIBLE);

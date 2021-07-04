@@ -1,6 +1,7 @@
 package com.churchinwales.prayer;
 
 import android.Manifest;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.method.ScrollingMovementMethod;
@@ -25,11 +26,13 @@ import org.crosswire.jsword.book.Books;
 import org.crosswire.jsword.book.install.InstallException;
 import org.crosswire.jsword.book.install.InstallManager;
 import org.crosswire.jsword.book.install.Installer;
+import org.crosswire.jsword.book.sword.SwordBookMetaData;
 import org.crosswire.jsword.book.sword.SwordBookPath;
 import org.crosswire.jsword.passage.NoSuchKeyException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.net.URI;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Executor;
@@ -37,6 +40,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import org.crosswire.jsword.passage.Key;
+
+import static android.provider.CalendarContract.CalendarCache.URI;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -132,31 +137,34 @@ public class fragment_JSWORD extends Fragment implements app_BiblePericope_Callb
         File[] myFile = {location};
         CWProject.setHome(getContext().getFilesDir().getPath(),getContext().getFilesDir().getPath()+"/JSword",".Jsword");
 
-        Installer installer = null;
-        InstallManager imanager = new InstallManager();
-        Map<String, Installer> installers = imanager.getInstallers();
-        String name = null;
-        Log.v("TAG", "Getting Jsword Installers...");
-        for (Map.Entry<String, Installer> mapEntry : installers.entrySet()) {
-            name = mapEntry.getKey();
-            installer = mapEntry.getValue();
-            Log.v("TAG",name + ": " + installer.getInstallerDefinition());
-        }
+
+        File configFile = new File(getContext().getFilesDir().getPath()+"/mods.d/welbeiblnet.conf");
+        //File bibleFile = new File(getContext().getFilesDir().getPath()+"/modules/texts/ztext/welbeiblnet/");
+        File bibleFile = new File(getContext().getFilesDir().getPath());
+
+        //Uri bibleLocation = Uri.fromFile(bibleFile);
 
 
-        //myFile[0] = location;
         try {
-            SwordBookPath.setAugmentPath(myFile);
+            java.net.URI bibleLocation = new java.net.URI("File://"+bibleFile.getAbsolutePath());
+            Log.v("TAG",bibleLocation.getPath());
+            SwordBookMetaData sbmd = new SwordBookMetaData(configFile, bibleLocation);
+            Log.v("TAG",sbmd.getName());
+            
         }
-        catch (BookException e) {
-            e.getDetailedMessage();
+        catch(Exception e) {
+            e.printStackTrace();
         }
+
+
+
         List<Book> lbmds = Books.installed().getBooks(BookFilters.getOnlyBibles());
         int numBibles = lbmds.size();
         Log.v("TAG","Total Bibles Found:"+numBibles);
         bibles = new Book[numBibles];
         bmds = new BookMetaData[numBibles];
         gen11 = new Key[numBibles];
+
 
         int i = 0;
         for (Book book : lbmds) {
