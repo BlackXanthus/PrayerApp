@@ -18,11 +18,13 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 
 import org.crosswire.common.util.CWProject;
+import org.crosswire.common.util.PluginUtil;
 import org.crosswire.jsword.book.Book;
 import org.crosswire.jsword.book.BookException;
 import org.crosswire.jsword.book.BookFilters;
 import org.crosswire.jsword.book.BookMetaData;
 import org.crosswire.jsword.book.Books;
+import org.crosswire.jsword.book.filter.SourceFilter;
 import org.crosswire.jsword.book.filter.osis.OSISFilter;
 import org.crosswire.jsword.book.install.InstallException;
 import org.crosswire.jsword.book.install.InstallManager;
@@ -157,15 +159,12 @@ public class fragment_JSWORD extends Fragment implements app_BiblePericope_Callb
             SwordBookMetaData sbmd = new SwordBookMetaData(configFile, bibleLocation);
             Log.v("TAG",sbmd.getName());
 
-            ZVerseBackend backend = new ZVerseBackend(sbmd, BlockType.BLOCK_BOOK,4);
+            ZVerseBackend backend = new ZVerseBackend(sbmd, BlockType.BLOCK_BOOK,2);
 
             Log.v("TAG", sbmd.getProperty(KEY_SOURCE_TYPE));
 
-            OSISFilter osf = new OSISFilter();
 
             SwordBook sb = new SwordBook(sbmd, backend);
-
-
 
 
             Key testKey = sb.getKey("Gen 1:1");
@@ -191,12 +190,16 @@ public class fragment_JSWORD extends Fragment implements app_BiblePericope_Callb
             bmds[i] = book.getBookMetaData();
             try {
                 gen11[i] = book.getKey("Gen 1:1");
+                Log.v("TAG",bibles[i].getRawText(gen11[i]));
             }
             catch(NoSuchKeyException e) {
                 e.getStackTrace();
             }
-            i++;
+            catch(Exception e) {
+                e.getStackTrace();
+            }
             Log.v("TAG",bibles[i].getName());
+
         }
     }
 

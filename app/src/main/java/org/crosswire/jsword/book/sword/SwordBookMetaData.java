@@ -53,6 +53,7 @@ import org.crosswire.jsword.book.OSISUtil;
 import org.crosswire.jsword.book.basic.AbstractBookMetaData;
 import org.crosswire.jsword.book.filter.SourceFilter;
 import org.crosswire.jsword.book.filter.SourceFilterFactory;
+import org.crosswire.jsword.book.filter.osis.OSISFilter;
 import org.crosswire.jsword.versification.system.Versifications;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -361,10 +362,23 @@ public final class SwordBookMetaData extends AbstractBookMetaData {
 
     /**
      * @return the SourceFilter based upon the SourceType.
+     *
+     * Modified by BlackXanthus (o5/08/2021)
      */
     public SourceFilter getFilter() {
         String sourcetype = getProperty(KEY_SOURCE_TYPE);
-        return SourceFilterFactory.getFilter(sourcetype);
+        //SourceFilter sf =  SourceFilterFactory.getFilter(sourcetype);
+        SourceFilter sf;
+
+        if(sourcetype.equalsIgnoreCase("OSIS")) {
+            sf = new OSISFilter();
+        }
+        else {
+            sf =  SourceFilterFactory.getFilter(sourcetype);
+        }
+
+        return sf;
+
     }
 
     /**
