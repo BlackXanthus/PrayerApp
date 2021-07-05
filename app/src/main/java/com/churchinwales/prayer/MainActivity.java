@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements
         Context app_Context = getApplicationContext();
         //Loading Dialogue Start Here
         ResourceLoader.unzipFromAssets(app_Context,"Prayer.zip","");
-        ResourceLoader.unzipFromAssets(app_Context,"WelBeiblNet.zip","");
+        ResourceLoader.unzipFromAssets(app_Context,"WelBeiblNet.zip",app_Context.getFilesDir().getPath()+"/JSWORD");
 
         //setContentView(R.layout.fragment_prayer);
         setContentView(R.layout.activity_main);

@@ -23,11 +23,16 @@ import org.crosswire.jsword.book.BookException;
 import org.crosswire.jsword.book.BookFilters;
 import org.crosswire.jsword.book.BookMetaData;
 import org.crosswire.jsword.book.Books;
+import org.crosswire.jsword.book.filter.osis.OSISFilter;
 import org.crosswire.jsword.book.install.InstallException;
 import org.crosswire.jsword.book.install.InstallManager;
 import org.crosswire.jsword.book.install.Installer;
+import org.crosswire.jsword.book.sword.BlockType;
+import org.crosswire.jsword.book.sword.SwordBook;
 import org.crosswire.jsword.book.sword.SwordBookMetaData;
 import org.crosswire.jsword.book.sword.SwordBookPath;
+import org.crosswire.jsword.book.sword.ZLDBackend;
+import org.crosswire.jsword.book.sword.ZVerseBackend;
 import org.crosswire.jsword.passage.NoSuchKeyException;
 import org.json.JSONObject;
 
@@ -42,6 +47,7 @@ import java.util.concurrent.Executors;
 import org.crosswire.jsword.passage.Key;
 
 import static android.provider.CalendarContract.CalendarCache.URI;
+import static org.crosswire.jsword.book.sword.SwordBookMetaData.KEY_SOURCE_TYPE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -135,12 +141,12 @@ public class fragment_JSWORD extends Fragment implements app_BiblePericope_Callb
 
         File location = new File(String.valueOf(getContext().getCacheDir()));
         File[] myFile = {location};
-        CWProject.setHome(getContext().getFilesDir().getPath(),getContext().getFilesDir().getPath()+"/JSword",".Jsword");
+        CWProject.setHome(getContext().getFilesDir().getPath(),getContext().getFilesDir().getPath()+"/JSWORD",".Jsword");
 
 
-        File configFile = new File(getContext().getFilesDir().getPath()+"/mods.d/welbeiblnet.conf");
-        //File bibleFile = new File(getContext().getFilesDir().getPath()+"/modules/texts/ztext/welbeiblnet/");
-        File bibleFile = new File(getContext().getFilesDir().getPath());
+        File configFile = new File(getContext().getFilesDir().getPath()+"/JSWORD/mods.d/welbeiblnet.conf");
+        //File bibleFile = new File(getContext().getFilesDir().getPath()+"JSWORD/modules/texts/ztext/welbeiblnet/");
+        File bibleFile = new File(getContext().getFilesDir().getPath()+"/JSWORD");
 
         //Uri bibleLocation = Uri.fromFile(bibleFile);
 
@@ -150,13 +156,26 @@ public class fragment_JSWORD extends Fragment implements app_BiblePericope_Callb
             Log.v("TAG",bibleLocation.getPath());
             SwordBookMetaData sbmd = new SwordBookMetaData(configFile, bibleLocation);
             Log.v("TAG",sbmd.getName());
+
+            ZVerseBackend backend = new ZVerseBackend(sbmd, BlockType.BLOCK_BOOK,4);
+
+            Log.v("TAG", sbmd.getProperty(KEY_SOURCE_TYPE));
+
+            OSISFilter osf = new OSISFilter();
+
+            SwordBook sb = new SwordBook(sbmd, backend);
+
+
+
+
+            Key testKey = sb.getKey("Gen 1:1");
+
+            txt_Bible.setText(sb.getRawText(testKey));
             
         }
         catch(Exception e) {
             e.printStackTrace();
         }
-
-
 
         List<Book> lbmds = Books.installed().getBooks(BookFilters.getOnlyBibles());
         int numBibles = lbmds.size();

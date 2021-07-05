@@ -19,6 +19,8 @@
  */
 package org.crosswire.jsword.book.sword;
 
+import android.util.Log;
+
 import java.util.List;
 
 import org.crosswire.jsword.JSOtherMsg;
