@@ -1,7 +1,7 @@
 package com.churchinwales.prayer;
 
 import android.Manifest;
-import android.net.Uri;
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.method.ScrollingMovementMethod;
@@ -18,38 +18,30 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 
 import org.crosswire.common.util.CWProject;
-import org.crosswire.common.util.PluginUtil;
 import org.crosswire.jsword.book.Book;
 import org.crosswire.jsword.book.BookException;
 import org.crosswire.jsword.book.BookFilters;
 import org.crosswire.jsword.book.BookMetaData;
 import org.crosswire.jsword.book.Books;
-import org.crosswire.jsword.book.filter.SourceFilter;
-import org.crosswire.jsword.book.filter.osis.OSISFilter;
-import org.crosswire.jsword.book.install.InstallException;
-import org.crosswire.jsword.book.install.InstallManager;
-import org.crosswire.jsword.book.install.Installer;
-import org.crosswire.jsword.book.sword.BlockType;
-import org.crosswire.jsword.book.sword.SwordBook;
-import org.crosswire.jsword.book.sword.SwordBookMetaData;
-import org.crosswire.jsword.book.sword.SwordBookPath;
-import org.crosswire.jsword.book.sword.ZLDBackend;
-import org.crosswire.jsword.book.sword.ZVerseBackend;
+
+import org.crosswire.jsword.book.OSISUtil;
 import org.crosswire.jsword.passage.NoSuchKeyException;
+
+import org.jdom2.Element;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
-import java.net.URI;
+
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
+
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import org.crosswire.jsword.passage.Key;
 
-import static android.provider.CalendarContract.CalendarCache.URI;
-import static org.crosswire.jsword.book.sword.SwordBookMetaData.KEY_SOURCE_TYPE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -118,7 +110,7 @@ public class fragment_JSWORD extends Fragment implements app_BiblePericope_Callb
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_jsword, container, false);
 
-        txt_Bible = (TextView) rootView.findViewById(R.id.txt_Bible);
+        txt_Bible = rootView.findViewById(R.id.txt_Bible);
         txt_Bible.setMovementMethod(new ScrollingMovementMethod());
         try {
             Helper myHelper = new Helper();
@@ -145,36 +137,18 @@ public class fragment_JSWORD extends Fragment implements app_BiblePericope_Callb
         File[] myFile = {location};
         CWProject.setHome(getContext().getFilesDir().getPath(),getContext().getFilesDir().getPath()+"/JSWORD",".Jsword");
 
+        Helper myHelper = new Helper();
+        Context app_context = this.getContext();
+        String prayerType = "MorningPrayer";
+        JSONObject prayer = myHelper.getLectionaryJson(app_context, prayerType);
+        /**
+            File configFile = new File(getContext().getFilesDir().getPath()+"/JSWORD/mods.d/welbeiblnet.conf");
+            //File bibleFile = new File(getContext().getFilesDir().getPath()+"JSWORD/modules/texts/ztext/welbeiblnet/");
+            File bibleFile = new File(getContext().getFilesDir().getPath()+"/JSWORD");
 
-        File configFile = new File(getContext().getFilesDir().getPath()+"/JSWORD/mods.d/welbeiblnet.conf");
-        //File bibleFile = new File(getContext().getFilesDir().getPath()+"JSWORD/modules/texts/ztext/welbeiblnet/");
-        File bibleFile = new File(getContext().getFilesDir().getPath()+"/JSWORD");
+            //Uri bibleLocation = Uri.fromFile(bibleFile);
+         **/
 
-        //Uri bibleLocation = Uri.fromFile(bibleFile);
-
-
-        try {
-            java.net.URI bibleLocation = new java.net.URI("File://"+bibleFile.getAbsolutePath());
-            Log.v("TAG",bibleLocation.getPath());
-            SwordBookMetaData sbmd = new SwordBookMetaData(configFile, bibleLocation);
-            Log.v("TAG",sbmd.getName());
-
-            ZVerseBackend backend = new ZVerseBackend(sbmd, BlockType.BLOCK_BOOK,2);
-
-            Log.v("TAG", sbmd.getProperty(KEY_SOURCE_TYPE));
-
-
-            SwordBook sb = new SwordBook(sbmd, backend);
-
-
-            Key testKey = sb.getKey("Gen 1:1");
-
-            txt_Bible.setText(sb.getRawText(testKey));
-            
-        }
-        catch(Exception e) {
-            e.printStackTrace();
-        }
 
         List<Book> lbmds = Books.installed().getBooks(BookFilters.getOnlyBibles());
         int numBibles = lbmds.size();
@@ -183,21 +157,59 @@ public class fragment_JSWORD extends Fragment implements app_BiblePericope_Callb
         bmds = new BookMetaData[numBibles];
         gen11 = new Key[numBibles];
 
+        br_ViewModel.setValue("header", "<h1>Beible.net</H1><br><br>");
+
+        //RangedPassage rp = new RangedPassage(new SystemNRSVA(),"Gen 1-11");
 
         int i = 0;
         for (Book book : lbmds) {
             bibles[i] = book;
             bmds[i] = book.getBookMetaData();
             try {
-                gen11[i] = book.getKey("Gen 1:1");
+                br_ViewModel.setValue("OldTestament","<H2>Hen Testament</h2><br><br>");
+                //this produces a series of keys
+
+                gen11[i] = book.getKey(prayer.getString("OT"));
+                Key test = gen11[i];
+                /*
+                We then get the key iterator (which is not listed in the docs!)
+                and use that to pull out all the verses we need, verse by verse.
+                */
+                Iterator<Key> testKey = test.iterator();
+                while(testKey.hasNext()) {
+                    Key theKey = testKey.next();
+                    Log.v("TAG",bibles[i].getRawText(theKey));
+                    br_ViewModel.setValue(theKey.getName(), bibles[i].getRawText(theKey));
+                }
+
+                br_ViewModel.setValue("NewTestament","<br><br><H2>Testament Newydd</h2><br><br>");
+                gen11[i] = book.getKey(prayer.getString("NT"));
+                test = gen11[i];
+                /*
+                We then get the key iterator (which is not listed in the docs!)
+                and use that to pull out all the verses we need, verse by verse.
+                */
+                testKey = test.iterator();
+                while(testKey.hasNext()) {
+                    Key theKey = testKey.next();
+                    Log.v("TAG",bibles[i].getRawText(theKey));
+                    br_ViewModel.setValue(theKey.getName(),bibles[i].getRawText(theKey));
+                }
+
                 Log.v("TAG",bibles[i].getRawText(gen11[i]));
+
             }
             catch(NoSuchKeyException e) {
                 e.getStackTrace();
             }
-            catch(Exception e) {
+            catch(JSONException e) {
+                Log.e("ERROR", "No Such Key In Prayer JSON");
                 e.getStackTrace();
             }
+            catch(BookException e) {
+                e.getStackTrace();
+            }
+
             Log.v("TAG",bibles[i].getName());
 
         }

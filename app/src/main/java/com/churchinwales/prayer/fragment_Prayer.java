@@ -279,10 +279,11 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
     
     private void getBibleReading(Context app_context, String type, String section) {
 
+        Helper myHelper = new Helper();
         JSONObject prayer = myHelper.getLectionaryJson(app_context, this.prayerType);
         SpannableStringBuilder text_Prayer = new SpannableStringBuilder();
 
-        Helper myHelper = new Helper();
+
         HttpReqTask myTask = new HttpReqTask(executorService);
 
         try {
