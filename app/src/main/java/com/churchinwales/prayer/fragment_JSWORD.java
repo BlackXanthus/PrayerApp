@@ -20,27 +20,22 @@ import androidx.lifecycle.Observer;
 import org.crosswire.common.util.CWProject;
 import org.crosswire.jsword.book.Book;
 import org.crosswire.jsword.book.BookException;
-import org.crosswire.jsword.book.BookFilters;
 import org.crosswire.jsword.book.BookMetaData;
-import org.crosswire.jsword.book.Books;
 
-import org.crosswire.jsword.book.OSISUtil;
 import org.crosswire.jsword.passage.NoSuchKeyException;
 
-import org.jdom2.Element;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
-
-import java.util.Iterator;
-import java.util.List;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import org.crosswire.jsword.passage.Key;
+
+import static android.os.SystemClock.sleep;
 
 
 /**
@@ -50,7 +45,7 @@ import org.crosswire.jsword.passage.Key;
  *
  * https://github.com/AndBible/jsword
  */
-public class fragment_JSWORD extends Fragment implements app_BiblePericope_Callback<String>, Observer {
+public class fragment_JSWORD extends Fragment implements app_BiblePericope_Callback<String>, Observer, setJswordBible<Book>, setJswordVerse<String> {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -67,6 +62,9 @@ public class fragment_JSWORD extends Fragment implements app_BiblePericope_Callb
     protected Key[] gen11;
     protected BookMetaData[] bmds;
     protected Book[] bibles;
+    protected Book bible;
+    protected Boolean bibleSet=Boolean.FALSE;
+    protected Boolean bibleFound=Boolean.FALSE;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -125,6 +123,15 @@ public class fragment_JSWORD extends Fragment implements app_BiblePericope_Callb
 
         br_ViewModel.getObservable().observe(getViewLifecycleOwner(), this);
 
+        File location = new File(String.valueOf(getContext().getCacheDir()));
+        File[] myFile = {location};
+        CWProject.setHome(getContext().getFilesDir().getPath(),getContext().getFilesDir().getPath()+"/JSWORD",".Jsword");
+
+
+        HttpReqTask myTask = new HttpReqTask(executorService);
+
+        myTask.getBibleBook(getString(R.string.app_WelshBibleJswordName), this);
+
         //getOnlineBibleReading();
         getJSWORDBible();
 
@@ -133,150 +140,62 @@ public class fragment_JSWORD extends Fragment implements app_BiblePericope_Callb
 
     public void getJSWORDBible() {
 
-        File location = new File(String.valueOf(getContext().getCacheDir()));
-        File[] myFile = {location};
-        CWProject.setHome(getContext().getFilesDir().getPath(),getContext().getFilesDir().getPath()+"/JSWORD",".Jsword");
-
+        HttpReqTask myTask = new HttpReqTask(executorService);
         Helper myHelper = new Helper();
         Context app_context = this.getContext();
         String prayerType = "MorningPrayer";
         JSONObject prayer = myHelper.getLectionaryJson(app_context, prayerType);
-        /**
-            File configFile = new File(getContext().getFilesDir().getPath()+"/JSWORD/mods.d/welbeiblnet.conf");
-            //File bibleFile = new File(getContext().getFilesDir().getPath()+"JSWORD/modules/texts/ztext/welbeiblnet/");
-            File bibleFile = new File(getContext().getFilesDir().getPath()+"/JSWORD");
-
-            //Uri bibleLocation = Uri.fromFile(bibleFile);
-         **/
 
 
-        List<Book> lbmds = Books.installed().getBooks(BookFilters.getOnlyBibles());
-        int numBibles = lbmds.size();
-        Log.v("TAG","Total Bibles Found:"+numBibles);
-        bibles = new Book[numBibles];
-        bmds = new BookMetaData[numBibles];
-        gen11 = new Key[numBibles];
 
-        br_ViewModel.setValue("header", "<h1>Beible.net</H1><br><br>");
 
-        //RangedPassage rp = new RangedPassage(new SystemNRSVA(),"Gen 1-11");
+        while (bibleFound == Boolean.FALSE) {
+                sleep(100);
+        }
 
-        int i = 0;
-        for (Book book : lbmds) {
-            bibles[i] = book;
-            bmds[i] = book.getBookMetaData();
+        if(bibleSet == Boolean.TRUE & this.bible!= null) {
+            Book welbible = this.bible;
+
+            BookMetaData bmds = welbible.getBookMetaData();
+
+
+            br_ViewModel.setValue("header", "<h1>Beible.net</H1><br><br>");
+
+            Book bible = welbible;
+
+
+            bmds = bible.getBookMetaData();
             try {
-                br_ViewModel.setValue("OldTestament","<H2>Hen Testament</h2><br><br>");
-                //this produces a series of keys
 
-                gen11[i] = book.getKey(prayer.getString("OT"));
-                Key test = gen11[i];
+
+                br_ViewModel.setValue("OldTestament", "<H2>Hen Testament</h2><br><h2>" + prayer.getString("OT") + "</h2><br>");
+                br_ViewModel.setValue(prayer.getString("OT"), getString(R.string.app_loading) );
+                myTask.getJswordVerse(bible, prayer.getString("OT"), prayer.getString("OT"),this);
+
+                /*
+                gen11 = bible.getKey(prayer.getString("NT"));
+                test = gen11;
                 /*
                 We then get the key iterator (which is not listed in the docs!)
                 and use that to pull out all the verses we need, verse by verse.
                 */
-                Iterator<Key> testKey = test.iterator();
-                while(testKey.hasNext()) {
-                    Key theKey = testKey.next();
-                    Log.v("TAG",bibles[i].getRawText(theKey));
-                    br_ViewModel.setValue(theKey.getName(), bibles[i].getRawText(theKey));
-                }
+                br_ViewModel.setValue("NewTestament", "<br><br><H2>Testament Newydd</h2><br><h2>" + prayer.getString("NT") + "</h2><br>");
+                br_ViewModel.setValue(prayer.getString("NT"),getString(R.string.app_loading));
+                myTask.getJswordVerse(bible, prayer.getString("NT"), prayer.getString("NT"),this);
 
-                br_ViewModel.setValue("NewTestament","<br><br><H2>Testament Newydd</h2><br><br>");
-                gen11[i] = book.getKey(prayer.getString("NT"));
-                test = gen11[i];
-                /*
-                We then get the key iterator (which is not listed in the docs!)
-                and use that to pull out all the verses we need, verse by verse.
-                */
-                testKey = test.iterator();
-                while(testKey.hasNext()) {
-                    Key theKey = testKey.next();
-                    Log.v("TAG",bibles[i].getRawText(theKey));
-                    br_ViewModel.setValue(theKey.getName(),bibles[i].getRawText(theKey));
-                }
 
-                Log.v("TAG",bibles[i].getRawText(gen11[i]));
-
-            }
-            catch(NoSuchKeyException e) {
-                e.getStackTrace();
-            }
-            catch(JSONException e) {
+            } catch (JSONException e) {
                 Log.e("ERROR", "No Such Key In Prayer JSON");
                 e.getStackTrace();
             }
-            catch(BookException e) {
-                e.getStackTrace();
-            }
 
-            Log.v("TAG",bibles[i].getName());
-
-        }
-    }
-
-    public void getOnlineBibleReading() {
-
-        if(checkPermissions()) {
-            Helper myHelper = new Helper();
-            try {
-                JSONObject JSOnObj_order = new JSONObject(myHelper.readAsset(getContext(), "Order.json"));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            JSONObject JSONObj_prayer = myHelper.getLectionaryJson(getContext(), "MorningPrayer");
-
-            HttpReqTask myTask = new HttpReqTask(executorService);
-            txt_Bible.setText("... loading");
-            try {
-                //br_ViewModel.postAppendValue(new SpannableStringBuilder(Html.fromHtml("<H2>"+getString(R.string.app_MorningPrayer)+" "+getString(R.string.NewTestamentReading)+ ":"+JSONObj_prayer.getString("NT")+" </H2>",Html.FROM_HTML_OPTION_USE_CSS_COLORS)));
-
-                br_ViewModel.setValue("OTIntro", "<br><br><H1>Old Testament Reading - Morning Prayer</H1><br><br>");
-                br_ViewModel.setValue("OTTitle", "<H2>" + JSONObj_prayer.getString("OT") + "</H2><br>");
-                br_ViewModel.setValue("OTVerse", "..." + getString(R.string.app_loading));
-                myTask.makeBibleRequest(JSONObj_prayer.getString("OT"), "OTVerse", this);
-                br_ViewModel.setValue("NTIntro", "<H1>New Testament Reading - Morning Prayer</H1><br>");
-                br_ViewModel.setValue("NTTitle", "<H2>" + JSONObj_prayer.getString("NT") + "</H2><br>");
-                br_ViewModel.setValue("NTVerse", "..." + getString(R.string.app_loading));
-                myTask.makeBibleRequest(JSONObj_prayer.getString("NT"), "NTVerse", this);
-
-                JSONObj_prayer = myHelper.getLectionaryJson(getContext(), "EveningPrayer");
-
-                br_ViewModel.setValue("EP_OTIntro", "<br><br><H1>Old Testament Reading - Evening Prayer</H1><br><br>");
-                br_ViewModel.setValue("EP_OTTitle", "<H2>" + JSONObj_prayer.getString("OT") + "</H2><br>");
-                br_ViewModel.setValue("EP_OTVerse", "..." + getString(R.string.app_loading));
-                myTask.makeBibleRequest(JSONObj_prayer.getString("OT"), "EP_OTVerse", this);
-                br_ViewModel.setValue("EP_NTIntro", "<H1>New Testament Reading -Evening Prayer</H1><br>");
-                br_ViewModel.setValue("EP_NTTitle", "<H2>" + JSONObj_prayer.getString("NT") + "</H2><br>");
-                br_ViewModel.setValue("EP_NTVerse", "..." + getString(R.string.app_loading));
-                myTask.makeBibleRequest(JSONObj_prayer.getString("NT"), "EP_NTVerse", this);
-
-            } catch (Exception e) {
-                txt_Bible.append("JSON Error");
-                e.printStackTrace();
-            }
         }
         else {
-            br_ViewModel.setValue("NTVerse","... no permission to access the internet");
-            br_ViewModel.setValue("OTVerse","... no permission to access the internet");
+            br_ViewModel.setValue("Error", "Ddim Beible Ar Gael");
         }
 
     }
 
-    public boolean checkPermissions()
-    {
-        if(PermissionChecker.checkSelfPermission(getContext(), Manifest.permission.INTERNET) == PermissionChecker.PERMISSION_GRANTED ) {
-            return true;
-        } else {
-            String[] permissionArrays = new String[]{Manifest.permission.INTERNET};
-            requestPermissions(permissionArrays, REQUEST_CODE_ASK_PERMISSONS);
-        }
-        return false;
-    }
-
-    public void onRequestPermissions(int requestCode, @NonNull String permissions[]) {
-        Toast.makeText(getContext(), "Permission Requested", Toast.LENGTH_SHORT).show();
-    }
 
 
     public void onComplete(Result<String> result)
@@ -295,4 +214,32 @@ public class fragment_JSWORD extends Fragment implements app_BiblePericope_Callb
     public void onChanged(Object o) {
         txt_Bible.setText(Html.fromHtml(br_ViewModel.getPage(),Html.FROM_HTML_SEPARATOR_LINE_BREAK_HEADING));
     }
+
+    @Override
+    public void setBible(Result result) {
+
+        if(result instanceof Result.Success) {
+            this.bibleSet = Boolean.TRUE;
+            this.bibleFound = Boolean.TRUE;
+            this.bible = (Book)((Result.Success)result).data;
+
+        }
+        else {
+            this.bibleFound = Boolean.TRUE;
+            this.bibleSet = Boolean.FALSE;
+        }
+    }
+
+    @Override
+    public void setJswordVerse(Result<String> result) {
+        if(result instanceof Result.Success) {
+            //  br_ViewModel.setValue(new SpannableStringBuilder(Html.fromHtml(((Result.Success<String>) result).data,Html.FROM_HTML_OPTION_USE_CSS_COLORS)));
+            br_ViewModel.postValue((String)(((Result.Success) result).type),((String)((Result.Success) result).data));
+        } else {
+            br_ViewModel.postValue("Error","There was an error");
+        }
+
+
+    }
+
 }

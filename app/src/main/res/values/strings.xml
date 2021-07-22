@@ -27,4 +27,5 @@
     <string name="app_loading">loading</string>
     <string name="Psalm" translatable="false">Psalm</string>
     <string name="app_JSWORD">JSWORD</string>
+    <string name="app_WelshBibleJswordName" translatable="false">WelBeiblNet</string>
 </resources>

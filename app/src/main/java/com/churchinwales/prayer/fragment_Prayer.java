@@ -30,6 +30,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.crosswire.common.util.CWProject;
+import org.crosswire.jsword.book.Book;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -53,7 +55,7 @@ import java.util.concurrent.Executors;
  * Use the {@link fragment_Prayer#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class fragment_Prayer extends Fragment implements app_BiblePericope_Callback<String>, Observer {
+public class fragment_Prayer extends Fragment implements app_BiblePericope_Callback<String>, Observer,setJswordBible<Book>, setJswordVerse<String> {
 
     TextView tv_Prayer;
     TextView tv_Title;
@@ -67,6 +69,9 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
     BibleReadingsViewModel br_ViewModel= new BibleReadingsViewModel();
     private ExecutorService executorService = Executors.newFixedThreadPool(2);
     private static final int REQUEST_CODE_ASK_PERMISSONS =1;
+    protected Book bible;
+    protected Boolean bibleSet=Boolean.FALSE;
+    protected Boolean bibleFound=Boolean.FALSE;
 
 
     private ProgressBar spinner;
@@ -118,6 +123,15 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
 
         myHelper =new Helper();
         myData ="";
+        File location = new File(String.valueOf(getContext().getCacheDir()));
+        File[] myFile = {location};
+        CWProject.setHome(getContext().getFilesDir().getPath(),getContext().getFilesDir().getPath()+"/JSWORD",".Jsword");
+
+
+        HttpReqTask myTask = new HttpReqTask(executorService);
+
+        myTask.getBibleBook(getString(R.string.app_WelshBibleJswordName), this);
+
     }
 
    // @Override
@@ -300,7 +314,11 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
             br_ViewModel.setValue(type+"_Title","<h2>"+prayer.getString(type)+"</h2>");
             br_ViewModel.setValue(section,".."+getString(R.string.app_loading));
             if(checkPermissions()) {
-                myTask.makeBibleRequest(prayer.getString(type), section, this);
+                if (language.equals("CY") & this.bible != null) {
+                    myTask.getJswordVerse(this.bible, prayer.getString(type), section, this);
+                } else {
+                    myTask.makeBibleRequest(prayer.getString(type), section, this);
+                }
             }
             else {
                 br_ViewModel.setValue(section,"... No internet permission granted");
@@ -544,6 +562,36 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
     public void onRequestPermissions(int requestCode, @NonNull String permissions[]) {
         Toast.makeText(getContext(), "Permission Requested", Toast.LENGTH_SHORT).show();
     }
+
+
+    @Override
+    public void setBible(Result result) {
+
+        if(result instanceof Result.Success) {
+            this.bibleSet = Boolean.TRUE;
+            this.bibleFound = Boolean.TRUE;
+            this.bible = (Book)((Result.Success)result).data;
+
+        }
+        else {
+            this.bibleFound = Boolean.TRUE;
+            this.bibleSet = Boolean.FALSE;
+        }
+    }
+
+    @Override
+    public void setJswordVerse(Result<String> result) {
+        if(result instanceof Result.Success) {
+            //  br_ViewModel.setValue(new SpannableStringBuilder(Html.fromHtml(((Result.Success<String>) result).data,Html.FROM_HTML_OPTION_USE_CSS_COLORS)));
+            br_ViewModel.postValue((String)(((Result.Success) result).type),((String)((Result.Success) result).data));
+        } else {
+            br_ViewModel.postValue("Error","There was an error");
+        }
+
+
+    }
+
+
 
 
 }

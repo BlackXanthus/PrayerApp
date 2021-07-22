@@ -18,6 +18,10 @@ Nid yw yr tudelen hwn yn ddwy-iethog gan fy mod i'n ddiog.
 <h2>Done for BETA 2.0 </h2>
 <ul>
 <li>Added JSWORD for use of Beible.net</li>
+<ul>
+<li>JSWORD page now results for the Welsh Bible (MP only)
+<li>Beible.net now shows properly in the Welsh prayer.
+</ul>
 </ul>
 <h2>Done for BETA 1.1 (unreleased)</h2>
 <ul>
