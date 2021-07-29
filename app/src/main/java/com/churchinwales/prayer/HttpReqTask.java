@@ -1,24 +1,23 @@
 package com.churchinwales.prayer;
 
-import android.Manifest;
-import android.content.Context;
+
 import android.text.TextUtils;
 import android.util.Log;
 
-import org.crosswire.common.util.CWProject;
+
 import org.crosswire.jsword.book.Book;
 import org.crosswire.jsword.book.BookException;
 import org.crosswire.jsword.book.Books;
 import org.crosswire.jsword.passage.Key;
 import org.crosswire.jsword.passage.NoSuchKeyException;
-import org.json.JSONObject;
+
 
 import java.io.BufferedReader;
-import java.io.File;
+
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
+
 import java.util.Iterator;
 import java.util.concurrent.ExecutorService;
 
@@ -50,9 +49,9 @@ public class HttpReqTask  {
 
 
     protected Result<String> request(String pericope, String section) {
-        URLConnection urlConnection = null;
+
         HttpURLConnection https = null;
-        String myData ="";
+        StringBuilder myData = new StringBuilder();
 
         Result myResult;
 
@@ -66,47 +65,47 @@ public class HttpReqTask  {
 
             int code = https.getResponseCode();
             if (code != 200) {
-                Log.v("TAG", "No Connection");
+                AppDebug.log("TAG", "No Connection");
                 //txt_Bible.setText("No Connection");
             }
 
             BufferedReader rd = new BufferedReader(new InputStreamReader(https.getInputStream()));
 
-            String line = "";
+            String line;
 
-            Boolean ignore = true;
+            boolean ignore = Boolean.TRUE;
 
             while ((line = rd.readLine()) != null) {
 
-                Log.v("TAG", line);
+                AppDebug.log("NSRV", line);
 
                 if(line.toLowerCase().startsWith("<div class=\"bibletext\">")) {
-                    ignore = false;
+                    ignore = Boolean.FALSE;
                 }
                 if(line.toLowerCase().startsWith("</div>")) {
-                    ignore=true;
+                    ignore=Boolean.TRUE;
                 }
                 if(line.toLowerCase().startsWith("<cite")) {
-                        myData = myData+"<br><br>";
-                        ignore=false;
+                        myData.append("<br><br>");
+                        ignore=Boolean.TRUE;
                 }
 
                 if(!ignore) {
-                    myData = myData + line;
+                    myData.append(line);
 
                 }
             }
-            if(myData.equals("")) {
-                myData = "Error getting bible reading for:"+pericope;
+            if(myData.toString().equals("")) {
+                myData = new StringBuilder("Error getting bible reading for:"+pericope);
             }
 
-            myResult = new Result.Success<String>(section,myData);
+            myResult = new Result.Success<>(section,myData.toString());
 
 
 
         } catch (Exception e) {
             e.printStackTrace();
-            myData = "Exception!";
+            //myData= new StringBuilder("Exception!");
             myResult = new Result.Error(e);
         } finally {
             if (https != null) {
@@ -117,26 +116,20 @@ public class HttpReqTask  {
         return myResult;
     }
 
-    public Book getBible(String bibleName) throws BookException {
+    public Book getBible(String bibleName) {
 
-        Book welbible = Books.installed().getBook(bibleName);
-        return welbible;
+        return Books.installed().getBook(bibleName);
     }
 
     public void getBibleBook(final String bibleName, setJswordBible<Book> callback) {
         executor.execute(new Runnable() {
            public void run() {
-               try {
 
-                   Book bible = getBible(bibleName);
-                   Result success = new Result.Success(bibleName, bible);
-                   callback.setBible(success);
+               Book bible = getBible(bibleName);
+               Result success = new Result.Success(bibleName, bible);
+               callback.setBible(success);
 
-               }
-               catch(BookException e) {
-                   Result error = new Result.Error(e);
-                   e.printStackTrace();
-               }
+
            }
         });
 
@@ -148,31 +141,33 @@ public class HttpReqTask  {
                 try {
                         //this produces a series of keys
 
-                        Key gen11 = bible.getKey(theKey);
-                        Key test = gen11;
+                        Key test = bible.getKey(theKey);
+
                 /*
                 We then get the key iterator (which is not listed in the docs!)
                 and use that to pull out all the verses we need, verse by verse.
                 */
                         Iterator<Key> testKey = test.iterator();
 
-                        String text = "";
+                        StringBuilder text =  new StringBuilder();
                         while (testKey.hasNext()) {
                             Key theKey = testKey.next();
-                            Log.v("TAG", theKey.getName() + " " + bible.getRawText(theKey));
-                            text = text + bible.getRawText(theKey);
+                            AppDebug.log("TAG", theKey.getName() + " " + bible.getRawText(theKey));
+                            text.append(bible.getRawText(theKey));
                         }
 
-                        Result<String> result = new Result.Success<String>(section, text);
+                        Result<String> result = new Result.Success<>(section, text.toString());
                         callback.setJswordVerse(result);
                 }
                 catch(BookException e) {
                     Result error = new Result.Error(e);
+                    callback.setJswordVerse(error);
                     e.printStackTrace();
                 }
                 catch(NoSuchKeyException e) {
                     Result error = new Result.Error(e);
                     e.printStackTrace();
+                    callback.setJswordVerse(error);
                 }
             }
         });

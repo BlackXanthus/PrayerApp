@@ -94,7 +94,7 @@ public class BibleReadingsViewModel extends ViewModel {
     public String getPage(){
         String page = "";
         String line = "";
-        Log.v("TAG", "Getting page...");
+        AppDebug.log("TAG", "Getting page...");
 
         if(order) {
 
@@ -120,10 +120,10 @@ public class BibleReadingsViewModel extends ViewModel {
             Set s = document.getValue().keySet();
             synchronized (document.getValue()) {
                 Iterator keys = s.iterator();
-                Log.v("TAG", "Iterating...");
+                AppDebug.log("TAG", "Iterating...");
                 while (keys.hasNext()) {
                     String item = (String) keys.next();
-                    Log.v("TAG", page + item);
+                    AppDebug.log("TAG", page + item);
                     page = page + document.getValue().get(item);
 
                 }

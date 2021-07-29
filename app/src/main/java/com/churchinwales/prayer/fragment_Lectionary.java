@@ -1,27 +1,21 @@
 package com.churchinwales.prayer;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
+
 import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
-import android.text.Html;
+
 import android.text.SpannableStringBuilder;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.util.Calendar;
-import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,11 +32,8 @@ public class fragment_Lectionary extends Fragment {
     Helper theHelper;
 
     TextView tv_Lectionary;
-    String myLectionary="";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+
 
     public fragment_Lectionary() {
         // Required empty public constructor
@@ -69,10 +60,7 @@ public class fragment_Lectionary extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
         theHelper = new Helper();
     }
 

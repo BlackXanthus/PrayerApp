@@ -19,10 +19,6 @@ import java.util.zip.ZipInputStream;
 public class ResourceLoader {
 
     /**
-     * @param res
-     * @throws IOException
-     * @throws FileNotFoundException
-     * @throws IOException
      * Source : https://stackoverflow.com/questions/2364185/android-read-a-gzip-file-in-the-assets-folder
      */
 

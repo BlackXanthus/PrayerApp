@@ -1,6 +1,6 @@
 package com.churchinwales.prayer;
 
-import android.Manifest;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.text.Html;
@@ -10,30 +10,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.core.content.PermissionChecker;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 
 import org.crosswire.common.util.CWProject;
 import org.crosswire.jsword.book.Book;
-import org.crosswire.jsword.book.BookException;
+
 import org.crosswire.jsword.book.BookMetaData;
 
-import org.crosswire.jsword.passage.NoSuchKeyException;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
-
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
-import org.crosswire.jsword.passage.Key;
 
 import static android.os.SystemClock.sleep;
 
@@ -51,38 +42,26 @@ public class fragment_JSWORD extends Fragment implements app_BiblePericope_Callb
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    //This should really be somewhere in the Android System, but I couldn't find it!
-    private static final int REQUEST_CODE_ASK_PERMISSONS =1;
 
-    private ExecutorService executorService = Executors.newFixedThreadPool(2);
-    Executor myExecutor;
+
+    private final ExecutorService executorService = Executors.newFixedThreadPool(2);
+
     TextView txt_Bible;
     BibleReadingsViewModel br_ViewModel= new BibleReadingsViewModel();
 
-    protected Key[] gen11;
+
     protected BookMetaData[] bmds;
     protected Book[] bibles;
     protected Book bible;
     protected Boolean bibleSet=Boolean.FALSE;
     protected Boolean bibleFound=Boolean.FALSE;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public fragment_JSWORD() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment fragment_oremus.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static fragment_JSWORD newInstance(String param1, String param2) {
         fragment_JSWORD fragment = new fragment_JSWORD();
         Bundle args = new Bundle();
@@ -95,11 +74,7 @@ public class fragment_JSWORD extends Fragment implements app_BiblePericope_Callb
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
 
-        }
     }
 
     @Override
@@ -116,15 +91,14 @@ public class fragment_JSWORD extends Fragment implements app_BiblePericope_Callb
             br_ViewModel = new BibleReadingsViewModel(theOrder, "Order");
         }
         catch(Exception e) {
-            Log.v("TAG", "Failed to load the order");
+            AppDebug.log("TAG", "Failed to load the order");
             e.printStackTrace();
             br_ViewModel = new BibleReadingsViewModel();
         }
 
         br_ViewModel.getObservable().observe(getViewLifecycleOwner(), this);
 
-        File location = new File(String.valueOf(getContext().getCacheDir()));
-        File[] myFile = {location};
+
         CWProject.setHome(getContext().getFilesDir().getPath(),getContext().getFilesDir().getPath()+"/JSWORD",".Jsword");
 
 
@@ -154,17 +128,9 @@ public class fragment_JSWORD extends Fragment implements app_BiblePericope_Callb
         }
 
         if(bibleSet == Boolean.TRUE & this.bible!= null) {
-            Book welbible = this.bible;
-
-            BookMetaData bmds = welbible.getBookMetaData();
-
 
             br_ViewModel.setValue("header", "<h1>Beible.net</H1><br><br>");
 
-            Book bible = welbible;
-
-
-            bmds = bible.getBookMetaData();
             try {
 
 
