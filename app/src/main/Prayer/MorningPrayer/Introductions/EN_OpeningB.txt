@@ -1,4 +1,4 @@
-<h2>Morning Prayer, Opening B</h2>
+<h2>(B) Opening Versicles and Responses and Invitatory Canticle</h2>
 <br>
 O Lord, open our lips,<br>
 <strong>And our mouth shall proclaim your praise.</strong><br>
@@ -13,8 +13,8 @@ and shall be for ever. Amen.</strong><br>
 <br>
 Worship the Lord.<br>
 <strong>All praise to his name.</strong>
-<br>
-<em>(The following is added in Eastertide<br>
+<br><br>
+<em>(The following is added in Eastertide</em><br>
 Alleluia! Christ is risen.<br>
-<strong>He is risen indeed. Alleluia!)</strong></em><br>
+<strong>He is risen indeed. Alleluia!</strong><em>)</em><br>
 

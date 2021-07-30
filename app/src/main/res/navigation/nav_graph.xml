@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/fragment_Prayer"
+        android:name="com.churchinwales.prayer.fragment_Prayer"
+        android:label="@string/app_MorningPrayer"
+        tools:layout="@layout/fragment_prayer" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.churchinwales.prayer.ui.home.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/id_EveningPrayer"
+        android:label="@string/app_EveningPrayer" />
+    <fragment
+        android:id="@+id/nav_Lectionary"
+        android:label="@app_Lectionary" />
+    <fragment
+        android:id="@+id/fragment_Lectionary"
+        android:name="com.churchinwales.prayer.fragment_Lectionary"
+        android:label="@string/app_Lectionary"
+        tools:layout="@layout/fragment_Lectionary" />
+    <fragment
+        android:id="@+id/fragment_oremus"
+        android:name="com.churchinwales.prayer.fragment_oremus"
+        android:label="@string/app_Oremus"
+        tools:layout="@layout/fragment_oremus" />
+    <fragment
+        android:id="@+id/fragment_JSWORD"
+        android:name="com.churchinwales.prayer.fragment_JSWORD"
+        android:label="fragment_jsword"
+        tools:layout="@layout/fragment_jsword" />
+</navigation>
+

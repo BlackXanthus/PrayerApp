@@ -1,0 +1,63 @@
+<h1>Welcome to the <em>(Unofficial)</em> Church In Wales App</h1>
+
+<P>
+This app is currently under heavy development. This means that things may change,
+break, or randomly stop working. Please always check for the latest version before
+posting a bug report. Please also check the 'known bugs' (below) to see if it's something
+we are already working on.
+</p>
+<P>
+Nid yw yr tudelen hwn yn ddwy-iethog gan fy mod i'n ddiog.
+</P>
+<h2>Known Bugs</h2>
+<ul>
+<li>There are no Sunday Lectionary Readings</li>
+<li>Sometimes the Prayer list will appear blank, and needs to be chosen again</li>
+<li>Nid yw popeth yn cael ei cyfieithu yn iawn</li>
+</ul>
+<h2>Done for BETA 2.0 </h2>
+<ul>
+<li>Added JSWORD for use of Beible.net</li>
+<ul>
+<li>JSWORD page now results for the Welsh Bible (MP only)
+<li>Beible.net now shows properly in the Welsh prayer.
+</ul>
+</ul>
+<h2>Done for BETA 1.1 (unreleased)</h2>
+<ul>
+<li>Updated the Colours to be more uniform</li>
+<li>Updated the menu icons to match the names a bit closer<li>
+<li>Fixed the Navbar names to match the prayer being displayed<li>
+</ul>
+<h2>Done for BETA 1.000</h2>
+<ul>
+<li>Added new BibleReadingsViewModel to deal with the structure of the page.
+<ul>
+<li>This uses an internal JSON to ensure the order that items are added is kept</li>
+<li>Enables the use of threads to get the Bible reading online, and allows the rest of the page to load
+while waiting for it to return</li>
+<li>Separates the Data from the View (as is good coding practice)</li>
+</ul></li>
+<li>Fixed the 'Lords Prayer' to be the one from the Church In Wales' Eucharist book.</li>
+<li>Bible readings provided as part of Morning/Evening Prayer (for the most part)</li>
+<li>Improved the scrolling behaviour of the Prayer, Oremus, and Home windows. </li>
+<li>Fixed the Oremus fragment window title.</li>
+<li>Fixed Missing Items in Morning Prayer Layout 2</li>
+</ul>
+<h2>Fixed Bugs</H2>
+<ul>
+<li>Evening Pray Fragment Retains "Morning Prayer" name(Fixed BETA 1.1)</li>
+</ul>
+<h2>Items Added for Beta Release</h2>
+<ul>
+<li>New Drawer Layout to make navigation easy</li>
+<li>A (test) version of the Church In Wales Lectionary</li>
+<li>Evening Prayer and Morning Prayer now available</li>
+<li>Lectionary page to show today's Morning and Evening Prayer readings</li>
+<li>This 'Todo' page</li>
+<li>Lectionary page now properly titled.
+</ul>
+<P>
+This app was written by <em>Phil Bettinson</em> All rights/copyright reserved.<br>
+
+
