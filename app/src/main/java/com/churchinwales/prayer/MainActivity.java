@@ -1,6 +1,7 @@
 package com.churchinwales.prayer;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -20,6 +21,8 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import static java.lang.String.valueOf;
 
 
 public class MainActivity extends AppCompatActivity implements
@@ -148,6 +151,18 @@ public class MainActivity extends AppCompatActivity implements
         }
 
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        AppDebug.log("Menu",valueOf(id));
+        if (id == R.id.action_settings) {
+            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }
