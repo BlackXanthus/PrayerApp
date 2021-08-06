@@ -318,7 +318,7 @@ import org.crosswire.jsword.book.BookMetaData;
     },
 
     /**
-     * A recommended font to use for the book.
+     * A recommended bck to use for the book.
      */
     FONT(BookMetaData.KEY_FONT),
 

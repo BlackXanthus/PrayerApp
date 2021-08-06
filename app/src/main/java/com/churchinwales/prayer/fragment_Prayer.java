@@ -2,9 +2,11 @@ package com.churchinwales.prayer;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -46,9 +48,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import java.util.Iterator;
+
 import java.util.Locale;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import static androidx.preference.PreferenceManager.*;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,17 +68,18 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
     TextView tv_Title;
     Button btn_Language;
     //Note: this should use Androids built-in language stuffs
-    String language="EN";
-    JSONArray lectionaryJSON;
-    String myData="";
+    String language = "EN";
+    String myData = "";
     String prayerType = "";
     Helper myHelper;
-    BibleReadingsViewModel br_ViewModel= new BibleReadingsViewModel();
+    BibleReadingsViewModel br_ViewModel = new BibleReadingsViewModel();
     private final ExecutorService executorService = Executors.newFixedThreadPool(2);
-    private static final int REQUEST_CODE_ASK_PERMISSONS =1;
+    private static final int REQUEST_CODE_ASK_PERMISSONS = 1;
     protected Book bible;
-    protected Boolean bibleSet=Boolean.FALSE;
-    protected Boolean bibleFound=Boolean.FALSE;
+    protected Boolean bibleSet = Boolean.FALSE;
+    protected Boolean bibleFound = Boolean.FALSE;
+    SharedPreferences sharedPrefs;
+
 
 
     public fragment_Prayer() {
@@ -88,42 +96,46 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        sharedPrefs = getDefaultSharedPreferences(getContext());
+
         if (getArguments() != null) {
 
             prayerType = getArguments().getString("Type");
-            AppDebug.log("TAG",prayerType);
-        }
-        else {
+            AppDebug.log("TAG", prayerType);
+        } else {
             prayerType = "MorningPrayer";
         }
 
-        myHelper =new Helper();
-        myData ="";
+        myHelper = new Helper();
+        myData = "";
 
 
-        CWProject.setHome(getContext().getFilesDir().getPath(),getContext().getFilesDir().getPath()+"/JSWORD",".Jsword");
+        CWProject.setHome(getContext().getFilesDir().getPath(), getContext().getFilesDir().getPath() + "/JSWORD", ".Jsword");
 
 
         HttpReqTask myTask = new HttpReqTask(executorService);
 
         myTask.getBibleBook(getString(R.string.app_WelshBibleJswordName), this);
 
+
+
     }
 
-   // @Override
+    // @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_prayer, container, false);
 
 
-        tv_Prayer = (TextView)rootView.findViewById(R.id.txt_MainView);
+        tv_Prayer = (TextView) rootView.findViewById(R.id.txt_MainView);
         tv_Prayer.setMovementMethod(new ScrollingMovementMethod());
-        tv_Title = (TextView)rootView.findViewById(R.id.txt_title);
+        tv_Title = (TextView) rootView.findViewById(R.id.txt_title);
 
-        btn_Language = (Button)rootView.findViewById(R.id.btn_Language);
+        btn_Language = (Button) rootView.findViewById(R.id.btn_Language);
 
-        btn_Language.setOnClickListener(new View.OnClickListener(){
+        btn_Language.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 fragment_Prayer.this.onClickBtnLanguage();
@@ -132,30 +144,49 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
 
         //spinner = (ProgressBar) rootView.findViewById(R.id.ProgressBar2);
         //This needs to be a translatable string. TODO
-        if(prayerType.equalsIgnoreCase("MorningPrayer")) {
+        if (prayerType.equalsIgnoreCase("MorningPrayer")) {
             tv_Title.setText(getString(R.string.app_MorningPrayer));
             getActivity().setTitle(getString(R.string.app_MorningPrayer));
 
         }
 
-        if(prayerType.equalsIgnoreCase("EveningPrayer")) {
+        if (prayerType.equalsIgnoreCase("EveningPrayer")) {
             tv_Title.setText(getString(R.string.app_EveningPrayer));
             getActivity().setTitle(getString(R.string.app_EveningPrayer));
 
         }
 
-       // spinner.setVisibility(View.VISIBLE);
+        // spinner.setVisibility(View.VISIBLE);
 
         this.setUpPrayer(prayerType);
 
         //spinner.setVisibility(View.GONE);
 
+        String currFont = sharedPrefs.getString("font", null);
+        String currFontSize = sharedPrefs.getString("fontSize","14");
+
+        AppDebug.log("TAG","Font Type "+currFont+ "Font Size:"+currFontSize);
+        if(currFont != null) {
+            if(currFont.contains(".otf")) {
+                tv_Prayer.setTypeface(Typeface.createFromAsset(getContext().getAssets(),"font/"+currFont));
+                int currFontSizeInt = Integer.parseInt(currFontSize);
+                tv_Prayer.setTextSize(currFontSizeInt);
+            }
+            else {
+                tv_Prayer.setTypeface(Typeface.create(currFont, Typeface.NORMAL));
+                tv_Prayer.setTextSize(Integer.parseInt(currFontSize));
+            }
+        }
+        else {
+            tv_Prayer.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.NORMAL));
+            tv_Prayer.setTextSize(Integer.parseInt(currFontSize));
+        }
+
         return rootView;
 
     }
 
-    protected void setUpPrayer(String prayerType)
-    {
+    protected void setUpPrayer(String prayerType) {
         Context app_Context = getActivity().getApplicationContext();
         //Context app_Context = getApplicationContext();
 
@@ -163,35 +194,34 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
         SpannableStringBuilder myDocument = new SpannableStringBuilder("");
 
 
-
         try {
-                if(myData.equals("")) {
+            if (myData.equals("")) {
 
-                    myData = readFile(app_Context, "/Prayer/Layout/"+prayerType+".json");
+                myData = readFile(app_Context, "/Prayer/Layout/" + prayerType + ".json");
 
-                    String path = app_Context.getFilesDir().getPath() + "/Prayer/Layout/";
-                    AppDebug.log("Files", "Path: " + path);
-                    File directory = new File(path);
-                    File[] files = directory.listFiles(new FilenameFilter() {
-                        public boolean accept(File dir, String name) {
-                            return name.toLowerCase().endsWith(".json")&&(name.toLowerCase().startsWith(prayerType.toLowerCase()));
-                        }
-                    });
-                    AppDebug.log("Files", "Size: " + files.length);
-                    for (int i = 0; i < files.length; i++) {
-                        Log.d("Files", "FileName:" + files[i].getName());
+                String path = app_Context.getFilesDir().getPath() + "/Prayer/Layout/";
+                AppDebug.log("Files", "Path: " + path);
+                File directory = new File(path);
+                File[] files = directory.listFiles(new FilenameFilter() {
+                    public boolean accept(File dir, String name) {
+                        return name.toLowerCase().endsWith(".json") && (name.toLowerCase().startsWith(prayerType.toLowerCase()));
                     }
-
-                    int min = 0;
-                    int max = files.length - 1;
-                    int random = (int) Math.floor(Math.random() * (max - min + 1) + min);
-
-                    myData = readFile(app_Context, "/Prayer/Layout/" + files[random].getName());
+                });
+                AppDebug.log("Files", "Size: " + files.length);
+                for (int i = 0; i < files.length; i++) {
+                    Log.d("Files", "FileName:" + files[i].getName());
                 }
 
+                int min = 0;
+                int max = files.length - 1;
+                int random = (int) Math.floor(Math.random() * (max - min + 1) + min);
+
+                myData = readFile(app_Context, "/Prayer/Layout/" + files[random].getName());
+            }
+
         } catch (IOException e) {
-                e.printStackTrace();
-                myDocument.append("FATAL: can't find layout file<br>");
+            e.printStackTrace();
+            myDocument.append("FATAL: can't find layout file<br>");
         }
 
         try {
@@ -201,24 +231,23 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
             JSONObject jsonObject = jsonRootObject.optJSONObject(prayerType);
 
 
-
             Iterator keys = jsonObject.keys();
 
 
-            while(keys.hasNext()) {
+            while (keys.hasNext()) {
                 Object key = keys.next();
 
-                AppDebug.log("TAG",((String)key));
+                AppDebug.log("TAG", ((String) key));
 
                 //Will still pick up the key "morning Prayer"!
-                if(((String)key).equals("Name")){
+                if (((String) key).equals("Name")) {
                     JSONObject data_JSOB = jsonObject.getJSONObject((String) key);
                     String name = data_JSOB.getString(language);
                     tv_Title.setText(name);
                     //name=name+"<br><br>";
                     //myDocument.append(Html.fromHtml(name));
                 }
-                if(((String)key).startsWith("Section")){
+                if (((String) key).startsWith("Section")) {
                     JSONObject data_JSOB = jsonObject.getJSONObject((String) key);
 
                     /*
@@ -226,25 +255,25 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
                      * This will eventually also check for preferences
                      */
                     Object isArray = data_JSOB.get("File");
-                    if(isArray instanceof JSONArray) {
+                    if (isArray instanceof JSONArray) {
                         AppDebug.log("TAG", "File is an array");
                         JSONArray myFiles = new JSONArray(data_JSOB.getString("File"));
                         int min = 0;
-                        int max = myFiles.length()-1;
-                        int random = (int) Math.floor(Math.random()*(max-min+1)+min);
-                        data_JSOB.put("File",myFiles.get(random));
+                        int max = myFiles.length() - 1;
+                        int random = (int) Math.floor(Math.random() * (max - min + 1) + min);
+                        data_JSOB.put("File", myFiles.get(random));
 
                     }
 
-                    br_ViewModel.setValue((String)key,getSection(app_Context,data_JSOB).toString());
+                    br_ViewModel.setValue((String) key, getSection(app_Context, data_JSOB).toString());
                     /*
                     SpannableStringBuilder section= getSection(app_Context, data_JSOB);
                     myDocument.append(section);
                      */
                 }
-                if(((String)key).startsWith("Bible")) {
+                if (((String) key).startsWith("Bible")) {
                     JSONObject data_JSOB = jsonObject.getJSONObject((String) key);
-                    getBibleReading(app_Context,data_JSOB.getString("Type").toString(),(String)key);
+                    getBibleReading(app_Context, data_JSOB.getString("Type").toString(), (String) key);
                     //getBibleReading(app_Context,this.prayerType,(String)key);
                     /*
                     SpannableStringBuilder bible= getBibleReading(app_Context,data_JSOB.getString("Type"));
@@ -253,11 +282,9 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
                 }
 
 
-
             }
 
-        }
-        catch (JSONException e) {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
 
@@ -265,75 +292,70 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
 
         tv_Prayer.setText(myDocument, TextView.BufferType.NORMAL);
     }
-    
+
     private void getBibleReading(Context app_context, String type, String section) {
 
         Helper myHelper = new Helper();
         JSONObject prayer = myHelper.getLectionaryJson(app_context, this.prayerType);
 
 
-
         HttpReqTask myTask = new HttpReqTask(executorService);
 
         try {
-            if(type.equalsIgnoreCase("OT")) {
-               br_ViewModel.setValue(type+"_Name","<br><br><h1>"+getString(R.string.OTReading)+"</h1><br>");
+            if (type.equalsIgnoreCase("OT")) {
+                br_ViewModel.setValue(type + "_Name", "<br><br><h1>" + getString(R.string.OTReading) + "</h1><br>");
             }
-            if(type.equalsIgnoreCase("NT")) {
-                br_ViewModel.setValue(type+"_Name","<br><br><h1>"+getString(R.string.NewTestamentReading)+"</h1><br>");
+            if (type.equalsIgnoreCase("NT")) {
+                br_ViewModel.setValue(type + "_Name", "<br><br><h1>" + getString(R.string.NewTestamentReading) + "</h1><br>");
             }
-            if(type.equalsIgnoreCase("Psalm")) {
-                br_ViewModel.setValue(type+"_Name","<h1>"+getString(R.string.Psalm)+"</h1><br>");
+            if (type.equalsIgnoreCase("Psalm")) {
+                br_ViewModel.setValue(type + "_Name", "<h1>" + getString(R.string.Psalm) + "</h1><br>");
             }
 
-            br_ViewModel.setValue(type+"_Title","<h2>"+prayer.getString(type)+"</h2>");
-            br_ViewModel.setValue(section,".."+getString(R.string.app_loading));
-            if(checkPermissions()) {
+            br_ViewModel.setValue(type + "_Title", "<h2>" + prayer.getString(type) + "</h2>");
+            br_ViewModel.setValue(section, ".." + getString(R.string.app_loading));
+            if (checkPermissions()) {
                 if (language.equals("CY") & this.bible != null) {
                     myTask.getJswordVerse(this.bible, prayer.getString(type), section, this);
                 } else {
                     myTask.makeBibleRequest(prayer.getString(type), section, this);
                 }
+            } else {
+                br_ViewModel.setValue(section, "... No internet permission granted");
             }
-            else {
-                br_ViewModel.setValue(section,"... No internet permission granted");
-            }
-            br_ViewModel.setValue(type+"_Spacing","<BR><BR>");
-        }
-        catch(Exception e) {
+            br_ViewModel.setValue(type + "_Spacing", "<BR><BR>");
+        } catch (Exception e) {
             e.printStackTrace();
 
         }
     }
 
-    protected String getSection(Context app_Context, JSONObject data_JSOB) throws JSONException
-    {
-        String data="";
+    protected String getSection(Context app_Context, JSONObject data_JSOB) throws JSONException {
+        String data = "";
         try {
 
-            String location = "/Prayer/"+data_JSOB.getString("Location")+"/"+language+"_"+data_JSOB.getString("File")+".txt";
-            AppDebug.log("TAG","Looking for:"+location);
-            data= readFile(app_Context,location);
+            String location = "/Prayer/" + data_JSOB.getString("Location") + "/" + language + "_" + data_JSOB.getString("File") + ".txt";
+            AppDebug.log("TAG", "Looking for:" + location);
+            data = readFile(app_Context, location);
 
 
-        }   catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
             //should be a proper string resource!
-            data = getString(R.string.Error)+" :"+data_JSOB.getString("Name")+" "+getString(R.string.FileNotFound)+"!<br><br>";
+            data = getString(R.string.Error) + " :" + data_JSOB.getString("Name") + " " + getString(R.string.FileNotFound) + "!<br><br>";
         }
 
         //SpannableStringBuilder intro = new SpannableStringBuilder(Html.fromHtml(data));
         return data;
     }
 
-    protected String readFile(Context app_Context, String relativePath) throws IOException
-    {
+    protected String readFile(Context app_Context, String relativePath) throws IOException {
         String myData = "";
 
 
         //InputStream fis = app_Context.getDataDir().open("Prayer/MorningPrayer/Confessional/EN_BasicConfessional.txt");
 
-        String fileName = app_Context.getFilesDir().getPath()+relativePath;
+        String fileName = app_Context.getFilesDir().getPath() + relativePath;
 
         File file = new File(fileName);
         //InputStream fis = app_Context.getDataDir().open("Prayer/MorningPrayer/Confessional/EN_BasicConfessional.txt");
@@ -344,7 +366,7 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
         BufferedReader br = new BufferedReader(new InputStreamReader(in));
 
         String strLine;
-        while((strLine = br.readLine())!= null) {
+        while ((strLine = br.readLine()) != null) {
             myData = myData + strLine;
         }
 //
@@ -353,12 +375,10 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
         fis.close();
 
 
-
         return myData;
     }
 
-    protected void setAppLocale(String localeCode)
-    {
+    protected void setAppLocale(String localeCode) {
         Resources resources = getResources();
         DisplayMetrics dm = resources.getDisplayMetrics();
         Configuration config = resources.getConfiguration();
@@ -366,21 +386,20 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
         config.setLocale(new Locale(localeCode.toLowerCase()));
 
 
-        resources.updateConfiguration(config,dm);
+        resources.updateConfiguration(config, dm);
 
     }
 
 
     public void onClickBtnLanguage() {
 
-        if(language.equals("EN")){
+        if (language.equals("EN")) {
             language = "CY";
             this.setAppLocale("cy");
             this.setUpPrayer(prayerType);
 
-        }
-        else {
-            language="EN";
+        } else {
+            language = "EN";
             this.setAppLocale("EN");
             this.setUpPrayer(prayerType);
         }
@@ -389,13 +408,12 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
         btn_Language.setText(getString(R.string.btn_Language));
     }
 
-    public void onComplete(Result<String> result)
-    {
-        if(result instanceof Result.Success) {
+    public void onComplete(Result<String> result) {
+        if (result instanceof Result.Success) {
             //  br_ViewModel.setValue(new SpannableStringBuilder(Html.fromHtml(((Result.Success<String>) result).data,Html.FROM_HTML_OPTION_USE_CSS_COLORS)));
-            br_ViewModel.postValue((((Result.Success<String>)result).type),(((Result.Success<String>)result).data));
+            br_ViewModel.postValue((((Result.Success<String>) result).type), (((Result.Success<String>) result).data));
         } else {
-            br_ViewModel.postValue("Error","There was an error");
+            br_ViewModel.postValue("Error", "There was an error");
         }
 
     }
@@ -403,13 +421,12 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
 
     @Override
     public void onChanged(Object o) {
-        tv_Prayer.setText(Html.fromHtml(br_ViewModel.getPage(),Html.FROM_HTML_SEPARATOR_LINE_BREAK_HEADING));
+        tv_Prayer.setText(Html.fromHtml(br_ViewModel.getPage(), Html.FROM_HTML_SEPARATOR_LINE_BREAK_HEADING));
 
     }
 
-    public boolean checkPermissions()
-    {
-        if(PermissionChecker.checkSelfPermission(getContext(), Manifest.permission.INTERNET) == PermissionChecker.PERMISSION_GRANTED ) {
+    public boolean checkPermissions() {
+        if (PermissionChecker.checkSelfPermission(getContext(), Manifest.permission.INTERNET) == PermissionChecker.PERMISSION_GRANTED) {
             return true;
         } else {
             String[] permissionArrays = new String[]{Manifest.permission.INTERNET};
@@ -418,8 +435,7 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
         return false;
     }
 
-    public void onRequestPermissions(int requestCode, @NonNull String permissions[])
-    {
+    public void onRequestPermissions(int requestCode, @NonNull String permissions[]) {
         Toast.makeText(getContext(), "Permission Requested", Toast.LENGTH_SHORT).show();
     }
 
@@ -427,13 +443,12 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
     @Override
     public void setBible(Result result) {
 
-        if(result instanceof Result.Success) {
+        if (result instanceof Result.Success) {
             this.bibleSet = Boolean.TRUE;
             this.bibleFound = Boolean.TRUE;
-            this.bible = (Book)((Result.Success)result).data;
+            this.bible = (Book) ((Result.Success) result).data;
 
-        }
-        else {
+        } else {
             this.bibleFound = Boolean.TRUE;
             this.bibleSet = Boolean.FALSE;
         }
@@ -441,16 +456,15 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
 
     @Override
     public void setJswordVerse(Result<String> result) {
-        if(result instanceof Result.Success) {
+        if (result instanceof Result.Success) {
             //  br_ViewModel.setValue(new SpannableStringBuilder(Html.fromHtml(((Result.Success<String>) result).data,Html.FROM_HTML_OPTION_USE_CSS_COLORS)));
-            br_ViewModel.postValue((String)(((Result.Success) result).type),((String)((Result.Success) result).data));
+            br_ViewModel.postValue((String) (((Result.Success) result).type), ((String) ((Result.Success) result).data));
         } else {
-            br_ViewModel.postValue("Error","There was an error");
+            br_ViewModel.postValue("Error", "There was an error");
         }
 
 
     }
-
 
 
 

@@ -45,6 +45,8 @@
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="pref_Display">Display</string>
-    <string name="pref_Display_Font_Default">Arial</string>
+    <string name="pref_Display_Font_Default">sans-serif</string>
     <string name="pref_Display_Font">Default Font</string>
+    <string name="pref_Display_FontSize">Font Size</string>
+    <string name="pref_Display_FontSize_Default">14</string>
 </resources>

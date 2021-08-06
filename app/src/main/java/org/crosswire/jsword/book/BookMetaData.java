@@ -360,7 +360,7 @@ public interface BookMetaData extends Comparable<BookMetaData> {
     String KEY_LANGUAGE = "Language";
 
     /**
-     * The key for the font in the properties map
+     * The key for the bck in the properties map
      */
     String KEY_FONT = "Font";
 

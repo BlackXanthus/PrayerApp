@@ -28,7 +28,7 @@ import org.jdom2.Element;
 import org.xml.sax.Attributes;
 
 /**
- * THML Tag to process the font element.
+ * THML Tag to process the bck element.
  * 
  * @see gnu.lgpl.License The GNU Lesser General Public License for details.
  * @author Joe Walker
@@ -38,7 +38,7 @@ public class FontTag extends AbstractTag {
      * @see org.crosswire.jsword.book.filter.thml.Tag#getTagName()
      */
     public String getTagName() {
-        return "font";
+        return "bck";
     }
 
     @Override

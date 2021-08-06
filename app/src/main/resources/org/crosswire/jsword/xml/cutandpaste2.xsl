@@ -43,7 +43,7 @@
   <xsl:param name="direction" select="'ltr'"/>
 
   <!--
-  The font that is passed in is of the form: font or font,style,size 
+  The bck that is passed in is of the form: bck or bck,style,size
   where style is a bit mask with 1 being bold and 2 being italic.
   This needs to be changed into a style="xxx" specification
   -->

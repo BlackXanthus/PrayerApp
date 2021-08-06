@@ -22,6 +22,7 @@ Nid yw yr tudelen hwn yn ddwy-iethog gan fy mod i'n ddiog.
 <li>JSWORD page now results for the Welsh Bible (MP only)
 <li>Beible.net now shows properly in the Welsh prayer.
 </ul>
+<li>Light Theme properly displays text as black</li>
 </ul>
 <h2>Done for BETA 1.1 (unreleased)</h2>
 <ul>

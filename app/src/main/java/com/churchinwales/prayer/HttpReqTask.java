@@ -22,22 +22,25 @@ import java.util.Iterator;
 import java.util.concurrent.ExecutorService;
 
 import javax.net.ssl.HttpsURLConnection;
-
+/*
+* Removed due to Kotlin complaining it can't find them
+*
+* /
 interface app_BiblePericope_Callback<T> {
-    void onComplete(Result<T> result);
+    public void onComplete(Result<T> result);
 }
 
 interface setJswordBible<T> {
-    void setBible(Result<T> result);
+    public void setBible(Result<T> result);
 
 
 }
 
 interface setJswordVerse<T> {
-    void setJswordVerse(Result<T> result);
+    public void setJswordVerse(Result<T> result);
 
 }
-
+*/
 public class HttpReqTask  {
 
     private final ExecutorService executor;
@@ -77,7 +80,7 @@ public class HttpReqTask  {
 
             while ((line = rd.readLine()) != null) {
 
-                AppDebug.log("NSRV", line);
+                //AppDebug.log("NSRV", line);
 
                 if(line.toLowerCase().startsWith("<div class=\"bibletext\">")) {
                     ignore = Boolean.FALSE;

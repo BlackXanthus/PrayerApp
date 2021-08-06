@@ -41,7 +41,7 @@
        It is easy to have apply-templates on a line to itself which if
        it encounters text before anything else will introduce whitespace.
        With the browser we are using, span will introduce whitespace
-       but font does not. Therefore we use font as a span.
+       but bck does not. Therefore we use bck as a span.
     -->
   <!-- gdef and hdef refer to hebrew and greek definitions keyed by strongs -->
   <xsl:param name="greek.def.protocol" select="'gdef:'"/>
@@ -105,7 +105,7 @@
   <!-- The order of display. Hebrew is rtl (right to left) -->
   <xsl:param name="direction" select="'ltr'"/>
 
-  <!-- The font that is passed in is in one of two forms:
+  <!-- The bck that is passed in is in one of two forms:
     FamilyName-STYLE-size, where STYLE is either PLAIN, BOLD, ITALIC or BOLDITALIC
     or
     FamilyName,style,size, where STYLE is 0 for PLAIN, 1 for BOLD, 2 for ITALIC or 3 for BOLDITALIC.
@@ -1520,7 +1520,7 @@
   </xsl:template>
 
   <!--
-    Generate a css or an inline style representation of a font spec.
+    Generate a css or an inline style representation of a bck spec.
     The fontspec that is passed in is in one of two forms:
     FamilyName-STYLE-size, where STYLE is either PLAIN, BOLD, ITALIC or BOLDITALIC
     or
