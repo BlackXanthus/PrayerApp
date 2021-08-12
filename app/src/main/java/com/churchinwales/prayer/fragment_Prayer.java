@@ -62,7 +62,8 @@ import static androidx.preference.PreferenceManager.*;
  * Use the {@link fragment_Prayer#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class fragment_Prayer extends Fragment implements app_BiblePericope_Callback<String>, Observer,setJswordBible<Book>, setJswordVerse<String> {
+public class fragment_Prayer extends Fragment implements app_BiblePericope_Callback<String>, Observer,setJswordBible<Book>, setJswordVerse<String>,
+SharedPreferences.OnSharedPreferenceChangeListener {
 
     TextView tv_Prayer;
     TextView tv_Title;
@@ -98,6 +99,7 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
         super.onCreate(savedInstanceState);
 
         sharedPrefs = getDefaultSharedPreferences(getContext());
+        sharedPrefs.registerOnSharedPreferenceChangeListener(this);
 
         if (getArguments() != null) {
 
@@ -156,31 +158,10 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
 
         }
 
-        // spinner.setVisibility(View.VISIBLE);
+
+        this.setDisplayFont();
 
         this.setUpPrayer(prayerType);
-
-        //spinner.setVisibility(View.GONE);
-
-        String currFont = sharedPrefs.getString("font", null);
-        String currFontSize = sharedPrefs.getString("fontSize","14");
-
-        AppDebug.log("TAG","Font Type "+currFont+ "Font Size:"+currFontSize);
-        if(currFont != null) {
-            if(currFont.contains(".otf")) {
-                tv_Prayer.setTypeface(Typeface.createFromAsset(getContext().getAssets(),"font/"+currFont));
-                int currFontSizeInt = Integer.parseInt(currFontSize);
-                tv_Prayer.setTextSize(currFontSizeInt);
-            }
-            else {
-                tv_Prayer.setTypeface(Typeface.create(currFont, Typeface.NORMAL));
-                tv_Prayer.setTextSize(Integer.parseInt(currFontSize));
-            }
-        }
-        else {
-            tv_Prayer.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.NORMAL));
-            tv_Prayer.setTextSize(Integer.parseInt(currFontSize));
-        }
 
         return rootView;
 
@@ -465,6 +446,33 @@ public class fragment_Prayer extends Fragment implements app_BiblePericope_Callb
 
 
     }
+
+    protected void setDisplayFont() {
+        String currFont = sharedPrefs.getString("font", null);
+        String currFontSize = sharedPrefs.getString("fontSize","14");
+        AppDebug.log("TAG","Font Type "+currFont+ "Font Size:"+currFontSize);
+        if(currFont != null) {
+            if(currFont.contains(".otf")) {
+                tv_Prayer.setTypeface(Typeface.createFromAsset(getContext().getAssets(),"font/"+currFont));
+                int currFontSizeInt = Integer.parseInt(currFontSize);
+                tv_Prayer.setTextSize(currFontSizeInt);
+            }
+            else {
+                tv_Prayer.setTypeface(Typeface.create(currFont, Typeface.NORMAL));
+                tv_Prayer.setTextSize(Integer.parseInt(currFontSize));
+            }
+        }
+        else {
+            tv_Prayer.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.NORMAL));
+            tv_Prayer.setTextSize(Integer.parseInt(currFontSize));
+        }
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
+        this.setDisplayFont();
+    }
+
 
 
 
