@@ -44,7 +44,7 @@ public class FontChoice extends AbstractReflectedChoice {
      */
     @Override
     public String convertToString(Object orig) {
-        // This is a string representation of the font in the
+        // This is a string representation of the bck in the
         // form:name.style.size
         return (String) orig;
     }

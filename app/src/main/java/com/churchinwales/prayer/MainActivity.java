@@ -1,20 +1,18 @@
 package com.churchinwales.prayer;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.Menu;
-import android.widget.ProgressBar;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import android.view.Menu;
+
+
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.core.view.GravityCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
+
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
@@ -24,16 +22,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import static java.lang.String.valueOf;
+
 
 public class MainActivity extends AppCompatActivity implements
     NavigationView.OnNavigationItemSelectedListener
 {
 
-    private ExecutorService executorService = Executors.newFixedThreadPool(4);
     private AppBarConfiguration mAppBarConfiguration;
-    private ProgressBar spinner;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements
         Context app_Context = getApplicationContext();
         //Loading Dialogue Start Here
         ResourceLoader.unzipFromAssets(app_Context,"Prayer.zip","");
+        ResourceLoader.unzipFromAssets(app_Context,"WelBeiblNet.zip",app_Context.getFilesDir().getPath()+"/JSWORD");
 
         //setContentView(R.layout.fragment_prayer);
         setContentView(R.layout.activity_main);
@@ -50,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements
 
         //spinner = (ProgressBar) findViewById(R.id.ProgressBar1);
         //spinner.setVisibility(View.GONE);
-        /**
+        /*
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements
                         .setAction("Action", null).show();
             }
         });
-         **/
+         */
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -101,6 +99,8 @@ public class MainActivity extends AppCompatActivity implements
 
         int id = item.getItemId();
 
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+
         Log.v("TAG", "On Navigation Item Selected");
         Bundle args = new Bundle();
 
@@ -115,11 +115,13 @@ public class MainActivity extends AppCompatActivity implements
 
             args.putString("Type","MorningPrayer");
             destination=R.id.fragment_Prayer;
+            mToolbar.setTitle(getString(R.string.app_MorningPrayer));
         }
 
         if (id == R.id.id_EveningPrayer) {
             args.putString("Type","EveningPrayer");
             destination=R.id.fragment_Prayer;
+            mToolbar.setTitle(getString(R.string.app_EveningPrayer));
         }
 
         if(id== R.id.nav_Lectionary) {
@@ -140,7 +142,27 @@ public class MainActivity extends AppCompatActivity implements
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
 
+        if(id == R.id.id_EveningPrayer) {
+            mToolbar.setTitle(getString(R.string.app_EveningPrayer));
+        }
+
+        if(id == R.id.fragment_Prayer) {
+            mToolbar.setTitle(getString(R.string.app_MorningPrayer));
+        }
+
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        AppDebug.log("Menu",valueOf(id));
+        if (id == R.id.action_settings) {
+            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

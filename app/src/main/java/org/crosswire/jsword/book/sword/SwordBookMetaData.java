@@ -53,6 +53,7 @@ import org.crosswire.jsword.book.OSISUtil;
 import org.crosswire.jsword.book.basic.AbstractBookMetaData;
 import org.crosswire.jsword.book.filter.SourceFilter;
 import org.crosswire.jsword.book.filter.SourceFilterFactory;
+import org.crosswire.jsword.book.filter.osis.OSISFilter;
 import org.crosswire.jsword.versification.system.Versifications;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -70,13 +71,13 @@ import org.slf4j.LoggerFactory;
  * In addition, the SwordBookMetaData is hierarchical. The Level
  * indicates where the file originates from. The full hierarchy could be laid
  * out as followed:
- * 
+ *
  * <pre>
  *     - sword
  *         - jsword
  *            - front-end
  * </pre>
- * 
+ *
  * Various rules govern where attributes are read from. The general rule is that
  * the highest level (front-end write) will override values from the lowest
  * common denominator (sword). Various parts of the tree may be missing as the
@@ -155,6 +156,7 @@ public final class SwordBookMetaData extends AbstractBookMetaData {
     public static final String KEY_SWORD_VERSION_DATE = "SwordVersionDate";
     public static final String KEY_TEXT_SOURCE = "TextSource";
     public static final String KEY_UNLOCK_URL = "UnlockURL";
+    public static final String KEY_UNLOCK_INFO = "UnlockInfo";
     public static final String KEY_VERSION = "Version";
 
     // Some keys have defaults
@@ -303,9 +305,13 @@ public final class SwordBookMetaData extends AbstractBookMetaData {
      */
     @Override
     public boolean unlock(String unlockKey) {
-        // Persist the unlock key so that all can see it
-        putProperty(KEY_CIPHER_KEY, unlockKey, false);
+        setProperty(KEY_CIPHER_KEY, unlockKey);
         return true;
+    }
+
+    @Override
+    public void resetLock() {
+       setProperty(KEY_CIPHER_KEY, "");
     }
 
     /*
@@ -356,10 +362,23 @@ public final class SwordBookMetaData extends AbstractBookMetaData {
 
     /**
      * @return the SourceFilter based upon the SourceType.
+     *
+     * Modified by BlackXanthus (o5/08/2021)
      */
     public SourceFilter getFilter() {
         String sourcetype = getProperty(KEY_SOURCE_TYPE);
-        return SourceFilterFactory.getFilter(sourcetype);
+        //SourceFilter sf =  SourceFilterFactory.getFilter(sourcetype);
+        SourceFilter sf;
+
+        if(sourcetype.equalsIgnoreCase("OSIS")) {
+            sf = new OSISFilter();
+        }
+        else {
+            sf =  SourceFilterFactory.getFilter(sourcetype);
+        }
+
+        return sf;
+
     }
 
     /**
@@ -374,7 +393,7 @@ public final class SwordBookMetaData extends AbstractBookMetaData {
 
     /**
      * Get the book conf which is a name such as kjv.conf.
-     * 
+     *
      * @return the book conf
      */
     public String getBookConf() {
@@ -586,11 +605,19 @@ public final class SwordBookMetaData extends AbstractBookMetaData {
         return configAll.get(key, DEFAULTS.get(key));
     }
 
+    public Collection<String> getValues(String key) {
+        return configAll.getValues(key);
+    }
+
     /* (non-Javadoc)
      * @see org.crosswire.jsword.book.basic.AbstractBookMetaData#setProperty(java.lang.String, java.lang.String)
      */
     public void setProperty(String key, String value) {
         configAll.replace(key, value);
+    }
+
+    public void removeProperty(String key) {
+        configAll.remove(key);
     }
 
     /* (non-Javadoc)
@@ -603,7 +630,7 @@ public final class SwordBookMetaData extends AbstractBookMetaData {
 
     /**
      * Allow specification of a specific SwordMetaDataLocator when saving a property.
-     * 
+     *
      * @param key the entry that we are saving
      * @param value the value of the entry
      * @param metaDataLocator Place to save - front end storage, shared storage, or don't save(transient)
@@ -656,7 +683,7 @@ public final class SwordBookMetaData extends AbstractBookMetaData {
     /**
      * Allow for partial loading of a minimum set of keys, saving time and space.
      * If partial, call reload(null) to fill it in before showing the conf contents to a user.
-     * 
+     *
      * @param partial
      */
     public static void setPartialLoading(boolean partial) {
@@ -929,6 +956,9 @@ public final class SwordBookMetaData extends AbstractBookMetaData {
         // Now we need to test the file/url to see if it exists and is a
         // directory.
         String datapath = getProperty(KEY_DATA_PATH);
+        if(datapath == null) {
+            throw new BookException(String.format("Data path for the book %s is not set", configAll.getName()));
+        }
         int lastSlash = datapath.lastIndexOf('/');
 
         // There were modules that did not have a valid DataPath.

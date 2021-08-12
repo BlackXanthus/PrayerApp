@@ -93,7 +93,13 @@ public final class Languages {
         return langs;
     }
 
+    /*
+    * Return a functioning language
+    * Updated by BlackXanthus (05/07/2021
+     */
     private static ResourceBundle initLanguages(Locale locale) {
+
+
         try {
             return ResourceBundle.getBundle("iso639", locale, CWClassLoader.instance());
         } catch (MissingResourceException e) {

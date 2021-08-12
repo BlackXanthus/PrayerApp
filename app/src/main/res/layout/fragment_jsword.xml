@@ -8,18 +8,29 @@
     tools:context=".fragment_JSWORD">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/txt_Bible"
-        android:layout_width="0dp"
+
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginTop="@dimen/app_ActionBar_Height"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="6dp"
-        android:text="@string/hello_blank_fragment"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txt_Bible"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="6dp"
+                android:text="@string/app_MorningPrayer" />
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

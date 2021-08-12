@@ -9,21 +9,17 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 
 import android.text.Html;
-import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
+
 import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.snackbar.Snackbar;
-
 import org.json.JSONObject;
 
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -41,14 +37,11 @@ public class fragment_oremus extends Fragment implements app_BiblePericope_Callb
     //This should really be somewhere in the Android System, but I couldn't find it!
     private static final int REQUEST_CODE_ASK_PERMISSONS =1;
 
-    private ExecutorService executorService = Executors.newFixedThreadPool(2);
-    Executor myExecutor;
+    private final ExecutorService executorService = Executors.newFixedThreadPool(2);
+
     TextView txt_Bible;
     BibleReadingsViewModel br_ViewModel= new BibleReadingsViewModel();
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public fragment_oremus() {
         // Required empty public constructor
@@ -75,11 +68,7 @@ public class fragment_oremus extends Fragment implements app_BiblePericope_Callb
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
 
-        }
     }
 
     @Override
@@ -103,15 +92,11 @@ public class fragment_oremus extends Fragment implements app_BiblePericope_Callb
 
         if(checkPermissions()) {
             Helper myHelper = new Helper();
-            try {
-                JSONObject JSOnObj_order = new JSONObject(myHelper.readAsset(getContext(), "Order.json"));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+
             JSONObject JSONObj_prayer = myHelper.getLectionaryJson(getContext(), "MorningPrayer");
 
             HttpReqTask myTask = new HttpReqTask(executorService);
-            txt_Bible.setText("... loading");
+            txt_Bible.setText(getString(R.string.app_loading));
             try {
                 //br_ViewModel.postAppendValue(new SpannableStringBuilder(Html.fromHtml("<H2>"+getString(R.string.app_MorningPrayer)+" "+getString(R.string.NewTestamentReading)+ ":"+JSONObj_prayer.getString("NT")+" </H2>",Html.FROM_HTML_OPTION_USE_CSS_COLORS)));
 

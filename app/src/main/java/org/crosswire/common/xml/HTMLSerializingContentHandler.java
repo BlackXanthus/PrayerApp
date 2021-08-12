@@ -66,9 +66,9 @@ public class HTMLSerializingContentHandler extends PrettySerializingContentHandl
     @Override
     protected String decorateTagName(String tagName) {
         StringBuilder buf = new StringBuilder(50);
-        buf.append("<font class='tag'>");
+        buf.append("<bck class='tag'>");
         buf.append(super.decorateTagName(tagName));
-        buf.append("</font>");
+        buf.append("</bck>");
         return buf.toString();
     }
 
@@ -81,9 +81,9 @@ public class HTMLSerializingContentHandler extends PrettySerializingContentHandl
     @Override
     protected String decorateAttributeName(String attrName) {
         StringBuilder buf = new StringBuilder(50);
-        buf.append("<font class='attr'>");
+        buf.append("<bck class='attr'>");
         buf.append(super.decorateAttributeName(attrName));
-        buf.append("</font>");
+        buf.append("</bck>");
         return buf.toString();
     }
 
@@ -96,9 +96,9 @@ public class HTMLSerializingContentHandler extends PrettySerializingContentHandl
     @Override
     protected String decorateAttributeValue(String attrValue) {
         StringBuilder buf = new StringBuilder(50);
-        buf.append("<font class='value'>");
+        buf.append("<bck class='value'>");
         buf.append(super.decorateAttributeValue(attrValue));
-        buf.append("</font>");
+        buf.append("</bck>");
         return buf.toString();
     }
 
@@ -112,9 +112,9 @@ public class HTMLSerializingContentHandler extends PrettySerializingContentHandl
     @Override
     protected String decorateCharacters(String characters) {
         StringBuilder buf = new StringBuilder(50);
-        buf.append("<font class='text'>");
+        buf.append("<bck class='text'>");
         buf.append(XMLUtil.escape(super.decorateCharacters(characters)).replaceAll("\n", "<br>"));
-        buf.append("</font>");
+        buf.append("</bck>");
         return buf.toString();
     }
 
@@ -128,9 +128,9 @@ public class HTMLSerializingContentHandler extends PrettySerializingContentHandl
     @Override
     protected String decorateIndent(int indentLevel) {
         StringBuilder buf = new StringBuilder(100);
-        buf.append("<font class='indent'>");
+        buf.append("<bck class='indent'>");
         buf.append(super.decorateIndent(indentLevel).replaceAll("\t", "&nbsp;&nbsp;&nbsp;&nbsp;"));
-        buf.append("</font>");
+        buf.append("</bck>");
         return buf.toString();
     }
 
@@ -144,7 +144,7 @@ public class HTMLSerializingContentHandler extends PrettySerializingContentHandl
         // Note: we should be using SPAN here but Sun's Java does not support
         // styling it.
         // Also, it introduces whitespace between the span and the text.
-        write("<html><head><style type='text/css'>\nFONT.tag    { font-family:courier new, monospaced; color:#666699; font-weight:bold; }\nFONT.attr   { font-family:courier new, monospaced; color:#669966; font-weight:bold; }\nFONT.value  { font-family:courier new, monospaced; color:#669966; font-style:italic; }\nFONT.indent { }\nFONT.text   { font-family:courier new, monospaced; background:#FFFF99; }\n</style></head><body>\n");
+        write("<html><head><style type='text/css'>\nFONT.tag    { bck-family:courier new, monospaced; color:#666699; bck-weight:bold; }\nFONT.attr   { bck-family:courier new, monospaced; color:#669966; bck-weight:bold; }\nFONT.value  { bck-family:courier new, monospaced; color:#669966; bck-style:italic; }\nFONT.indent { }\nFONT.text   { bck-family:courier new, monospaced; background:#FFFF99; }\n</style></head><body>\n");
     }
 
     /*

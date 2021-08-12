@@ -167,9 +167,9 @@ public final class OSISUtil {
 
     /**
      * Constant to help narrow down what we use seg for. In this case the
-     * font-size tag
+     * bck-size tag
      */
-    public static final String SEG_SIZEPREFIX = "font-size: ";
+    public static final String SEG_SIZEPREFIX = "bck-size: ";
 
     /**
      * Constant for x- types

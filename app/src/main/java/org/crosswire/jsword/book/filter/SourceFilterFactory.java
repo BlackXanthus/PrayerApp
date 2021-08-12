@@ -103,7 +103,12 @@ public final class SourceFilterFactory {
         try {
             Class<SourceFilter> cdeft = map.remove("default");
             deft = cdeft.getDeclaredConstructor().newInstance();
-        } catch (ReflectiveOperationException e) {
+        } catch (ReflectiveOperationException e)
+        {
+            log.error("Failed to get default filter, will attempt to use first", e);
+        }
+        catch (NullPointerException e)
+        {
             log.error("Failed to get default filter, will attempt to use first", e);
         }
 

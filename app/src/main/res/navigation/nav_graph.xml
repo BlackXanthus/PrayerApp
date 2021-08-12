@@ -34,5 +34,9 @@
         android:name="com.churchinwales.prayer.fragment_JSWORD"
         android:label="fragment_jsword"
         tools:layout="@layout/fragment_jsword" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.churchinwales.prayer.SettingsActivity.SettingsFragment"
+        android:label="SettingsFragment" />
 </navigation>
 

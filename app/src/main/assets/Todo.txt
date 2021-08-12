@@ -13,8 +13,22 @@ Nid yw yr tudelen hwn yn ddwy-iethog gan fy mod i'n ddiog.
 <ul>
 <li>There are no Sunday Lectionary Readings</li>
 <li>Sometimes the Prayer list will appear blank, and needs to be chosen again</li>
-<li>Evening Pray Fragment Retains "Morning Prayer" name</li>
 <li>Nid yw popeth yn cael ei cyfieithu yn iawn</li>
+</ul>
+<h2>Done for BETA 2.0 </h2>
+<ul>
+<li>Added JSWORD for use of Beible.net</li>
+<ul>
+<li>JSWORD page now results for the Welsh Bible (MP only)
+<li>Beible.net now shows properly in the Welsh prayer.
+</ul>
+<li>Light Theme properly displays text as black</li>
+</ul>
+<h2>Done for BETA 1.1 (unreleased)</h2>
+<ul>
+<li>Updated the Colours to be more uniform</li>
+<li>Updated the menu icons to match the names a bit closer<li>
+<li>Fixed the Navbar names to match the prayer being displayed<li>
 </ul>
 <h2>Done for BETA 1.000</h2>
 <ul>
@@ -31,9 +45,10 @@ while waiting for it to return</li>
 <li>Fixed the Oremus fragment window title.</li>
 <li>Fixed Missing Items in Morning Prayer Layout 2</li>
 </ul>
-
-
-
+<h2>Fixed Bugs</H2>
+<ul>
+<li>Evening Pray Fragment Retains "Morning Prayer" name(Fixed BETA 1.1)</li>
+</ul>
 <h2>Items Added for Beta Release</h2>
 <ul>
 <li>New Drawer Layout to make navigation easy</li>

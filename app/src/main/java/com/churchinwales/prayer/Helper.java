@@ -30,7 +30,7 @@ public class Helper {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    /**
+    /*
      * Shuould Taake in a year
      *
      * Should perhaps return a JsonOBject?
@@ -41,7 +41,7 @@ public class Helper {
 
         try {
 
-            if(myLectionary=="") {
+            if(myLectionary.equals("")) {
                 myLectionary = this.readAsset(app_Context, "lectionary-YearTwo.json");
             }
             String myData = myLectionary;
@@ -93,7 +93,7 @@ public class Helper {
                 }
             }
 
-            Log.v("TAG","Season:"+season+" Week:"+String.valueOf(weekOfSeason)+ " Day:"+dayOfWeek);
+            AppDebug.log("TAG","Season:"+season+" Week:"+String.valueOf(weekOfSeason)+ " Day:"+dayOfWeek);
 
             JSONObject jsonObject = jsonRootObject.optJSONObject(season);
             JSONObject week =jsonObject.optJSONObject(String.valueOf(weekOfSeason));
@@ -133,14 +133,19 @@ public class Helper {
 
     }
 
-
+    /**
+     * This should through an exception when there is no relevant Bible Reading!!!!
+     * @param app_Context : The current app context
+     * @param prayerTime : The MP (Morning Prayer) or EP (Evening Prayer)
+     * @return : returns a JSON object of New and Old Testament readings
+     */
     public JSONObject getLectionaryJson(Context app_Context, String prayerTime){
 
         JSONObject prayer = new JSONObject();
 
         try {
 
-            if(myLectionary=="") {
+            if(myLectionary.equals("")) {
                 myLectionary = this.readAsset(app_Context, "lectionary-YearTwo.json");
             }
             String myData = myLectionary;
@@ -180,11 +185,11 @@ public class Helper {
 
             } else {
                 if (cal.compareTo(easter) < 0) {
-                   Log.v("TAG","Date is before Easter");
+                   AppDebug.log("TAG","Date is before Easter");
                 }
             }
 
-            Log.v("TAG","Season:"+season+" Week:"+String.valueOf(weekOfSeason)+ " Day:"+dayOfWeek);
+            AppDebug.log("TAG","Season:"+season+" Week:"+String.valueOf(weekOfSeason)+ " Day:"+dayOfWeek);
 
             JSONObject jsonObject = jsonRootObject.optJSONObject(season);
             JSONObject week =jsonObject.optJSONObject(String.valueOf(weekOfSeason));
@@ -194,8 +199,8 @@ public class Helper {
             JSONObject day = week.optJSONObject(dayOfWeek);
 
 
-
-            if((prayerTime == "MP") || (prayerTime.equalsIgnoreCase("morningprayer"))) {
+            AppDebug.log("TAG", "Prayer Time:"+prayerTime);
+            if((prayerTime.equalsIgnoreCase("MP")) || (prayerTime.equalsIgnoreCase("morningprayer"))) {
                 prayer = day.optJSONObject("MorningPrayer");
             }
             else {
@@ -209,6 +214,9 @@ public class Helper {
         catch (JSONException e) {
             e.printStackTrace();
         }
+        catch(NullPointerException e){
+            e.printStackTrace();
+        }
 
         return prayer;
 
@@ -217,7 +225,7 @@ public class Helper {
 
     protected String readFile(Context app_Context, String relativePath) throws IOException
     {
-        String myData = "";
+        StringBuilder myData = new StringBuilder();
 
 
         //InputStream fis = app_Context.getDataDir().open("Prayer/MorningPrayer/Confessional/EN_BasicConfessional.txt");
@@ -234,19 +242,19 @@ public class Helper {
 
         String strLine;
         while((strLine = br.readLine())!= null) {
-            myData = myData + strLine;
+            myData.append(strLine);
         }
 //
         br.close();
         in.close();
         fis.close();
 
-        return myData;
+        return myData.toString();
     }
 
     public String readAsset(Context app_Context, String relativePath) throws IOException
     {
-        String myData = "";
+        String myData;
 
 
         //InputStream fis = app_Context.getDataDir().open("Prayer/MorningPrayer/Confessional/EN_BasicConfessional.txt");

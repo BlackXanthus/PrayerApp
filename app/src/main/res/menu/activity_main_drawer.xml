@@ -6,31 +6,31 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/homeFragment"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/house"
             android:title="@string/menu_home" />
         <item
             android:id="@+id/fragment_Prayer"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/morning"
             android:title="@string/app_MorningPrayer" />
         <item
             android:id="@+id/id_EveningPrayer"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/night"
             android:title="@string/app_EveningPrayer" />
     </group>
 
     <group android:checkableBehavior="single">
-    <item
-        android:id="@+id/nav_Lectionary"
-        android:icon="@drawable/ic_menu_camera"
-        android:title="@string/app_Lectionary" />
+        <item
+            android:id="@+id/nav_Lectionary"
+            android:icon="@drawable/bible"
+            android:title="@string/app_Lectionary" />
 
-    <item
-        android:id="@+id/fragment_oremus"
-        android:icon="@drawable/ic_menu_camera"
-        android:title="@string/app_Oremus" />
+        <item
+            android:id="@+id/fragment_oremus"
+            android:icon="@drawable/bible"
+            android:title="@string/app_Oremus" />
         <item
             android:id="@+id/fragment_JSWORD"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/bible"
             android:title="@string/app_JSWORD" />
     </group>
 </menu>

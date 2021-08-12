@@ -20,6 +20,7 @@
 package org.crosswire.jsword.book;
 
 import java.net.URI;
+import java.util.Collection;
 import java.util.Set;
 
 import org.crosswire.common.util.Language;
@@ -162,6 +163,8 @@ public interface BookMetaData extends Comparable<BookMetaData> {
      */
     boolean unlock(String unlockKey);
 
+    void resetLock();
+
     /**
      * Gets the unlock key for the module.
      * 
@@ -265,6 +268,15 @@ public interface BookMetaData extends Comparable<BookMetaData> {
     String getProperty(String key);
 
     /**
+     * Get the values or null.
+     *
+     * @param key
+     *            the key of the property.
+     * @return the values of the property
+     */
+    Collection<String> getValues(String key);
+
+    /**
      * Store a transient property.
      * 
      * @param key
@@ -348,7 +360,7 @@ public interface BookMetaData extends Comparable<BookMetaData> {
     String KEY_LANGUAGE = "Language";
 
     /**
-     * The key for the font in the properties map
+     * The key for the bck in the properties map
      */
     String KEY_FONT = "Font";
 

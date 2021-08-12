@@ -34,7 +34,7 @@ import org.xml.sax.Attributes;
 public interface Tag {
     /**
      * What element does this class represent. For example the Tag that
-     * represents the font element would return the string "font".
+     * represents the bck element would return the string "bck".
      * @return the element's tag name
      */
     String getTagName();
