@@ -34,8 +34,8 @@ public class ResourceLoader {
         //android.content.res.Resources t = mContext.getAssets();
 
         //InputStream fis = t.openRawResource(R.raw.resources);
-        InputStream fis = mContext.getAssets().open("Prayer.zip");
-        Log.v("NOTAG", "Opening Prayer.zip");
+        InputStream fis = mContext.getAssets().open(fileName);
+        Log.v("NOTAG", "Opening "+fileName);
 
         if (fis == null)
             return;
@@ -104,6 +104,12 @@ public class ResourceLoader {
                         Files.createDirectories(resolvedPath);
                     }
                     else {
+                        //Log.v("TAG", String.valueOf(resolvedPath) + "-" +ze.getName());
+                        File f = new File(String.valueOf(resolvedPath));
+                        if(f.exists()) {
+                            f.delete();
+                            AppDebug.log("TAG", "Deleting "+f.getName());
+                        }
                         Files.createDirectories(resolvedPath.getParent());
                         Files.copy(zipIn,resolvedPath);
                     }

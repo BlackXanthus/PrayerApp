@@ -66,6 +66,11 @@
 			"Location": "MorningPrayer/Dismissals",
 			"File":"Dismissal1"
 		},
+		"Section92":{
+			"Name":"Ending",
+			"Location": "MorningPrayer/Dismissals",
+			"File":"Ending"
+		},
 		"Section10": {
 			"Name": "Copyright",
 			"Location":"Licences",

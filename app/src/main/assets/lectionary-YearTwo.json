@@ -250,7 +250,7 @@
                 "Name": "Monday",
                 "MorningPrayer": {
                     "Psalm": "Ps",
-                    "OT": "Malachi 1.1  6-end",
+                    "OT": "Malachi 1:1,6-end",
                     "NT": "Matthew 19.1-12"
                 },
                 "EveningPrayer": {
@@ -3213,7 +3213,7 @@
                 },
                 "EveningPrayer": {
                     "Psalm": "Ps 148  [149  150]",
-                    "OT": "a) Zechariah 3:b) Proverbs 3110-end",
+                    "OT": "a) Zechariah 3, b) Proverbs 3110-end",
                     "NT": "Mark 9:30-37"
                 }
             }
@@ -3224,7 +3224,7 @@
                 "Name": "Monday",
                 "MorningPrayer": {
                     "Psalm": "Ps 1  [2  3]",
-                    "OT": "1 Kings 1:.5-31",
+                    "OT": "1 Kings 1:5-31",
                     "NT": "Acts 13:13-43"
                 },
                 "EveningPrayer": {
@@ -3310,7 +3310,7 @@
                 },
                 "EveningPrayer": {
                     "Psalm": "Ps [26 ] 28  [29]",
-                    "OT": "a) Zechariah 10:b) Wisdom 6.12-23 or 1 Chronicles. 28 1-10",
+                    "OT": "a) Zechariah 10, b) Wisdom 6.12-23 or 1 Chronicles. 28 1-10",
                     "NT": "Mark 11:1-11"
                 }
             },
@@ -3336,7 +3336,7 @@
                 },
                 "EveningPrayer": {
                     "Psalm": "Ps 119.33-56",
-                    "OT": "a) Zechariah 12:1-10,b) Wisdom 7.15-8.4 or 1 Chronicles. 29.1-9",
+                    "OT": "a) Zechariah 12:1-10, b) Wisdom 7.15-8.4 or 1 Chronicles. 29.1-9",
                     "NT": "Mark 11:27-end"
                 }
             },

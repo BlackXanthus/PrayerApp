@@ -114,13 +114,8 @@ SharedPreferences.OnSharedPreferenceChangeListener {
 
 
         CWProject.setHome(getContext().getFilesDir().getPath(), getContext().getFilesDir().getPath() + "/JSWORD", ".Jsword");
-
-
         HttpReqTask myTask = new HttpReqTask(executorService);
-
         myTask.getBibleBook(getString(R.string.app_WelshBibleJswordName), this);
-
-
 
     }
 
@@ -211,9 +206,7 @@ SharedPreferences.OnSharedPreferenceChangeListener {
             br_ViewModel.getObservable().observe(getViewLifecycleOwner(), this);
             JSONObject jsonObject = jsonRootObject.optJSONObject(prayerType);
 
-
             Iterator keys = jsonObject.keys();
-
 
             while (keys.hasNext()) {
                 Object key = keys.next();
@@ -225,8 +218,7 @@ SharedPreferences.OnSharedPreferenceChangeListener {
                     JSONObject data_JSOB = jsonObject.getJSONObject((String) key);
                     String name = data_JSOB.getString(language);
                     tv_Title.setText(name);
-                    //name=name+"<br><br>";
-                    //myDocument.append(Html.fromHtml(name));
+
                 }
                 if (((String) key).startsWith("Section")) {
                     JSONObject data_JSOB = jsonObject.getJSONObject((String) key);
@@ -247,19 +239,12 @@ SharedPreferences.OnSharedPreferenceChangeListener {
                     }
 
                     br_ViewModel.setValue((String) key, getSection(app_Context, data_JSOB).toString());
-                    /*
-                    SpannableStringBuilder section= getSection(app_Context, data_JSOB);
-                    myDocument.append(section);
-                     */
+
                 }
                 if (((String) key).startsWith("Bible")) {
                     JSONObject data_JSOB = jsonObject.getJSONObject((String) key);
                     getBibleReading(app_Context, data_JSOB.getString("Type").toString(), (String) key);
-                    //getBibleReading(app_Context,this.prayerType,(String)key);
-                    /*
-                    SpannableStringBuilder bible= getBibleReading(app_Context,data_JSOB.getString("Type"));
-                    myDocument.append(bible);
-                     */
+
                 }
 
 
@@ -269,7 +254,6 @@ SharedPreferences.OnSharedPreferenceChangeListener {
             e.printStackTrace();
         }
 
-        //myDocument.append(confessional());
 
         tv_Prayer.setText(myDocument, TextView.BufferType.NORMAL);
     }
@@ -278,7 +262,6 @@ SharedPreferences.OnSharedPreferenceChangeListener {
 
         Helper myHelper = new Helper();
         JSONObject prayer = myHelper.getLectionaryJson(app_context, this.prayerType);
-
 
         HttpReqTask myTask = new HttpReqTask(executorService);
 
@@ -293,13 +276,15 @@ SharedPreferences.OnSharedPreferenceChangeListener {
                 br_ViewModel.setValue(type + "_Name", "<h1>" + getString(R.string.Psalm) + "</h1><br>");
             }
 
-            br_ViewModel.setValue(type + "_Title", "<h2>" + prayer.getString(type) + "</h2>");
+            String bibleVerse =  checkBibleReading(prayer.getString(type));
+
+            br_ViewModel.setValue(type + "_Title", "<h2>" + bibleVerse + "</h2>");
             br_ViewModel.setValue(section, ".." + getString(R.string.app_loading));
             if (checkPermissions()) {
                 if (language.equals("CY") & this.bible != null) {
-                    myTask.getJswordVerse(this.bible, prayer.getString(type), section, this);
+                    myTask.getJswordVerse(this.bible, bibleVerse, section, this);
                 } else {
-                    myTask.makeBibleRequest(prayer.getString(type), section, this);
+                    myTask.makeBibleRequest(bibleVerse, section, this);
                 }
             } else {
                 br_ViewModel.setValue(section, "... No internet permission granted");
@@ -309,6 +294,76 @@ SharedPreferences.OnSharedPreferenceChangeListener {
             e.printStackTrace();
 
         }
+    }
+
+    /*
+    * This is designed to try and fix some of the errors
+    * in the incoming verses.
+    *
+    * It can't fix everything, and it shows that the Lectionary still
+    * needs work
+     */
+    protected String checkBibleReading(String theVerse) {
+
+        String modifiedVerse = theVerse;
+
+        if(theVerse.contains(")")) {
+            String result[] = modifiedVerse.split("b\\)");
+            String gettingA = result[0].trim().substring(2);
+            String gettingB = result[1].trim();
+            if(gettingA.contains("end")) {
+                modifiedVerse = gettingB;
+            }
+            else {
+                modifiedVerse = gettingA;
+            }
+        }
+
+        if(theVerse.contains("[") && theVerse.toLowerCase().contains("ps")) {
+            modifiedVerse = modifiedVerse.replace("Ps","");
+            modifiedVerse = modifiedVerse.replace("PS","");
+            String result[] = modifiedVerse.split("\\[");
+            String gettingA = result[0].trim();
+            gettingA = gettingA.replace("]",",");
+            String gettingB = result[1].trim();
+            gettingB = gettingB.replace("]",",");
+
+            AppDebug.log("Psalm","Psalm B:"+gettingB);
+            AppDebug.log("Psalm","Psalm A:"+gettingA);
+
+            if(gettingA.equals("")) {
+                if (!gettingB.contains("Ps")) {
+                    gettingB = "Ps " + gettingB;
+                    AppDebug.log("Psalm","Psalm B:"+gettingB);
+                }
+                modifiedVerse = gettingB;
+            }
+            else {
+                if (!gettingA.contains("Ps")) {
+                    gettingA = "Ps " + gettingA;
+                    AppDebug.log("Psalm","Psalm A:"+gettingA);
+                }
+                modifiedVerse = gettingA;
+            }
+        }
+
+        if(modifiedVerse.contains("or")) {
+            String result[] = modifiedVerse.split("or");
+            String gettingA = result[0].trim();
+            String gettingB = result[1].trim();
+            if(gettingA.contains("end")) {
+                modifiedVerse = gettingB;
+            }
+            else {
+                modifiedVerse = gettingA;
+            }
+
+        }
+
+        AppDebug.log("Verse","Verse:"+modifiedVerse);
+
+
+        return modifiedVerse;
     }
 
     protected String getSection(Context app_Context, JSONObject data_JSOB) throws JSONException {
@@ -402,7 +457,7 @@ SharedPreferences.OnSharedPreferenceChangeListener {
 
     @Override
     public void onChanged(Object o) {
-        tv_Prayer.setText(Html.fromHtml(br_ViewModel.getPage(), Html.FROM_HTML_SEPARATOR_LINE_BREAK_HEADING));
+        tv_Prayer.setText(Html.fromHtml(br_ViewModel.getPage(), Html.FROM_HTML_MODE_LEGACY));
 
     }
 

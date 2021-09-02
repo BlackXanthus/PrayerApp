@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Prayer</string>
     <string name="app_MorningPrayer">Morning Prayer</string>
-    <string name="app_version" translatable="false">BETA 1.001</string>
     <string name="btn_Language">Cymraeg</string>
     <string name="Error">Error</string>
     <string name="FileNotFound">File Not Found</string>
@@ -48,5 +47,6 @@
     <string name="pref_Display_Font_Default">sans-serif</string>
     <string name="pref_Display_Font">Default Font</string>
     <string name="pref_Display_FontSize">Font Size</string>
-    <string name="pref_Display_FontSize_Default">14</string>
+    <string name="pref_Display_FontSize_Default" translatable="false">14</string>
+    <string name="app_version">Release 1.0</string>
 </resources>
