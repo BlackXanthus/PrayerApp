@@ -20,7 +20,9 @@
     <string name="action_settings">Gosodiadau</string>
     <string name="menu_gallery">Oriel</string>
     <string name="menu_slideshow">Sioe Symudol</string>
-    <string name="pref_Display">Display</string>
     <string name="pref_Display_Font_Default">Arial</string>
-    <string name="pref_Display_Font">Default Font</string>
+    <string name="pref_Display_Font">Font Rhagosiad</string>
+    <string name="pref_Display">Ddangosiad</string>
+    <string name="pref_Display_FontSize">Maint Font</string>
+    <string name="app_version">Rhyddhad 1.0</string>
 </resources>
