@@ -21,10 +21,10 @@
 
     <string name="app_EveningPrayer">Evening Prayer</string>
     <string name="app_Lectionary">Lectionary</string>
-    <string name="app_Oremus" translatable="false">Oremus Bible Readings</string>
+    <string name="app_Oremus">English Bible Readings (Oremus)</string>
     <string name="app_loading">loading</string>
     <string name="Psalm" translatable="false">Psalm</string>
-    <string name="app_JSWORD" translatable="false">JSWORD</string>
+    <string name="app_JSWORD">Welsh Bible Readings (JSWORD)</string>
     <string name="app_WelshBibleJswordName" translatable="false">WelBeiblNet</string>
     <string name="App_Key_SharedPref" translatable="false">ChurchInWalesPrayer</string>
     <string name="title_activity_settings">SettingsActivity</string>
@@ -49,4 +49,7 @@
     <string name="pref_Display_FontSize">Font Size</string>
     <string name="pref_Display_FontSize_Default" translatable="false">14</string>
     <string name="app_version">Release 1.0</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_Welcome">Welcome</string>
 </resources>

@@ -353,7 +353,7 @@ import org.crosswire.jsword.book.BookMetaData;
         "HebrewParse",
         "DailyDevotion",
         "Glossary",
-        "Images",
+            "images",
         "NoParagraphs"
     )
     {
@@ -501,7 +501,7 @@ import org.crosswire.jsword.book.BookMetaData;
         "Cults / Unorthodox / Questionable Material",
         "Essays",
         "Maps",
-        "Images",
+            "images",
         "Biblical Texts",
         "Commentaries",
         "Lexicons / Dictionaries",

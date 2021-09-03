@@ -25,4 +25,7 @@
     <string name="pref_Display">Ddangosiad</string>
     <string name="pref_Display_FontSize">Maint Font</string>
     <string name="app_version">Rhyddhad 1.0</string>
+    <string name="app_JSWORD">Darlleniadau Beible Cymraeg (JSWORD)</string>
+    <string name="app_Oremus">Darlleniadau Beible Saesneg (Oremus)</string>
+    <string name="app_Welcome">Croeso</string>
 </resources>

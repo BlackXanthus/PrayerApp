@@ -59,7 +59,7 @@ public enum BookCategory {
 
     /** Books that are predominately images. */
     // TRANSLATOR: The name for the book category consisting of books containing mostly images.
-    IMAGES("Images", JSMsg.gettext("Images")),
+    IMAGES("images", JSMsg.gettext("images")),
 
     /** Books that are a collection of maps. */
     // TRANSLATOR: The name for the book category consisting of books containing mostly maps.
