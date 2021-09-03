@@ -29,7 +29,7 @@
     <fragment
         android:id="@+id/fragment_JSWORD"
         android:name="com.churchinwales.prayer.fragment_JSWORD"
-        android:label="fragment_jsword"
+        android:label="@string/app_JSWORD"
         tools:layout="@layout/fragment_jsword" />
     <fragment
         android:id="@+id/settingsFragment"

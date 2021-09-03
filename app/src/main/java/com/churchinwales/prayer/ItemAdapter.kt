@@ -5,6 +5,7 @@ import android.content.res.AssetManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,7 +44,7 @@ class ItemAdapter(private val context: Context, private val dataset: List<Card>)
             holder.cardImage.setImageBitmap(this)
         }
 
-        holder.cardText.text = item.cardText
+        holder.cardText.text = Html.fromHtml(item.cardText,Html.FROM_HTML_MODE_COMPACT)
     }
 
     override fun getItemCount() = dataset.size
