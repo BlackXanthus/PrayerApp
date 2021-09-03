@@ -70,6 +70,7 @@ dependencies {
     implementation "com.chenlb.mmseg4j:mmseg4j-dic:1.8.6"
     implementation "org.jdom:jdom2:2.0.6"
     implementation "org.apache.lucene:lucene-analyzers:3.6.2"
+    implementation "com.google.android.material:material:1.4.0"
 
 
     //implementation "org.slf4j:slf4j-api:1.7.6"

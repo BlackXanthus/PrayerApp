@@ -42,7 +42,9 @@ public class MainActivity extends AppCompatActivity implements
         ResourceLoader.unzipFromAssets(app_Context,"WelBeiblNet.zip",app_Context.getFilesDir().getPath()+"/JSWORD");
 
         //setContentView(R.layout.fragment_prayer);
+
         setContentView(R.layout.activity_main);
+        //setContentView(R.layout.fragment_cardview);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -58,12 +60,13 @@ public class MainActivity extends AppCompatActivity implements
             }
         });
          */
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.homeFragment, R.id.fragment_Prayer, R.id.id_EveningPrayer, R.id.fragment_Lectionary)
+                R.id.fragment_cardview, R.id.fragment_Prayer, R.id.id_EveningPrayer, R.id.fragment_Lectionary)
                 .setOpenableLayout(drawer)
                 .build();
         //NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -104,11 +107,18 @@ public class MainActivity extends AppCompatActivity implements
         Log.v("TAG", "On Navigation Item Selected");
         Bundle args = new Bundle();
 
-        int destination=R.id.homeFragment;
+        int destination=R.id.fragment_cardview;
 
+        /*
         if (id == R.id.homeFragment) {
           //fragment = findViewById(R.id.homeFragment);
            destination = R.id.homeFragment;
+        }*/
+
+        if (id == R.id.fragment_cardview) {
+            //fragment = findViewById(R.id.homeFragment);
+            destination = R.id.fragment_cardview;
+            mToolbar.setTitle(R.string.app_Welcome);
         }
 
         if (id == R.id.fragment_Prayer) {
@@ -149,6 +159,7 @@ public class MainActivity extends AppCompatActivity implements
         if(id == R.id.fragment_Prayer) {
             mToolbar.setTitle(getString(R.string.app_MorningPrayer));
         }
+
 
         return true;
     }

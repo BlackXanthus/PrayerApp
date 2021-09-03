@@ -5,7 +5,7 @@ import android.util.Log
 class AppDebug {
     companion object {
         @JvmStatic
-        val on: Boolean = false
+        val on: Boolean = true
 
         @JvmStatic
         fun log(tag: String, message: String) {

@@ -2,7 +2,7 @@
 <navigation xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/fragment_cardview">
     <fragment
         android:id="@+id/fragment_Prayer"
         android:name="com.churchinwales.prayer.fragment_Prayer"
@@ -11,14 +11,11 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.churchinwales.prayer.ui.home.HomeFragment"
-        android:label="Home"
-        tools:layout="@layout/fragment_home" />
+        android:label="Home" />
     <fragment
         android:id="@+id/id_EveningPrayer"
         android:label="@string/app_EveningPrayer" />
-    <fragment
-        android:id="@+id/nav_Lectionary"
-        android:label="@app_Lectionary" />
+
     <fragment
         android:id="@+id/fragment_Lectionary"
         android:name="com.churchinwales.prayer.fragment_Lectionary"
@@ -38,5 +35,9 @@
         android:id="@+id/settingsFragment"
         android:name="com.churchinwales.prayer.SettingsActivity.SettingsFragment"
         android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/fragment_cardview"
+        android:name="com.churchinwales.prayer.fragment_cardview"
+        android:label="@string/app_Welcome" />
 </navigation>
 

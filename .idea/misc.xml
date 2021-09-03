@@ -3,7 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProjects/Prayer2/app/src/main/res/layout/activity_main.xml" value="0.13020833333333334" />
+        <entry key="..\:/AndroidStudioProjects/Prayer2/app/src/main/res/layout/activity_main2.xml" value="0.13020833333333334" />
+        <entry key="..\:/AndroidStudioProjects/Prayer2/app/src/main/res/layout/card.xml" value="0.15833333333333333" />
+        <entry key="..\:/AndroidStudioProjects/Prayer2/app/src/main/res/layout/discard.xml" value="0.11614583333333334" />
+        <entry key="..\:/AndroidStudioProjects/Prayer2/app/src/main/res/layout/fragment_cardview.xml" value="0.264" />
+        <entry key="..\:/AndroidStudioProjects/Prayer2/app/src/main/res/layout/fragment_home.xml" value="0.13020833333333334" />
+        <entry key="..\:/AndroidStudioProjects/Prayer2/app/src/main/res/layout/fragment_jsword.xml" value="0.13020833333333334" />
+        <entry key="..\:/AndroidStudioProjects/Prayer2/app/src/main/res/layout/fragment_lectionary.xml" value="0.13020833333333334" />
         <entry key="..\:/AndroidStudioProjects/Prayer2/app/src/main/res/layout/fragment_prayer.xml" value="0.1265625" />
+        <entry key="..\:/AndroidStudioProjects/Prayer2/app/src/main/res/menu/activity_main_drawer.xml" value="0.536" />
       </map>
     </option>
   </component>

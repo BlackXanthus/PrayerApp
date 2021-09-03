@@ -63,7 +63,7 @@ public class Helper {
                 //   cal.add(Calendar.YEAR, - easter.get(Calendar.YEAR));
                 //    cal.add(Calendar.MONTH, - easter.get(Calendar.MONTH));
                 //    cal.add(Calendar.DAY_OF_MONTH, - easter.get(Calendar.DAY_OF_MONTH));
-                contents.append(Html.fromHtml("Current Date: "+cal.get(Calendar.YEAR)+":"+cal.get(Calendar.MONTH)+ ":"+cal.get(Calendar.DAY_OF_MONTH)+"<BR>"));
+                contents.append(Html.fromHtml("Current Date: "+cal.get(Calendar.YEAR)+":"+ (cal.get(Calendar.MONTH)+1)+ ":"+cal.get(Calendar.DAY_OF_MONTH)+"<BR>"));
 
                 long weeks = cal.getTimeInMillis() - easter.getTimeInMillis();
 
@@ -84,9 +84,10 @@ public class Helper {
                     weekOfSeason = weeksSinceEaster -6;
                 }
 
-                contents.append(Html.fromHtml("Weeks Since Easter: "+weeksSinceEaster+"<br>"));
-                contents.append(Html.fromHtml("Season: "+season+"<BR>"));
-                contents.append(Html.fromHtml("Day:"+dayOfWeek+"<BR>"));
+                contents.append(Html.fromHtml("Weeks Since Easter: "+weeksSinceEaster+"<br>",Html.FROM_HTML_MODE_LEGACY));
+                contents.append(Html.fromHtml("Season: "+season+"<BR>",Html.FROM_HTML_MODE_LEGACY));
+                contents.append(Html.fromHtml("Week:"+weekOfSeason+"<br>",Html.FROM_HTML_MODE_LEGACY));
+                contents.append(Html.fromHtml("Day:"+dayOfWeek+"<BR>",Html.FROM_HTML_MODE_LEGACY));
             } else {
                 if (cal.compareTo(easter) < 0) {
                     contents.append("Date is before Easter");
@@ -105,19 +106,19 @@ public class Helper {
             JSONObject day = week.optJSONObject(dayOfWeek);
             JSONObject prayer =  day.optJSONObject("MorningPrayer");
 
-            contents.append(Html.fromHtml("<br>"));
-            contents.append(Html.fromHtml("Morning Prayer<br>"));
-            contents.append(Html.fromHtml("Psalm: "+prayer.getString("Psalm")+"<BR>"));
-            contents.append(Html.fromHtml("OT: "+prayer.getString("OT")+"<br>"));
-            contents.append(Html.fromHtml("NT: "+prayer.getString("NT")+"<BR>"));
+            contents.append(Html.fromHtml("<br>",Html.FROM_HTML_MODE_LEGACY));
+            contents.append(Html.fromHtml("Morning Prayer<br>",Html.FROM_HTML_MODE_LEGACY));
+            contents.append(Html.fromHtml("Psalm: "+prayer.getString("Psalm")+"<BR>",Html.FROM_HTML_MODE_LEGACY));
+            contents.append(Html.fromHtml("OT: "+prayer.getString("OT")+"<br>",Html.FROM_HTML_MODE_LEGACY));
+            contents.append(Html.fromHtml("NT: "+prayer.getString("NT")+"<BR>",Html.FROM_HTML_MODE_LEGACY));
             contents.append(Html.fromHtml("<br><br>"));
 
             prayer =  day.optJSONObject("EveningPrayer");
 
             contents.append(Html.fromHtml("Evening Prayer<br>"));
-            contents.append(Html.fromHtml("Psalm: "+prayer.getString("Psalm")+"<BR>"));
-            contents.append(Html.fromHtml("OT: "+prayer.getString("OT")+"<br>"));
-            contents.append(Html.fromHtml("NT: "+prayer.getString("NT")+"<BR>"));
+            contents.append(Html.fromHtml("Psalm: "+prayer.getString("Psalm")+"<BR>",Html.FROM_HTML_MODE_LEGACY));
+            contents.append(Html.fromHtml("OT: "+prayer.getString("OT")+"<br>",Html.FROM_HTML_MODE_LEGACY));
+            contents.append(Html.fromHtml("NT: "+prayer.getString("NT")+"<BR>",Html.FROM_HTML_MODE_LEGACY));
 
         }
 
