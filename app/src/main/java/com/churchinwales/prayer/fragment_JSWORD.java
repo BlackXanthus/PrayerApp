@@ -132,7 +132,11 @@ public class fragment_JSWORD extends Fragment implements app_BiblePericope_Callb
 
                 br_ViewModel.setValue("OldTestament", "<H2>Hen Testament</h2><br><h2>" + prayer.getString("OT") + "</h2><br>");
                 br_ViewModel.setValue(prayer.getString("OT"), getString(R.string.app_loading) );
-                myTask.getJswordVerse(bible, prayer.getString("OT"), prayer.getString("OT"),this);
+
+                String bibleVerse =  myHelper.checkBibleReading(prayer.getString("OT"));
+
+
+                myTask.getJswordVerse(bible, bibleVerse, prayer.getString("OT"),this);
 
                 /*
                 gen11 = bible.getKey(prayer.getString("NT"));
@@ -143,15 +147,20 @@ public class fragment_JSWORD extends Fragment implements app_BiblePericope_Callb
                 */
                 br_ViewModel.setValue("NewTestament", "<br><br><H2>Testament Newydd</h2><br><h2>" + prayer.getString("NT") + "</h2><br>");
                 br_ViewModel.setValue(prayer.getString("NT"),getString(R.string.app_loading));
-                myTask.getJswordVerse(bible, prayer.getString("NT"), prayer.getString("NT"),this);
+
+                bibleVerse =  myHelper.checkBibleReading(prayer.getString("NT"));
+                myTask.getJswordVerse(bible, bibleVerse, prayer.getString("NT"), this);
 
 
                 br_ViewModel.setValue("EP_header", "<h1>Hwyrol Gweddi</H1>");
                 prayerType = "EveningPrayer";
                 prayer = myHelper.getLectionaryJson(app_context, prayerType);
-                br_ViewModel.setValue("EP_OldTestament", "<H2>Hen Testament</h2><br><h2>" + prayer.getString("OT") + "</h2><br>");
+
+                bibleVerse =  myHelper.checkBibleReading(prayer.getString("OT"));
+
+                br_ViewModel.setValue("EP_OldTestament", "<H2>Hen Testament</h2><br><h2>" + bibleVerse+ " ("+ prayer.getString("OT") + ")</h2><br>");
                 br_ViewModel.setValue("EP_"+prayer.getString("OT"), getString(R.string.app_loading) );
-                myTask.getJswordVerse(bible, "EP_"+prayer.getString("OT"), prayer.getString("OT"),this);
+                myTask.getJswordVerse(bible, bibleVerse,"EP_"+prayer.getString("OT"), this);
 
                 /*
                 gen11 = bible.getKey(prayer.getString("NT"));
@@ -162,7 +171,8 @@ public class fragment_JSWORD extends Fragment implements app_BiblePericope_Callb
                 */
                 br_ViewModel.setValue("EP_NewTestament", "<br><br><H2>Testament Newydd</h2><br><h2>" + prayer.getString("NT") + "</h2><br>");
                 br_ViewModel.setValue("EP_"+prayer.getString("NT"),getString(R.string.app_loading));
-                myTask.getJswordVerse(bible, "EP_"+prayer.getString("NT"), prayer.getString("NT"),this);
+                bibleVerse =  myHelper.checkBibleReading(prayer.getString("NT"));
+                myTask.getJswordVerse(bible, bibleVerse,"EP_"+prayer.getString("NT"),this);
 
 
             } catch (JSONException e) {

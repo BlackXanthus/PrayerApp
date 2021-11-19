@@ -276,7 +276,7 @@ SharedPreferences.OnSharedPreferenceChangeListener {
                 br_ViewModel.setValue(type + "_Name", "<h1>" + getString(R.string.Psalm) + "</h1><br>");
             }
 
-            String bibleVerse =  checkBibleReading(prayer.getString(type));
+            String bibleVerse =  myHelper.checkBibleReading(prayer.getString(type));
 
             br_ViewModel.setValue(type + "_Title", "<h2>" + bibleVerse + "</h2>");
             br_ViewModel.setValue(section, ".." + getString(R.string.app_loading));
@@ -296,75 +296,6 @@ SharedPreferences.OnSharedPreferenceChangeListener {
         }
     }
 
-    /*
-    * This is designed to try and fix some of the errors
-    * in the incoming verses.
-    *
-    * It can't fix everything, and it shows that the Lectionary still
-    * needs work
-     */
-    protected String checkBibleReading(String theVerse) {
-
-        String modifiedVerse = theVerse;
-
-        if(theVerse.contains(")")) {
-            String result[] = modifiedVerse.split("b\\)");
-            String gettingA = result[0].trim().substring(2);
-            String gettingB = result[1].trim();
-            if(gettingA.contains("end")) {
-                modifiedVerse = gettingB;
-            }
-            else {
-                modifiedVerse = gettingA;
-            }
-        }
-
-        if(theVerse.contains("[") && theVerse.toLowerCase().contains("ps")) {
-            modifiedVerse = modifiedVerse.replace("Ps","");
-            modifiedVerse = modifiedVerse.replace("PS","");
-            String result[] = modifiedVerse.split("\\[");
-            String gettingA = result[0].trim();
-            gettingA = gettingA.replace("]",",");
-            String gettingB = result[1].trim();
-            gettingB = gettingB.replace("]",",");
-
-            AppDebug.log("Psalm","Psalm B:"+gettingB);
-            AppDebug.log("Psalm","Psalm A:"+gettingA);
-
-            if(gettingA.equals("")) {
-                if (!gettingB.contains("Ps")) {
-                    gettingB = "Ps " + gettingB;
-                    AppDebug.log("Psalm","Psalm B:"+gettingB);
-                }
-                modifiedVerse = gettingB;
-            }
-            else {
-                if (!gettingA.contains("Ps")) {
-                    gettingA = "Ps " + gettingA;
-                    AppDebug.log("Psalm","Psalm A:"+gettingA);
-                }
-                modifiedVerse = gettingA;
-            }
-        }
-
-        if(modifiedVerse.contains("or")) {
-            String result[] = modifiedVerse.split("or");
-            String gettingA = result[0].trim();
-            String gettingB = result[1].trim();
-            if(gettingA.contains("end")) {
-                modifiedVerse = gettingB;
-            }
-            else {
-                modifiedVerse = gettingA;
-            }
-
-        }
-
-        AppDebug.log("Verse","Verse:"+modifiedVerse);
-
-
-        return modifiedVerse;
-    }
 
     protected String getSection(Context app_Context, JSONObject data_JSOB) throws JSONException {
         String data = "";

@@ -4,20 +4,14 @@ import android.content.Context;
 import android.os.Build;
 import android.text.Html;
 import android.text.SpannableStringBuilder;
-import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -58,12 +52,12 @@ public class Helper {
                     .build();
 
             if( cal.compareTo(easter) > 0) {
-                contents.append(Html.fromHtml("Date is after Easter<br>"));
+                contents.append(Html.fromHtml("Date is after Easter<br>", Html.FROM_HTML_MODE_LEGACY));
 
                 //   cal.add(Calendar.YEAR, - easter.get(Calendar.YEAR));
                 //    cal.add(Calendar.MONTH, - easter.get(Calendar.MONTH));
                 //    cal.add(Calendar.DAY_OF_MONTH, - easter.get(Calendar.DAY_OF_MONTH));
-                contents.append(Html.fromHtml("Current Date: "+cal.get(Calendar.YEAR)+":"+ (cal.get(Calendar.MONTH)+1)+ ":"+cal.get(Calendar.DAY_OF_MONTH)+"<BR>"));
+                contents.append(Html.fromHtml("Current Date: "+cal.get(Calendar.YEAR)+":"+ (cal.get(Calendar.MONTH)+1)+ ":"+cal.get(Calendar.DAY_OF_MONTH)+"<BR>",Html.FROM_HTML_MODE_LEGACY));
 
                 long weeks = cal.getTimeInMillis() - easter.getTimeInMillis();
 
@@ -111,11 +105,11 @@ public class Helper {
             contents.append(Html.fromHtml("Psalm: "+prayer.getString("Psalm")+"<BR>",Html.FROM_HTML_MODE_LEGACY));
             contents.append(Html.fromHtml("OT: "+prayer.getString("OT")+"<br>",Html.FROM_HTML_MODE_LEGACY));
             contents.append(Html.fromHtml("NT: "+prayer.getString("NT")+"<BR>",Html.FROM_HTML_MODE_LEGACY));
-            contents.append(Html.fromHtml("<br><br>"));
+            contents.append(Html.fromHtml("<br><br>", Html.FROM_HTML_MODE_LEGACY));
 
             prayer =  day.optJSONObject("EveningPrayer");
 
-            contents.append(Html.fromHtml("Evening Prayer<br>"));
+            contents.append(Html.fromHtml("Evening Prayer<br>", Html.FROM_HTML_MODE_LEGACY));
             contents.append(Html.fromHtml("Psalm: "+prayer.getString("Psalm")+"<BR>",Html.FROM_HTML_MODE_LEGACY));
             contents.append(Html.fromHtml("OT: "+prayer.getString("OT")+"<br>",Html.FROM_HTML_MODE_LEGACY));
             contents.append(Html.fromHtml("NT: "+prayer.getString("NT")+"<BR>",Html.FROM_HTML_MODE_LEGACY));
@@ -132,6 +126,93 @@ public class Helper {
         return contents;
 
 
+    }
+
+    /*
+     * This is designed to try and fix some of the errors
+     * in the incoming verses.
+     *
+     * It can't fix everything, and it shows that the Lectionary still
+     * needs work
+     */
+    protected String checkBibleReading(String theVerse) {
+
+        String modifiedVerse = theVerse;
+
+        if(theVerse.contains(")")) {
+            //String result[] = modifiedVerse.split("b\\)");
+            String result[] = modifiedVerse.split(",");
+            String gettingA = result[0].trim().substring(2);
+            String gettingB = "";
+            if(result.length > 1) {
+                gettingB = result[1].trim();
+            }
+            else {
+                gettingB = "";
+            }
+            if(gettingA.contains("end")) {
+                if(!gettingB.equalsIgnoreCase("")) {
+                    modifiedVerse = gettingB;
+                }
+            }
+            else {
+                modifiedVerse = gettingA;
+            }
+        }
+
+        if(theVerse.contains("[") && theVerse.toLowerCase().contains("ps")) {
+            modifiedVerse = modifiedVerse.replace("Ps","");
+            modifiedVerse = modifiedVerse.replace("PS","");
+            String result[] = modifiedVerse.split("\\[");
+            String gettingA = result[0].trim();
+            gettingA = gettingA.replace("]",",");
+            String gettingB = result[1].trim();
+            gettingB = gettingB.replace("]",",");
+
+            AppDebug.log("Psalm","Psalm B:"+gettingB);
+            AppDebug.log("Psalm","Psalm A:"+gettingA);
+
+            if(gettingA.equals("")) {
+                if (!gettingB.contains("Ps")) {
+                    gettingB = "Ps " + gettingB;
+                    AppDebug.log("Psalm","Psalm B:"+gettingB);
+                }
+                modifiedVerse = gettingB;
+            }
+            else {
+                if (!gettingA.contains("Ps")) {
+                    gettingA = "Ps " + gettingA;
+                    AppDebug.log("Psalm","Psalm A:"+gettingA);
+                }
+                modifiedVerse = gettingA;
+            }
+        }
+
+        if(theVerse.contains("or")) {
+            String result[] = modifiedVerse.split("or");
+            String gettingA = result[0].trim();
+            String gettingB = "";
+            if (result.length > 1) {
+               gettingB = result[1].trim();
+            }
+            if(gettingA.contains("end")) {
+                modifiedVerse = gettingB;
+            }
+            else {
+                if(modifiedVerse.equalsIgnoreCase("")) {
+                    modifiedVerse = gettingA;
+                }
+            }
+
+        }
+
+        modifiedVerse = modifiedVerse.replace("or ","");
+        modifiedVerse = modifiedVerse.replace(",","");
+
+        AppDebug.log("Verse","Verse:"+modifiedVerse);
+
+
+        return modifiedVerse;
     }
 
     /**
@@ -223,7 +304,7 @@ public class Helper {
 
 
     }
-
+/**
     protected String readFile(Context app_Context, String relativePath) throws IOException
     {
         StringBuilder myData = new StringBuilder();
@@ -252,6 +333,7 @@ public class Helper {
 
         return myData.toString();
     }
+**/
 
     public String readAsset(Context app_Context, String relativePath) throws IOException
     {
