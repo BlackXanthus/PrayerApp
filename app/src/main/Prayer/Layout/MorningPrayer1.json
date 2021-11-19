@@ -32,10 +32,6 @@
       "Name": "Bible Reading : New Testament",
       "Type": "NT"
     },
-    "Bible3": {
-      "Name" : "Bible Reading: Gospel",
-      "Type": "GP"
-    },
     "Section4":{
       "Name": "Affirmation",
       "Location":"Creeds",
