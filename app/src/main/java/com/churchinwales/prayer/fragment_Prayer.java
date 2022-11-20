@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 
 import androidx.lifecycle.Observer;
 
+import android.os.Handler;
 import android.text.Html;
 
 import android.text.SpannableStringBuilder;
@@ -73,6 +74,7 @@ SharedPreferences.OnSharedPreferenceChangeListener {
     String myData = "";
     String prayerType = "";
     Helper myHelper;
+    Handler myHandler;
     BibleReadingsViewModel br_ViewModel = new BibleReadingsViewModel();
     private final ExecutorService executorService = Executors.newFixedThreadPool(2);
     private static final int REQUEST_CODE_ASK_PERMISSONS = 1;
@@ -111,6 +113,7 @@ SharedPreferences.OnSharedPreferenceChangeListener {
 
         myHelper = new Helper();
         myData = "";
+        myHandler = new Handler();
 
 
         CWProject.setHome(getContext().getFilesDir().getPath(), getContext().getFilesDir().getPath() + "/JSWORD", ".Jsword");
@@ -388,8 +391,11 @@ SharedPreferences.OnSharedPreferenceChangeListener {
 
     @Override
     public void onChanged(Object o) {
-        tv_Prayer.setText(Html.fromHtml(br_ViewModel.getPage(), Html.FROM_HTML_MODE_LEGACY));
-
+        myHandler.post(new Runnable() {
+            public void run() {
+                tv_Prayer.setText(Html.fromHtml(br_ViewModel.getPage(), Html.FROM_HTML_MODE_LEGACY));
+            }
+        });
     }
 
     public boolean checkPermissions() {

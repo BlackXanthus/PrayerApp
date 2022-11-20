@@ -1,8 +1,7 @@
-package com.churchinwales.prayer.ui
+package com.churchinwales.prayer
 
 import android.icu.text.SimpleDateFormat
 import android.icu.util.Calendar
-import com.churchinwales.prayer.AppDebug
 
 
 class Lectionary {

@@ -105,6 +105,8 @@ public class fragment_JSWORD extends Fragment implements app_BiblePericope_Callb
         HttpReqTask myTask = new HttpReqTask(executorService);
 
         myTask.getBibleBook(getString(R.string.app_WelshBibleJswordName), this);
+        //myTask.getBibleBook(getString(R.string.app_EnglishBibleJswordName), this);
+
 
         //getOnlineBibleReading();
         getJSWORDBible();
