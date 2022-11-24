@@ -139,6 +139,7 @@ public class HttpReqTask  {
     }
 
     public void getJswordVerse(final Book bible, String theKey, String section, setJswordVerse<String> callback) {
+        AppDebug.log("JSWORDVerse",theKey);
         executor.execute(new Runnable() {
             public void run() {
                 try {
@@ -157,6 +158,7 @@ public class HttpReqTask  {
                             Key theKey = testKey.next();
                             AppDebug.log("TAG", theKey.getName() + " " + bible.getRawText(theKey));
                             text.append(bible.getRawText(theKey));
+
                         }
 
                         Result<String> result = new Result.Success<>(section, text.toString());

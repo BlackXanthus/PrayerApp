@@ -121,22 +121,22 @@ public class fragment_JSWORD extends Fragment implements app_BiblePericope_Callb
         JSONObject prayer = myHelper.getLectionaryJson(app_context, prayerType);
 
 
-
-
         while (bibleFound == Boolean.FALSE) {
                 sleep(100);
         }
 
         if(bibleSet == Boolean.TRUE & this.bible!= null) {
 
-            br_ViewModel.setValue("header", "<h1>Beible.net</H1><br><br>");
-
+            br_ViewModel.setValue("header", "<h1>Boreol Gweddi</H1><br><Br><h1>Beible.net</H1><br><br>");
             try {
-
 
                 br_ViewModel.setValue("OldTestament", "<H2>Hen Testament</h2><br><h2>" + prayer.getString("OT") + "</h2><br>");
                 br_ViewModel.setValue(prayer.getString("OT"), getString(R.string.app_loading) );
-                myTask.getJswordVerse(bible, prayer.getString("OT"), prayer.getString("OT"),this);
+
+                String bibleVerse =  myHelper.checkBibleReading(prayer.getString("OT"));
+
+
+                myTask.getJswordVerse(bible, bibleVerse, prayer.getString("OT"),this);
 
                 /*
                 gen11 = bible.getKey(prayer.getString("NT"));
@@ -147,7 +147,32 @@ public class fragment_JSWORD extends Fragment implements app_BiblePericope_Callb
                 */
                 br_ViewModel.setValue("NewTestament", "<br><br><H2>Testament Newydd</h2><br><h2>" + prayer.getString("NT") + "</h2><br>");
                 br_ViewModel.setValue(prayer.getString("NT"),getString(R.string.app_loading));
-                myTask.getJswordVerse(bible, prayer.getString("NT"), prayer.getString("NT"),this);
+
+                bibleVerse =  myHelper.checkBibleReading(prayer.getString("NT"));
+                myTask.getJswordVerse(bible, bibleVerse, prayer.getString("NT"), this);
+
+
+                br_ViewModel.setValue("EP_header", "<h1>Hwyrol Gweddi</H1>");
+                prayerType = "EveningPrayer";
+                prayer = myHelper.getLectionaryJson(app_context, prayerType);
+
+                bibleVerse =  myHelper.checkBibleReading(prayer.getString("OT"));
+
+                br_ViewModel.setValue("EP_OldTestament", "<H2>Hen Testament</h2><br><h2>" + bibleVerse+ " ("+ prayer.getString("OT") + ")</h2><br>");
+                br_ViewModel.setValue("EP_"+prayer.getString("OT"), getString(R.string.app_loading) );
+                myTask.getJswordVerse(bible, bibleVerse,"EP_"+prayer.getString("OT"), this);
+
+                /*
+                gen11 = bible.getKey(prayer.getString("NT"));
+                test = gen11;
+                /*
+                We then get the key iterator (which is not listed in the docs!)
+                and use that to pull out all the verses we need, verse by verse.
+                */
+                br_ViewModel.setValue("EP_NewTestament", "<br><br><H2>Testament Newydd</h2><br><h2>" + prayer.getString("NT") + "</h2><br>");
+                br_ViewModel.setValue("EP_"+prayer.getString("NT"),getString(R.string.app_loading));
+                bibleVerse =  myHelper.checkBibleReading(prayer.getString("NT"));
+                myTask.getJswordVerse(bible, bibleVerse,"EP_"+prayer.getString("NT"),this);
 
 
             } catch (JSONException e) {

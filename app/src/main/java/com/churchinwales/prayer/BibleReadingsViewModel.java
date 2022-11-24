@@ -1,6 +1,5 @@
 package com.churchinwales.prayer;
 
-import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -9,18 +8,15 @@ import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Dictionary;
-import java.util.HashMap;
+
 import java.util.Iterator;
-import java.util.Map;
-import java.util.Observable;
+
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class BibleReadingsViewModel extends ViewModel {
 
-    MutableLiveData<Map> document = new MutableLiveData<Map>();
+    MutableLiveData<ConcurrentHashMap> document = new MutableLiveData<ConcurrentHashMap>();
     JSONObject jsonobj_Order = new JSONObject();
     String type = "Order";
     Boolean order = false;
@@ -28,7 +24,8 @@ public class BibleReadingsViewModel extends ViewModel {
     public BibleReadingsViewModel(JSONObject theOrder, String JSONSubtype)
     {
         super();
-        Map temp = Collections.synchronizedMap(new HashMap());
+        //Map temp = Collections.synchronizedMap(new HashMap());
+        ConcurrentHashMap<String,String> temp = new ConcurrentHashMap<String,String>();
         document.setValue(temp);
         //jsonobj_Order = theOrder;
         jsonobj_Order = new JSONObject();
@@ -42,7 +39,8 @@ public class BibleReadingsViewModel extends ViewModel {
     {
         super();
         jsonobj_Order = new JSONObject();
-        Map temp = Collections.synchronizedMap(new HashMap());
+       // Map temp = Collections.synchronizedMap(new HashMap());
+        ConcurrentHashMap<String,String> temp = new ConcurrentHashMap<String,String>();
         document.setValue(temp);
         order = true;
     }
@@ -51,15 +49,16 @@ public class BibleReadingsViewModel extends ViewModel {
         return String.valueOf(document.getValue().get(key));
     }
 
-    public void setValue(String key, String value)
+    public synchronized void setValue(String key, String value)
     {
-        Map temp = document.getValue();
+        ConcurrentHashMap<String, String> temp = document.getValue();
         try{
             jsonobj_Order.put(key,value);
         }
         catch(JSONException e) {
             e.printStackTrace();
         }
+        if (temp == null) throw new AssertionError();
         temp.put(key,value);
         document.setValue(temp);
     }
@@ -73,9 +72,9 @@ public class BibleReadingsViewModel extends ViewModel {
         document.postValue(document.getValue()+value);
     }
 **/
-    public void postValue(String key, String value)
+    public synchronized void postValue(String key, String value)
     {
-        Map temp = document.getValue();
+        ConcurrentHashMap temp = document.getValue();
         temp.put(key,value);
         try{
             jsonobj_Order.put(key,value);
@@ -86,7 +85,7 @@ public class BibleReadingsViewModel extends ViewModel {
         document.postValue(temp);
     }
 
-    public MutableLiveData<Map> getObservable()
+    public MutableLiveData<ConcurrentHashMap> getObservable()
     {
         return document;
     }

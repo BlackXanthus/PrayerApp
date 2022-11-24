@@ -99,26 +99,31 @@ public class fragment_oremus extends Fragment implements app_BiblePericope_Callb
             txt_Bible.setText(getString(R.string.app_loading));
             try {
                 //br_ViewModel.postAppendValue(new SpannableStringBuilder(Html.fromHtml("<H2>"+getString(R.string.app_MorningPrayer)+" "+getString(R.string.NewTestamentReading)+ ":"+JSONObj_prayer.getString("NT")+" </H2>",Html.FROM_HTML_OPTION_USE_CSS_COLORS)));
-
+                String bibleVerse =  myHelper.checkBibleReading(JSONObj_prayer.getString("OT"));
                 br_ViewModel.setValue("OTIntro", "<br><br><H1>Old Testament Reading - Morning Prayer</H1><br><br>");
-                br_ViewModel.setValue("OTTitle", "<H2>" + JSONObj_prayer.getString("OT") + "</H2><br>");
+                br_ViewModel.setValue("OTTitle", "<H2>" + bibleVerse + "</H2><br>");
                 br_ViewModel.setValue("OTVerse", "..." + getString(R.string.app_loading));
-                myTask.makeBibleRequest(JSONObj_prayer.getString("OT"), "OTVerse", this);
+                myTask.makeBibleRequest(bibleVerse, "OTVerse", this);
+
+                bibleVerse =  myHelper.checkBibleReading(JSONObj_prayer.getString("NT"));
                 br_ViewModel.setValue("NTIntro", "<H1>New Testament Reading - Morning Prayer</H1><br>");
-                br_ViewModel.setValue("NTTitle", "<H2>" + JSONObj_prayer.getString("NT") + "</H2><br>");
+                br_ViewModel.setValue("NTTitle", "<H2>" + bibleVerse + "</H2><br>");
                 br_ViewModel.setValue("NTVerse", "..." + getString(R.string.app_loading));
-                myTask.makeBibleRequest(JSONObj_prayer.getString("NT"), "NTVerse", this);
+                myTask.makeBibleRequest(bibleVerse, "NTVerse", this);
 
                 JSONObj_prayer = myHelper.getLectionaryJson(getContext(), "EveningPrayer");
 
+                bibleVerse =  myHelper.checkBibleReading(JSONObj_prayer.getString("OT"));
                 br_ViewModel.setValue("EP_OTIntro", "<br><br><H1>Old Testament Reading - Evening Prayer</H1><br><br>");
-                br_ViewModel.setValue("EP_OTTitle", "<H2>" + JSONObj_prayer.getString("OT") + "</H2><br>");
+                br_ViewModel.setValue("EP_OTTitle", "<H2>" + bibleVerse + "</H2><br>");
                 br_ViewModel.setValue("EP_OTVerse", "..." + getString(R.string.app_loading));
-                myTask.makeBibleRequest(JSONObj_prayer.getString("OT"), "EP_OTVerse", this);
+                myTask.makeBibleRequest(bibleVerse, "EP_OTVerse", this);
+
+                bibleVerse =  myHelper.checkBibleReading(JSONObj_prayer.getString("NT"));
                 br_ViewModel.setValue("EP_NTIntro", "<H1>New Testament Reading -Evening Prayer</H1><br>");
-                br_ViewModel.setValue("EP_NTTitle", "<H2>" + JSONObj_prayer.getString("NT") + "</H2><br>");
+                br_ViewModel.setValue("EP_NTTitle", "<H2>" + bibleVerse + "</H2><br>");
                 br_ViewModel.setValue("EP_NTVerse", "..." + getString(R.string.app_loading));
-                myTask.makeBibleRequest(JSONObj_prayer.getString("NT"), "EP_NTVerse", this);
+                myTask.makeBibleRequest(bibleVerse, "EP_NTVerse", this);
 
             } catch (Exception e) {
                 txt_Bible.append("JSON Error");
