@@ -83,10 +83,17 @@ public class fragment_oremus extends Fragment implements app_BiblePericope_Callb
 
         br_ViewModel.getObservable().observe(getViewLifecycleOwner(), this);
 
-        getOnlineBibleReading();
+        if(new Helper_k().isOnline(getContext()))
+            getOnlineBibleReading();
+        else {
+            br_ViewModel.setValue("Error_Internet1",getString(R.string.error_NoInternet));
+
+        }
 
         return rootView;
     }
+
+
 
     public void getOnlineBibleReading() {
 
@@ -96,7 +103,7 @@ public class fragment_oremus extends Fragment implements app_BiblePericope_Callb
             JSONObject JSONObj_prayer = myHelper.getLectionaryJson(getContext(), "MorningPrayer");
 
             HttpReqTask myTask = new HttpReqTask(executorService);
-            txt_Bible.setText(getString(R.string.app_loading));
+            br_ViewModel.setValue("Initialising",getString(R.string.app_loading));
             try {
                 //br_ViewModel.postAppendValue(new SpannableStringBuilder(Html.fromHtml("<H2>"+getString(R.string.app_MorningPrayer)+" "+getString(R.string.NewTestamentReading)+ ":"+JSONObj_prayer.getString("NT")+" </H2>",Html.FROM_HTML_OPTION_USE_CSS_COLORS)));
                 String bibleVerse =  myHelper.checkBibleReading(JSONObj_prayer.getString("OT"));
@@ -126,7 +133,7 @@ public class fragment_oremus extends Fragment implements app_BiblePericope_Callb
                 myTask.makeBibleRequest(bibleVerse, "EP_NTVerse", this);
 
             } catch (Exception e) {
-                txt_Bible.append("JSON Error");
+                br_ViewModel.setValue("Initialising","JSON Error");
                 e.printStackTrace();
             }
         }
@@ -134,6 +141,7 @@ public class fragment_oremus extends Fragment implements app_BiblePericope_Callb
             br_ViewModel.setValue("NTVerse","... no permission to access the internet");
             br_ViewModel.setValue("OTVerse","... no permission to access the internet");
         }
+        br_ViewModel.setValue("Initialising","");
 
     }
 

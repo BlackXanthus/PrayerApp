@@ -19,6 +19,7 @@ class AppPreference(val context: Context) {
         editor.apply()
     }
 
+
     fun getValueString(KEY_NAME: String): String? {
 
         return if (sharedPref.contains(KEY_NAME)) {
@@ -28,6 +29,7 @@ class AppPreference(val context: Context) {
 
     fun setupDefaults() {
         defaultPref["Font"] = "Arial"
+        defaultPref["APP_INST_DATE"] = "0"
 
     }
 }

@@ -2,7 +2,10 @@ package com.churchinwales.prayer;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 
@@ -38,10 +41,50 @@ public class MainActivity extends AppCompatActivity implements
 
         Context app_Context = getApplicationContext();
         //Loading Dialogue Start Here
-        ResourceLoader.unzipFromAssets(app_Context,"Prayer.zip","");
-        ResourceLoader.unzipFromAssets(app_Context,"WelBeiblNet.zip",app_Context.getFilesDir().getPath()+"/JSWORD");
+        AppPreference preferences = new AppPreference(this);
 
-        //setContentView(R.layout.fragment_prayer);
+
+        Boolean RunInstallZip = false;
+        PackageInfo pInfo = null;
+
+       //AppDebug.log("TAG", preferences.getValueString("APP_INST_DATE"));
+
+        try {
+            pInfo = app_Context.getPackageManager().getPackageInfo(getPackageName(), 0);
+
+            if(!TextUtils.isEmpty(preferences.getValueString("APP_INST_DATE"))) {
+                if (Long.parseLong(preferences.getValueString("APP_INST_DATE")) > 0) {
+                    if (Long.parseLong(preferences.getValueString("APP_INST_DATE")) <= pInfo.firstInstallTime) {
+                        RunInstallZip = true;
+                    }
+                    if (Long.parseLong(preferences.getValueString("APP_INST_DATE")) != pInfo.lastUpdateTime) {
+                        RunInstallZip = true;
+                    }
+
+                }
+            }
+            else {
+                RunInstallZip = true;
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            RunInstallZip = true;
+            e.printStackTrace();
+        }
+
+        if (RunInstallZip)
+        {
+            if(pInfo != null) {
+                preferences.save("APP_INST_DATE", String.valueOf(pInfo.lastUpdateTime));
+            }
+            ResourceLoader.unzipFromAssets(app_Context, "Prayer.zip", "");
+            ResourceLoader.unzipFromAssets(app_Context, "WelBeiblNet.zip", app_Context.getFilesDir().getPath() + "/JSWORD");
+            ResourceLoader.unzipFromAssets(app_Context, getString(R.string.app_EnglishBibleJswordZipName), app_Context.getFilesDir().getPath() + "/JSWORD");
+        }
+
+        AppDebug.log("TAG", "Install Time In Millis:" + preferences.getValueString("APP_INST_DATE"));
+
+
+    //setContentView(R.layout.fragment_prayer);
 
         setContentView(R.layout.activity_main);
         //setContentView(R.layout.fragment_cardview);
