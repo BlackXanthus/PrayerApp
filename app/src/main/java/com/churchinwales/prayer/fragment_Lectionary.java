@@ -100,7 +100,7 @@ public class fragment_Lectionary extends Fragment {
             JSONObject mp = theHelper.getLectionaryJson(getActivity().getApplicationContext(), "MP");
             JSONObject ep = theHelper.getLectionaryJson(getActivity().getApplicationContext(), "EP");
 
-            String[] season = theHelper.getSeason();
+            String[] season =new Lectionary().getSeason();
 
             contents.append(Html.fromHtml("<br><H1>Season: "+ season[Lectionary.SEASON] + " Week:"+season[Lectionary.WEEKOFSEASON]+"</H1>", Html.FROM_HTML_MODE_LEGACY));
 

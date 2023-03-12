@@ -310,22 +310,25 @@ public class Helper {
             Calendar cal = Calendar.getInstance();
             dayOfWeek = new Lectionary().getDayOfWeek();
 
-            if(cal.get(Calendar.YEAR) == 2022) {
+            String[] mySeasonData = this.getSeason();
+            season = mySeasonData[Lectionary.SEASON];
+            weekOfSeason = mySeasonData[Lectionary.WEEKOFSEASON];
+            String myLectionary = this.readAsset(app_Context, "lectionary-Year-A.json");
 
+
+
+            if(cal.get(Calendar.YEAR) == 2022) {
                  myLectionary = this.readAsset(app_Context, "lectionary-YearTwo.json");
             }
-            if(cal.get(Calendar.YEAR)  == 2023) {
+            if((cal.get(Calendar.YEAR)  == 2023) || (season.equals("ADVENT")))  {
 
                 myLectionary = this.readAsset(app_Context, "lectionary-Year-A.json");
             }
 
             if(myLectionary.equals("")) {
-                myLectionary = this.readAsset(app_Context, "lectionary-YearTwo.json");
+                myLectionary = this.readAsset(app_Context, "lectionary-Year-A.json");
             }
 
-            String[] mySeasonData = this.getSeason();
-            season = mySeasonData[Lectionary.SEASON];
-            weekOfSeason = mySeasonData[Lectionary.WEEKOFSEASON];
 
             AppDebug.log("TAG-Helper","Season:"+season+" Week:"+weekOfSeason+ " Day:"+dayOfWeek );
 

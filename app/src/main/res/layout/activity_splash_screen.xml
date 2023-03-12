@@ -12,7 +12,7 @@
         android:layout_width="300dp"
         android:layout_height="200dp"
         android:contentDescription="@string/app_full_name"
-        android:src="@mipmap/app_splash_screen_foreground"
+        android:src="@mipmap/ic_launcher_foreground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
