@@ -124,9 +124,6 @@ public class Helper {
             JSONObject jsonRootObject = new JSONObject(myData);
 
             Calendar cal = Calendar.getInstance();
-            Calendar easter = new Calendar.Builder()
-                    .setDate(2021, 3, 4)
-                    .build();
 
             if (cal.compareTo(easter) > 0) {
                 contents.append(Html.fromHtml("Date is after Easter<br>", Html.FROM_HTML_MODE_LEGACY));
@@ -136,9 +133,12 @@ public class Helper {
                 //    cal.add(Calendar.DAY_OF_MONTH, - easter.get(Calendar.DAY_OF_MONTH));
                 contents.append(Html.fromHtml("Current Date: " + cal.get(Calendar.YEAR) + ":" + (cal.get(Calendar.MONTH) + 1) + ":" + cal.get(Calendar.DAY_OF_MONTH) + "<BR>", Html.FROM_HTML_MODE_LEGACY));
 
-                long weeks = cal.getTimeInMillis() - easter.getTimeInMillis();
 
-                Calendar newCal = new Calendar.Builder().setInstant(weeks).build();
+            dayOfWeek = cal.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
+
+            contents.append(Html.fromHtml("Season: "+season+"<BR>",Html.FROM_HTML_MODE_LEGACY));
+            contents.append(Html.fromHtml("Week:"+weekOfSeason+"<br>",Html.FROM_HTML_MODE_LEGACY));
+            contents.append(Html.fromHtml("Day:"+dayOfWeek+"<BR>",Html.FROM_HTML_MODE_LEGACY));
 
                 int weeksSinceEaster = newCal.get(Calendar.WEEK_OF_YEAR);
 
@@ -163,6 +163,7 @@ public class Helper {
                     contents.append("Date is before Easter");
                 }
             }
+
 
             AppDebug.log("TAG", "Season:" + season + " Week:" + weekOfSeason + " Day:" + dayOfWeek);
 
@@ -308,6 +309,7 @@ public class Helper {
             String weekOfSeason="1";
 
             Calendar cal = Calendar.getInstance();
+
             dayOfWeek = new Lectionary().getDayOfWeek();
 
             String[] mySeasonData = this.getSeason();
@@ -329,6 +331,10 @@ public class Helper {
                 myLectionary = this.readAsset(app_Context, "lectionary-Year-A.json");
             }
 
+            String[] mySeasonData = this.getSeason();
+            season = mySeasonData[Lectionary.SEASON];
+            weekOfSeason = mySeasonData[Lectionary.WEEKOFSEASON];
+
 
             AppDebug.log("TAG-Helper","Season:"+season+" Week:"+weekOfSeason+ " Day:"+dayOfWeek );
 
@@ -342,8 +348,8 @@ public class Helper {
 
             JSONObject day = week.optJSONObject(dayOfWeek);
 
-
             AppDebug.log("TAG", "Prayer Time:"+prayerTime);
+
             if((prayerTime.equalsIgnoreCase("MP")) || (prayerTime.equalsIgnoreCase("morningprayer"))) {
                 prayer = day.optJSONObject("MorningPrayer");
             }
