@@ -108,17 +108,31 @@ class Lectionary {
 
         val epiphanyDate = android.icu.util.Calendar.getInstance(tz);
         epiphanyDate.timeInMillis = christmas.timeInMillis
-        epiphanyDate.add(android.icu.util.Calendar.WEEK_OF_YEAR, +2 );
+        epiphanyDate.add(android.icu.util.Calendar.WEEK_OF_YEAR, -2 );
         epiphanyDate.firstDayOfWeek = android.icu.util.Calendar.SUNDAY
         epiphanyDate.timeZone = tz
         epiphanyDate.timeInMillis = findPreviousSunday(epiphanyDate).timeInMillis
 
         val beforeLentDate = android.icu.util.Calendar.getInstance(tz);
-        beforeLentDate.timeInMillis = christmas.timeInMillis
-        beforeLentDate.add(android.icu.util.Calendar.WEEK_OF_YEAR, +6 );
+        beforeLentDate.timeInMillis = epiphanyDate.timeInMillis
+        beforeLentDate.add(android.icu.util.Calendar.WEEK_OF_YEAR, +2 );
         beforeLentDate.firstDayOfWeek = android.icu.util.Calendar.SUNDAY
         beforeLentDate.timeZone = tz
         beforeLentDate.timeInMillis = findPreviousSunday(beforeLentDate).timeInMillis
+
+        val lentDate = android.icu.util.Calendar.getInstance(tz);
+        lentDate.timeInMillis = easter.timeInMillis
+        lentDate.add(android.icu.util.Calendar.DAY_OF_YEAR, -40 );
+        lentDate.firstDayOfWeek = android.icu.util.Calendar.SUNDAY
+        lentDate.timeZone = tz
+        lentDate.timeInMillis = findPreviousSunday(lentDate).timeInMillis
+
+        val trinityDate = android.icu.util.Calendar.getInstance(tz);
+        trinityDate.timeInMillis = easter.timeInMillis
+        trinityDate.add(android.icu.util.Calendar.WEEK_OF_YEAR, +6 );
+        trinityDate.firstDayOfWeek = android.icu.util.Calendar.SUNDAY
+        trinityDate.timeZone = tz
+        trinityDate.timeInMillis = findPreviousSunday(trinityDate).timeInMillis
 
 
         AppDebug.log(
@@ -147,6 +161,16 @@ class Lectionary {
                     epiphanyDate.get(android.icu.util.Calendar.MONTH).toString()+ ":" +
                     epiphanyDate.get(android.icu.util.Calendar.DAY_OF_MONTH).toString())
 
+        AppDebug.log(
+            "LECTIONARY",
+            "Lent Date:"+lentDate.get(android.icu.util.Calendar.YEAR).toString() +":" +
+                    lentDate.get(android.icu.util.Calendar.MONTH).toString()+ ":" +
+                    lentDate.get(android.icu.util.Calendar.DAY_OF_MONTH).toString())
+        AppDebug.log(
+            "LECTIONARY",
+            "Easter Date:"+easter.get(android.icu.util.Calendar.YEAR).toString() +":" +
+                    easter.get(android.icu.util.Calendar.MONTH).toString()+ ":" +
+                    easter.get(android.icu.util.Calendar.DAY_OF_MONTH).toString())
 
         if (cal.compareTo(easter) > 0) {
             val weeks = cal.timeInMillis - easter.timeInMillis
@@ -171,6 +195,7 @@ class Lectionary {
                 weekOfSeason = weeksSinceEaster - 6
             }
         }
+
         if (cal.equals(kingdomDate) or (cal.after(kingdomDate) and cal.before(adventDate))) {
                 season = "KINGDOM"
                 //val long_kingdomWeeks = cal.timeInMillis - kingdomDate.timeInMillis
@@ -212,6 +237,34 @@ class Lectionary {
 
             //weekOfSeason = cal[java.util.Calendar.WEEK_OF_YEAR] - 2
             weekOfSeason=epiphany_week
+        }
+
+        if(cal.equals(beforeLentDate) or (cal.after(beforeLentDate) and cal.before(lentDate)))
+        {
+            season= "BEFORELENT";
+            val beforelent_week = (cal.get(android.icu.util.Calendar.WEEK_OF_YEAR) - lentDate.get(android.icu.util.Calendar.WEEK_OF_YEAR)) +1
+            weekOfSeason=beforelent_week;
+        }
+
+        if(cal.equals(lentDate) or (cal.after(lentDate) and cal.before(easter)))
+        {
+            season= "LENT";
+            val lent_week = (cal.get(android.icu.util.Calendar.WEEK_OF_YEAR) - lentDate.get(android.icu.util.Calendar.WEEK_OF_YEAR)) +1
+            weekOfSeason=lent_week;
+        }
+
+        if(cal.equals(easter) or (cal.after(easter) and cal.before(trinityDate)))
+        {
+            season= "EASTER";
+            val easter_week = (cal.get(android.icu.util.Calendar.WEEK_OF_YEAR) - lentDate.get(android.icu.util.Calendar.WEEK_OF_YEAR)) +1
+            weekOfSeason=easter_week;
+        }
+
+        if(cal.equals(trinityDate) or (cal.after(trinityDate) and cal.before(kingdomDate)))
+        {
+            season= "TRINITY";
+            val trinity_week = (cal.get(android.icu.util.Calendar.WEEK_OF_YEAR) - lentDate.get(android.icu.util.Calendar.WEEK_OF_YEAR)) +1
+            weekOfSeason=trinity_week;
         }
 
         return arrayOf(season, weekOfSeason.toString())

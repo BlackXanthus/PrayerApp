@@ -331,7 +331,7 @@ public class Helper {
                 myLectionary = this.readAsset(app_Context, "lectionary-Year-A.json");
             }
 
-            String[] mySeasonData = this.getSeason();
+            mySeasonData = this.getSeason();
             season = mySeasonData[Lectionary.SEASON];
             weekOfSeason = mySeasonData[Lectionary.WEEKOFSEASON];
 
