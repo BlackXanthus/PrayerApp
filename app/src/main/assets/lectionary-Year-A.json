@@ -2214,13 +2214,13 @@
                     "Name": "Saturday",
                     "MorningPrayer": {
                         "Psalm": "Ps [42 ] 43",
-                        "OT": "Deuteronomy 32 48-end  34",
+                        "OT": "Deuteronomy 32:48-end  34",
                         "NT": "1 John 5"
                     },
                     "EveningPrayer": {
                         "Psalm": "Ps 48",
-                        "OT": "Deuteronomy 16 9-15",
-                        "NT": "John 7 37-39"
+                        "OT": "Deuteronomy 16:9-15",
+                        "NT": "John 7:37-39"
                     }
                 }
             }
